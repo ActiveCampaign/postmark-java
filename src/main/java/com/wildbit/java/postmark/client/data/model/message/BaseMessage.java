@@ -12,17 +12,17 @@ import eu.medsea.mimeutil.MimeUtil;
  * Base email message POJO
  */
 public class BaseMessage {
-    String from;
-    String to;
-    String cc;
-    String bcc;
-    String replyTo;
-    String subject;
-    String htmlBody;
-    String textBody;
-    String tag;
-    HashMap<String, String> headers;
-    ArrayList<HashMap<String, String>> attachments;
+    private String from;
+    private String to;
+    private String cc;
+    private String bcc;
+    private String replyTo;
+    private String subject;
+    private String htmlBody;
+    private String textBody;
+    private String tag;
+    private HashMap<String, String> headers;
+    private ArrayList<HashMap<String, String>> attachments;
 
     public BaseMessage() {
     }
@@ -165,6 +165,14 @@ public class BaseMessage {
         if (this.headers != null) {
             headers.remove(name);
         }
+    }
+
+    public ArrayList<HashMap<String, String>> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(ArrayList<HashMap<String, String>> attachments) {
+        this.attachments = attachments;
     }
 
     public void addAttachment(String path) throws IOException {
