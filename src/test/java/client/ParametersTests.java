@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertSame;
 
 /**
- * Created by bash on 11/6/17.
+ * Parameters class tests.
  */
 public class ParametersTests {
 

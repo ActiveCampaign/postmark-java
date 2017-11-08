@@ -1,13 +1,18 @@
 package com.wildbit.java.postmark.client.data.model.message;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
+import java.util.Date;
+
 /**
- * Created by bash on 11/6/17.
+ * HTTP request response POJO
  */
 public class MessageResponse {
     private String to;
     private String cc;
     private String bcc;
-    private String submittedAt;
+    private Date submittedAt;
     private String messageId;
     private Integer errorCode;
     private String message;
@@ -36,11 +41,11 @@ public class MessageResponse {
         this.bcc = bcc;
     }
 
-    public String getSubmittedAt() {
+    public Date getSubmittedAt() {
         return submittedAt;
     }
 
-    public void setSubmittedAt(String submittedAt) {
+    public void setSubmittedAt(Date submittedAt) {
         this.submittedAt = submittedAt;
     }
 

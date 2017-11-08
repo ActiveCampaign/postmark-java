@@ -9,7 +9,7 @@ import java.util.*;
 import eu.medsea.mimeutil.MimeUtil;
 
 /**
- * Created by bash on 10/14/17.
+ * Base email message POJO
  */
 public class BaseMessage {
     String from;

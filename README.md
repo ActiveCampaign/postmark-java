@@ -8,17 +8,23 @@ This Java Library is the official wrapper for the [Postmark HTTP API](http://pos
 
 ## Get a Postmark API token
 
+There are two types of security tokens that can be used with Postmark: 
+
+* Server API tokens
+* Account API tokens 
+
+Server API tokens are security tokens that allow you to send emails, check bounces and more for each server in your Postmark account.
+Account API tokens are security tokens that allow you to manage account wide details like verified domains, sender signatures. Account API tokens are available only for admins.
+
 In order to send emails using Postmark Java library, you will need a [Postmark](http://postmarkapp.com) account. 
 If you don't have one please register at [https://account.postmarkapp.com/sign_up](https://account.postmarkapp.com/sign_up).
 
-If you didn’t create any servers yet, please create one, proceed to the `Credentials` tab and copy an API token. 
+If you didn’t create any servers yet, please create one, proceed to the `Credentials` tab and copy a Server API token. 
 API tokens should be frequently rotated for security reasons.
 
 ## Communicating with the API
 
-Make sure you have a [sender signature](https://postmarkapp.com/signatures) for
-every From email address you specify.
-
+Make sure you have a [sender signature](https://postmarkapp.com/signatures) for every From email address you specify.
 Retrieve an instance of `Postmark.getApiClient(yourApiToken)` to start sending emails.
 
 ``` java
@@ -26,7 +32,7 @@ yourApiToken = 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 ApiClient client = Postmark.getApiClient(yourApiToken);
 ```
 
-## Sending a plain html message
+## Sending a HTML message
 
 ``` java
 
@@ -36,11 +42,11 @@ Message message = new Message(
     "Re: Come on, Sheldon. It will be fun.", 
     "That's what you said about the Green Lantern");
     
-client.deliverMessage(message);    
+MessageResponse response = client.deliverMessage(message);
                                                                                                                                                             'movie. You were 114 minutes of wrong.'");
 ```
 
-## Sending an HTML message with open tracking
+## Sending a HTML message with open tracking set
 
 ``` java
 
@@ -56,7 +62,7 @@ client.deliverMessage(message);
                                                                                                                                                             'movie. You were 114 minutes of wrong.'");
 ```
 
-## Sending a message with link tracking
+## Sending a HTML message with link tracking set
 
 ``` java
 
@@ -66,15 +72,13 @@ Message message = new Message(
     "Re: Come on, Sheldon. It will be fun.", 
     "That's what you said about the Green Lantern");
     
-message.message.setTrackOpens(true);
 message.setTrackLinks(Message.TRACK_LINKS.HtmlAndText);    
     
 client.deliverMessage(message);    
                                                                                                                                                             'movie. You were 114 minutes of wrong.'");
 ```
 
-## Sending a message with attachments
-
+## Sending a HTML message with attachments
 
 ``` java
 
@@ -98,10 +102,9 @@ Message message = new Message(
     "sheldon@bigbangtheory.com", 
     "leonard@bigbangtheory.com",
     "Re: Come on, Sheldon. It will be fun.", 
-    "That's what you said about the Green Lantern",
-    "That's what you said about the Green Lantern");
+    "That's what you said about the Green Lantern - html",
+    "That's what you said about the Green Lantern - text");
         
-    
 client.deliverMessage(message);    
                                                                                                                                                             'movie. You were 114 minutes of wrong.'");
 ```
