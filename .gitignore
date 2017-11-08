@@ -1,0 +1,6 @@
+**/*.log
+**/*.DS_Store
+**/*.idea
+target
+src/test/java/temp
+
