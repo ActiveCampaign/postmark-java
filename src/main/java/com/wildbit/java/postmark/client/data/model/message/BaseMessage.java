@@ -212,16 +212,16 @@ public class BaseMessage {
      */
     private String convertRecipients(HashMap<String,String> recipients) {
 
-        String recipientsString = "";
+        StringBuilder recipientsString = new StringBuilder();
 
         Iterator<HashMap.Entry<String, String>> entries = recipients.entrySet().iterator();
         while (entries.hasNext()) {
             HashMap.Entry<String, String> entry = entries.next();
-            recipientsString += "\"" + entry.getKey() + "\"" + "<" + entry.getValue() + ">";
-            if (entries.hasNext()) { recipientsString += ","; }
+            recipientsString.append("\"").append(entry.getKey()).append("\"").append("<").append(entry.getValue()).append(">");
+            if (entries.hasNext()) { recipientsString.append(","); }
         }
 
-        return recipientsString;
+        return recipientsString.toString();
     }
 
 }
