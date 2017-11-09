@@ -3,36 +3,38 @@ package com.wildbit.java.postmark.client.data.model.server;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/1/17.
+ * Server POJO.
  */
 public class Server {
 
-    private int id;
+    private Integer id;
     private String name;
     private ArrayList<String> apiTokens;
     private String serverLink;
     private String color;
-    private boolean smtpApiActivated;
-    private boolean rawEmailEnabled;
+    private Boolean smtpApiActivated;
+    private Boolean rawEmailEnabled;
     private String deliveryHookUrl;
     private String inboundAddress;
     private String inboundHookUrl;
     private String bounceHookUrl;
-    private boolean includeBounceContentInHook;
+    private Boolean includeBounceContentInHook;
     private String openHookUrl;
-    private boolean postFirstOpenOnly;
-    private boolean trackOpens;
+    private Boolean postFirstOpenOnly;
+    private Boolean trackOpens;
     private String trackLinks;
     private String clickHookUrl;
     private String inboundDomain;
     private String inboundHash;
     private String inboundSpamThreshold;
 
-    public int getId() {
+    // SETTERS AND GETTERS
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -68,19 +70,19 @@ public class Server {
         this.color = color;
     }
 
-    public boolean isSmtpApiActivated() {
+    public Boolean isSmtpApiActivated() {
         return smtpApiActivated;
     }
 
-    public void setSmtpApiActivated(boolean smtpApiActivated) {
+    public void setSmtpApiActivated(Boolean smtpApiActivated) {
         this.smtpApiActivated = smtpApiActivated;
     }
 
-    public boolean isRawEmailEnabled() {
+    public Boolean isRawEmailEnabled() {
         return rawEmailEnabled;
     }
 
-    public void setRawEmailEnabled(boolean rawEmailEnabled) {
+    public void setRawEmailEnabled(Boolean rawEmailEnabled) {
         this.rawEmailEnabled = rawEmailEnabled;
     }
 
@@ -116,11 +118,11 @@ public class Server {
         this.bounceHookUrl = bounceHookUrl;
     }
 
-    public boolean isIncludeBounceContentInHook() {
+    public Boolean isIncludeBounceContentInHook() {
         return includeBounceContentInHook;
     }
 
-    public void setIncludeBounceContentInHook(boolean includeBounceContentInHook) {
+    public void setIncludeBounceContentInHook(Boolean includeBounceContentInHook) {
         this.includeBounceContentInHook = includeBounceContentInHook;
     }
 
@@ -132,19 +134,19 @@ public class Server {
         this.openHookUrl = openHookUrl;
     }
 
-    public boolean isPostFirstOpenOnly() {
+    public Boolean isPostFirstOpenOnly() {
         return postFirstOpenOnly;
     }
 
-    public void setPostFirstOpenOnly(boolean postFirstOpenOnly) {
+    public void setPostFirstOpenOnly(Boolean postFirstOpenOnly) {
         this.postFirstOpenOnly = postFirstOpenOnly;
     }
 
-    public boolean isTrackOpens() {
+    public Boolean isTrackOpens() {
         return trackOpens;
     }
 
-    public void setTrackOpens(boolean trackOpens) {
+    public void setTrackOpens(Boolean trackOpens) {
         this.trackOpens = trackOpens;
     }
 

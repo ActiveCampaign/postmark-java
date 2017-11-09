@@ -1,5 +1,6 @@
 package com.wildbit.java.postmark.client.data;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 
@@ -16,6 +17,8 @@ public class DataHandler {
 
     public DataHandler() {
         this.mapper = new ObjectMapper();
+        this.mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
+        this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.mapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
         setStrictMapper();
     }
