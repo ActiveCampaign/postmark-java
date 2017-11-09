@@ -3,11 +3,13 @@ package com.wildbit.java.postmark.client.data.model.messages;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/6/17.
+ * Outbound message clicks POJO.
  */
 public class OutboundMessageClicks {
     private Integer totalCount;
     private ArrayList<OutboundMessageClick> clicks;
+
+    // GETTERS AND SETTERS
 
     public Integer getTotalCount() {
         return totalCount;

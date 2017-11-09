@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/1/17.
+ * Inbound message details POJO.
  */
 public class InboundMessageDetails extends InboundMessage {
 
@@ -13,6 +13,8 @@ public class InboundMessageDetails extends InboundMessage {
     private String strippedTextReply;
     private ArrayList<HashMap<String, String>> headers;
     private String blockedReason;
+
+    // GETTERS AND SETTERS
 
     public String getStrippedTextReply() {
         return strippedTextReply;

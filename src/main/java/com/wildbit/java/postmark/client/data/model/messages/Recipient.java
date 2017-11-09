@@ -1,9 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Created by bash on 11/1/17.
+ * Recipient POJO.
  */
 public class Recipient {
+
+    private String name;
+    private String email;
+
+    // GETTERS AND SETTERS
+
     public String getName() {
         return name;
     }
@@ -19,7 +25,4 @@ public class Recipient {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String name;
-    private String email;
 }

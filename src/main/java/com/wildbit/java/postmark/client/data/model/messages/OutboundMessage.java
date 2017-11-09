@@ -1,11 +1,28 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
- * Created by bash on 11/1/17.
+ * Outbound message POJO.
  */
 public class OutboundMessage {
+
+    private String tag;
+    private String messageId;
+    private ArrayList<Recipient> to;
+    private ArrayList<Recipient> cc;
+    private ArrayList<Recipient> bcc;
+    private ArrayList<String> recipients;
+    private Date receivedAt;
+    private String from;
+    private String subject;
+    private ArrayList<Attachment> attachments;
+    private String status;
+    private Boolean trackOpens;
+    private String trackLinks;
+
+    // GETTERS AND SETTERS
 
     public String getTag() {
         return tag;
@@ -55,11 +72,11 @@ public class OutboundMessage {
         this.recipients = recipients;
     }
 
-    public String getReceivedAt() {
+    public Date getReceivedAt() {
         return receivedAt;
     }
 
-    public void setReceivedAt(String receivedAt) {
+    public void setReceivedAt(Date receivedAt) {
         this.receivedAt = receivedAt;
     }
 
@@ -110,19 +127,5 @@ public class OutboundMessage {
     public void setTrackLinks(String trackLinks) {
         this.trackLinks = trackLinks;
     }
-
-    private String tag;
-    private String messageId;
-    private ArrayList<Recipient> to;
-    private ArrayList<Recipient> cc;
-    private ArrayList<Recipient> bcc;
-    private ArrayList<String> recipients;
-    private String receivedAt;
-    private String from;
-    private String subject;
-    private ArrayList<Attachment> attachments;
-    private String status;
-    private Boolean trackOpens;
-    private String trackLinks;
 
 }

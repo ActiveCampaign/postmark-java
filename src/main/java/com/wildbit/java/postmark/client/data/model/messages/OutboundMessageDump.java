@@ -1,9 +1,14 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Bounce Dump POJO
+ * Outbound message dump POJO
  */
 public class OutboundMessageDump {
+
+    private String body;
+
+    // GETTERS AND SETTERS
+
     public String getBody() {
         return body;
     }
@@ -11,6 +16,4 @@ public class OutboundMessageDump {
     public void setBody(String body) {
         this.body = body;
     }
-
-    private String body;
 }

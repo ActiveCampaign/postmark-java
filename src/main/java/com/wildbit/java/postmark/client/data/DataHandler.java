@@ -17,7 +17,6 @@ public class DataHandler {
 
     public DataHandler() {
         this.mapper = new ObjectMapper();
-        this.mapper.setSerializationInclusion(JsonInclude.Include.NON_DEFAULT);
         this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         this.mapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
         setStrictMapper();

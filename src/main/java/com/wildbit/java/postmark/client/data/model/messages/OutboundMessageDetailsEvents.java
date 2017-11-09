@@ -1,16 +1,19 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/6/17.
+ * Outbound message details POJO.
  */
 public class OutboundMessageDetailsEvents {
 
     private String recipient;
     private String type;
-    private String receivedAt;
+    private Date receivedAt;
     private HashMap<String,String> details;
+
+    // GETTERS AND SETTERS
 
     public String getRecipient() {
         return recipient;
@@ -28,11 +31,11 @@ public class OutboundMessageDetailsEvents {
         this.type = type;
     }
 
-    public String getReceivedAt() {
+    public Date getReceivedAt() {
         return receivedAt;
     }
 
-    public void setReceivedAt(String receivedAt) {
+    public void setReceivedAt(Date receivedAt) {
         this.receivedAt = receivedAt;
     }
 

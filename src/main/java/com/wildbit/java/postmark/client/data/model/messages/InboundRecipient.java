@@ -1,11 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Created by bash on 11/1/17.
+ * Inbound recipient POJO
  */
-public class InboundRecipient extends Recipient{
+public class InboundRecipient extends Recipient {
 
     private String mailboxHash;
+
+    // GETTERS AND SETTERS
 
     public String getMailboxHash() {
         return mailboxHash;

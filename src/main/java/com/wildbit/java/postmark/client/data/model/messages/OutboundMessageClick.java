@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/6/17.
+ * Outbound message click POJO.
  */
 public class OutboundMessageClick {
 
@@ -19,6 +19,8 @@ public class OutboundMessageClick {
     private Date receivedAt;
     private String tag;
     private String recipient;
+
+    // GETTERS AND SETTERS
 
     public String getClickLocation() {
         return clickLocation;

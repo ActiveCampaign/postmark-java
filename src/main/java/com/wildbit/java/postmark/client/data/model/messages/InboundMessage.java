@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Created by bash on 11/1/17.
+ * Inbound message POJO.
  */
 public class InboundMessage {
 
@@ -26,6 +26,8 @@ public class InboundMessage {
     private String messageId;
     private String status;
     private ArrayList<Attachment> attachments;
+
+    // GETTERS AND SETTERS
 
     public String getFrom() {
         return from;

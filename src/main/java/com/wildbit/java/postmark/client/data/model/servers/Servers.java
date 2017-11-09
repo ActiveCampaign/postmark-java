@@ -4,12 +4,14 @@ import com.wildbit.java.postmark.client.data.model.server.Server;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/1/17.
+ * Servers POJO.
  */
 public class Servers {
 
     private int totalCount;
     private ArrayList<Server> servers;
+
+    // GETTERS AND SETTERS
 
     public int getTotalCount() {
         return totalCount;

@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.messages;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/1/17.
+ * Inbound messages POJO.
  */
 public class InboundMessages {
 
     private Integer totalCount;
     private ArrayList<InboundMessage> inboundMessages;
+
+    // GETTERS AND SETTERS
 
     public Integer getTotalCount() {
         return totalCount;

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/6/17.
+ * Outbound message open POJO.
  */
 public class OutboundMessageOpen {
 
@@ -18,6 +18,8 @@ public class OutboundMessageOpen {
     private Date receivedAt;
     private String tag;
     private String recipient;
+
+    // GETTERS AND SETTERS
 
     public HashMap<String, String> getClient() {
         return client;

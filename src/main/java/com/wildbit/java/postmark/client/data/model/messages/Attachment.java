@@ -1,9 +1,18 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Created by bash on 11/1/17.
+ * Attachment POJO.
  */
 public class Attachment {
+
+    private String name;
+    private String content;
+    private String contentType;
+    private Integer contentLength;
+    private String contentId;
+
+    // GETTERS AND SETTERS
+
     public String getName() {
         return name;
     }
@@ -44,9 +53,4 @@ public class Attachment {
         this.contentId = contentId;
     }
 
-    private String name;
-    private String content;
-    private String contentType;
-    private Integer contentLength;
-    private String contentId;
 }
