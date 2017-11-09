@@ -1,7 +1,10 @@
 package com.wildbit.java.postmark.client.data;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * This class represents data handler between API client and HTTP client.
@@ -31,12 +34,38 @@ public class DataHandler {
         return this.mapper.writerWithDefaultPrettyPrinter().writeValueAsString(data);
     }
 
+    /**
+     *
+     * @param response JSON object in String format
+     * @param valueType accepts types like ArrayList
+     * @param <T> Class type to return
+     * @return String object converted to type <T> object
+     * @throws IOException in case converting String to Object fails
+     */
     public <T> T fromJson(String response, Class<T> valueType) throws IOException {
         return this.mapper.readValue(response, valueType);
     }
 
-    public String formatErrorMessage(String json_message) throws IOException {
-        JsonNode node = fromJson(json_message, JsonNode.class);
+    /**
+     *
+     * @param response JSON object in String format
+     * @param valueType accepts parametrized types like ArrayList<String>
+     * @param <T> Class type to return
+     * @return String object converted to type <T> object
+     * @throws IOException in case converting String to Object fails
+     */
+    public <T> T fromJson(String response, TypeReference valueType) throws IOException {
+        return this.mapper.readValue(response, valueType);
+    }
+
+    /**
+     *  Helper for filtering out message only returned by HTTP client
+     * @param data JSON object as String
+     * @return message
+     * @throws IOException in case converting String to Object fails
+     */
+    public String formatErrorMessage(String data) throws IOException {
+        JsonNode node = fromJson(data, JsonNode.class);
         return node.get("Message").textValue();
     }
 

@@ -1,5 +1,6 @@
 package com.wildbit.java.postmark.client;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounce;
 import com.wildbit.java.postmark.client.data.model.bounces.BounceDump;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
@@ -50,7 +51,7 @@ public class ApiClient extends BaseApiClient {
 
     public ArrayList<MessageResponse> deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email/batch"), data);
-        return dataHandler.fromJson(response, ArrayList.class);
+        return  dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
     }
 
 
