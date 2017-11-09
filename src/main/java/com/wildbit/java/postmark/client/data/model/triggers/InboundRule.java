@@ -1,11 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
 /**
- * Created by bash on 11/7/17.
+ * Inbound rule POJO.
  */
 public class InboundRule {
 
     private String rule;
+
+    // SETTERS AND GETTERS
 
     public String getRule() {
         return rule;

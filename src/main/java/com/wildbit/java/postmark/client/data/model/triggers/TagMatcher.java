@@ -1,13 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
 /**
- * Created by bash on 11/7/17.
+ * Tag matcher POJO.
  */
 public class TagMatcher {
 
     private Integer id;
     private String matchName;
     private Boolean trackOpens;
+
+    // SETTERS AND GETTERS
 
     public Integer getId() {
         return id;

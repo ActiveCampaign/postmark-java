@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.triggers;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/7/17.
+ * Tag matchers POJO.
  */
 public class TagMatchers {
 
     private Integer totalCount;
     private ArrayList<TagMatcher> tags;
+
+    // SETTERS AND GETTERS
 
     public Integer getTotalCount() {
         return totalCount;
