@@ -70,6 +70,16 @@ public class BaseMessage {
         this.to = convertRecipients(to);
     }
 
+    /**
+     * Helper method for setting Array of recipient email addresses.
+     *
+     * @param to recipients list
+     * @see #convertRecipients(HashMap) for details
+     */
+    public void setTo(ArrayList<String > to) {
+        this.to = convertRecipients(to);
+    }
+
     public String getCc() {
         return cc;
     }
@@ -85,6 +95,16 @@ public class BaseMessage {
      * @see #convertRecipients(HashMap) for details
      */
     public void setCc(HashMap<String,String> cc) {
+        this.cc = convertRecipients(cc);
+    }
+
+    /**
+     * Helper method for setting Array of recipient email addresses.
+     *
+     * @param cc recipients list
+     * @see #convertRecipients(HashMap) for details
+     */
+    public void setCc(ArrayList<String > cc) {
         this.cc = convertRecipients(cc);
     }
 
@@ -105,6 +125,17 @@ public class BaseMessage {
     public void setBcc(HashMap<String,String> bcc) {
         this.bcc = convertRecipients(bcc);
     }
+
+    /**
+     * Helper method for setting Array of recipient email addresses.
+     *
+     * @param bcc recipients list
+     * @see #convertRecipients(HashMap) for details
+     */
+    public void setBcc(ArrayList<String > bcc) {
+        this.bcc = convertRecipients(bcc);
+    }
+
 
     public String getSubject() {
         return subject;
@@ -218,6 +249,20 @@ public class BaseMessage {
         while (entries.hasNext()) {
             HashMap.Entry<String, String> entry = entries.next();
             recipientsString.append("\"").append(entry.getKey()).append("\"").append("<").append(entry.getValue()).append(">");
+            if (entries.hasNext()) { recipientsString.append(","); }
+        }
+
+        return recipientsString.toString();
+    }
+
+    private String convertRecipients(ArrayList<String> recipients) {
+
+        StringBuilder recipientsString = new StringBuilder();
+
+        Iterator<String> entries = recipients.iterator();
+        while (entries.hasNext()) {
+            String entry = entries.next();
+            recipientsString.append("\"").append(entry).append("\"");
             if (entries.hasNext()) { recipientsString.append(","); }
         }
 
