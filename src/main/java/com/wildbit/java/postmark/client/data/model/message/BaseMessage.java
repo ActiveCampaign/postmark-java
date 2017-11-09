@@ -21,7 +21,7 @@ public class BaseMessage {
     private String htmlBody;
     private String textBody;
     private String tag;
-    private HashMap<String, String> headers;
+    private ArrayList<Header> headers;
     private ArrayList<HashMap<String, String>> attachments;
 
     public BaseMessage() {
@@ -133,7 +133,7 @@ public class BaseMessage {
      * @see #convertRecipients(HashMap) for details
      */
     public void setBcc(ArrayList<String > bcc) {
-        this.bcc = convertRecipients(bcc);
+        this.cc = convertRecipients(bcc);
     }
 
 
@@ -177,24 +177,24 @@ public class BaseMessage {
         this.tag = tag;
     }
 
-    public HashMap<String, String> getHeaders() {
+    public ArrayList<Header> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(HashMap<String, String> headers) {
+    public void setHeaders(ArrayList<Header> headers) {
         this.headers = headers;
     }
 
     public void addHeader(String name, String value) {
         if (this.headers == null) {
-            setHeaders(new HashMap<>());
+            setHeaders(new ArrayList<Header>());
         }
-        headers.put(name, value);
+        this.headers.add(new Header(name,value));
     }
 
-    public void removeHeader(String name) {
-        if (this.headers != null) {
-            headers.remove(name);
+    public void clearHeaders() {
+        if (this.headers == null) {
+            this.headers.clear();
         }
     }
 

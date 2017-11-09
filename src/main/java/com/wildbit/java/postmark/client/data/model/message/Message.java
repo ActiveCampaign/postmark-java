@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.message;
 
 /**
- * Created by bash on 9/4/17.
+ * Postmark email message POJO
  */
 public class Message extends BaseMessage {
 
@@ -17,8 +17,8 @@ public class Message extends BaseMessage {
         }
     }
 
-    Boolean trackOpens;
-    String trackLinks;
+    private Boolean trackOpens;
+    private String trackLinks;
 
     public Message() {
         super();

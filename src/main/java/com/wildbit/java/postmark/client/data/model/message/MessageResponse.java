@@ -1,12 +1,8 @@
 package com.wildbit.java.postmark.client.data.model.message;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
 import java.util.Date;
 
 /**
- * HTTP request response POJO
+ * HTTP send request response POJO
  */
 public class MessageResponse {
     private String to;

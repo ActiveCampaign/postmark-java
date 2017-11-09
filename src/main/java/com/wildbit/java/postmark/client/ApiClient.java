@@ -48,7 +48,7 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, MessageResponse.class);
     }
 
-    public ArrayList deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
+    public ArrayList<MessageResponse> deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email/batch"), data);
         return dataHandler.fromJson(response, ArrayList.class);
     }
