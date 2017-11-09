@@ -3,7 +3,13 @@ package com.wildbit.java.postmark.client.data.model.bounces;
 /**
  * Bounce Types POJO
  */
-public class BounceTypes {
+public class BounceType {
+
+    private String name;
+    private Integer count;
+    private String type;
+
+    // SETTERS AND GETTERS
 
     public String getName() {
         return name;
@@ -28,9 +34,5 @@ public class BounceTypes {
     public void setType(String type) {
         this.type = type;
     }
-
-    private String name;
-    private Integer count;
-    private String type;
 
 }

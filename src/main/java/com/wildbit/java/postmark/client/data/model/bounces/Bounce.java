@@ -25,9 +25,11 @@ public class Bounce {
     private String subject;
     private String content;
 
-    private Integer getId() { return id;}
+    // SETTERS AND GETTERS
 
-    private void setId(Integer id) {
+    public Integer getId() { return id;}
+
+    public void setId(Integer id) {
         this.id = id;
     }
 

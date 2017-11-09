@@ -1,5 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
+import com.wildbit.java.postmark.client.data.model.message.Header;
 import eu.medsea.mimeutil.MimeUtil;
 
 import java.io.File;
@@ -12,9 +13,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Created by bash on 10/14/17.
+ * Base Template POJO.
  */
 public class BaseTemplatedMessage {
+
     private Integer templateId;
     private Object templateModel;
     private Boolean inlineCss;
@@ -24,7 +26,7 @@ public class BaseTemplatedMessage {
     private String bcc;
     private String replyTo;
     private String tag;
-    private HashMap<String, String> headers;
+    private ArrayList<Header> headers;
     private ArrayList<HashMap<String, String>> attachments;
 
     public BaseTemplatedMessage() {
@@ -37,6 +39,8 @@ public class BaseTemplatedMessage {
         this.to = to;
         this.attachments = new ArrayList<>();
     }
+
+    // SETTERS AND GETTERS
 
     public Integer getTemplateId() {
         return templateId;
@@ -148,26 +152,27 @@ public class BaseTemplatedMessage {
         this.tag = tag;
     }
 
-    public HashMap<String, String> getHeaders() {
+    public ArrayList<Header> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(HashMap<String, String> headers) {
+    public void setHeaders(ArrayList<Header> headers) {
         this.headers = headers;
     }
 
     public void addHeader(String name, String value) {
         if (this.headers == null) {
-            setHeaders(new HashMap<>());
+            setHeaders(new ArrayList<Header>());
         }
-        headers.put(name, value);
+        this.headers.add(new Header(name,value));
     }
 
-    public void removeHeader(String name) {
-        if (this.headers != null) {
-            headers.remove(name);
+    public void clearHeaders() {
+        if (this.headers == null) {
+            this.headers.clear();
         }
     }
+
 
     public void addAttachment(String path) throws IOException {
         HashMap<String, String> attachment = new HashMap<>();

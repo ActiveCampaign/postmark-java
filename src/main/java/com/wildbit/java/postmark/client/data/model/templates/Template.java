@@ -1,14 +1,16 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 11/6/17.
+ * Basic Template POJO
  */
-public class Template extends TemplateBase {
+public class Template extends BaseTemplate {
 
     private String subject;
     private String htmlBody;
     private String textBody;
     private Integer associatedServerId;
+
+    // SETTERS AND GETTERS
 
     public String getSubject() {
         return subject;

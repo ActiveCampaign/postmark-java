@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.templates;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/7/17.
+ * Templates list POJO.
  */
 public class Templates {
 
     private Integer totalCount;
-    private ArrayList<TemplateBase> templates;
+    private ArrayList<BaseTemplate> templates;
+
+    // SETTERS AND GETTERS
 
     public Integer getTotalCount() {
         return totalCount;
@@ -18,11 +20,11 @@ public class Templates {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<TemplateBase> getTemplates() {
+    public ArrayList<BaseTemplate> getTemplates() {
         return templates;
     }
 
-    public void setTemplates(ArrayList<TemplateBase> templates) {
+    public void setTemplates(ArrayList<BaseTemplate> templates) {
         this.templates = templates;
     }
 }

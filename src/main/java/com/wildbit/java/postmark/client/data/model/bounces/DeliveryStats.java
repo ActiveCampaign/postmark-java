@@ -7,6 +7,11 @@ import java.util.ArrayList;
  */
 public class DeliveryStats {
 
+    private int inactiveMails;
+    private ArrayList<BounceType> bounces;
+
+    // SETTERS AND GETTERS
+
     public int getInactiveMails() {
         return inactiveMails;
     }
@@ -15,14 +20,11 @@ public class DeliveryStats {
         this.inactiveMails = inactiveMails;
     }
 
-    public ArrayList<BounceTypes> getBounces() {
+    public ArrayList<BounceType> getBounces() {
         return bounces;
     }
 
-    public void setBounces(ArrayList<BounceTypes> bounces) {
+    public void setBounces(ArrayList<BounceType> bounces) {
         this.bounces = bounces;
     }
-
-    private int inactiveMails;
-    private ArrayList<BounceTypes> bounces;
 }

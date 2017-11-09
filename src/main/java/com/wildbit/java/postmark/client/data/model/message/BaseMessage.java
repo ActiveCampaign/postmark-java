@@ -44,6 +44,8 @@ public class BaseMessage {
         this.attachments = new ArrayList<>();
     }
 
+    // SETTERS AND GETTERS
+
     public String getFrom() {
         return from;
     }

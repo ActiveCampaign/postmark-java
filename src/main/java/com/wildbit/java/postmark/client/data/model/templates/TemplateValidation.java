@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 11/6/17.
+ * Template validation result POJO.
  */
 public class TemplateValidation {
     private Boolean allContentIsValid;
@@ -9,6 +9,8 @@ public class TemplateValidation {
     private TemplateValidationField textBody;
     private TemplateValidationField subject;
     private Object suggestedTemplateModel;
+
+    // SETTERS AND GETTERS
 
     public Boolean getAllContentIsValid() {
         return allContentIsValid;

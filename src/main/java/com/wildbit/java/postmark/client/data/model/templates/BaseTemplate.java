@@ -1,13 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 11/7/17.
+ * Basic Template with no details POJO.
  */
-public class TemplateBase {
+public class BaseTemplate {
 
     private Boolean active;
     private String name;
     private Integer templateId;
+
+    // SETTERS AND GETTERS
 
     public Boolean getActive() {
         return active;

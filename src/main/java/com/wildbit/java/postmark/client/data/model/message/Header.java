@@ -16,6 +16,8 @@ public class Header {
         this.value = value;
     }
 
+    // SETTERS AND GETTERS
+
     public String getName() {
         return name;
     }

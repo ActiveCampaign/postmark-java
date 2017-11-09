@@ -1,13 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 11/6/17.
+ * Template Content POJO.
  */
 public class TemplateContent {
     private String name;
     private String subject;
     private String htmlBody;
     private String textBody;
+
+    // SETTERS AND GETTERS
 
     public String getName() {
         return name;

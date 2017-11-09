@@ -1,13 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 11/6/17.
+ * Template validation POJO.
  */
 public class TemplateToValidate {
     private String subject;
     private String htmlBody;
     private String textBody;
     private Object testRenderModel;
+
+    // SETTERS AND GETTERS
 
     public Object getTestRenderModel() {
         return testRenderModel;

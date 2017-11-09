@@ -4,6 +4,11 @@ package com.wildbit.java.postmark.client.data.model.bounces;
  * Bounce Dump POJO
  */
 public class BounceDump {
+
+    private String body;
+
+    // SETTERS AND GETTERS
+
     public String getBody() {
         return body;
     }
@@ -11,6 +16,4 @@ public class BounceDump {
     public void setBody(String body) {
         this.body = body;
     }
-
-    private String body;
 }

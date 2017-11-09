@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/6/17.
+ * Template validation field details POJO.
  */
 public class TemplateValidationField {
     private Boolean contentIsValid;
     private ArrayList<HashMap<String,String>> validationErrors;
     private String renderedContent;
+
+    // SETTERS AND GETTERS
 
     public Boolean getContentIsValid() {
         return contentIsValid;

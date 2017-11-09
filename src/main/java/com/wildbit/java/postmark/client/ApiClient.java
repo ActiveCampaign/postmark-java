@@ -97,14 +97,14 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, Template.class);
     }
 
-    public TemplateBase createTemplate(TemplateContent data) throws PostmarkException, IOException {
+    public BaseTemplate createTemplate(TemplateContent data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/templates/"), data);
-        return dataHandler.fromJson(response, TemplateBase.class);
+        return dataHandler.fromJson(response, BaseTemplate.class);
     }
 
-    public TemplateBase setTemplate(Integer id, TemplateContent data) throws PostmarkException, IOException {
+    public BaseTemplate setTemplate(Integer id, TemplateContent data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/templates/" + id), data);
-        return dataHandler.fromJson(response, TemplateBase.class);
+        return dataHandler.fromJson(response, BaseTemplate.class);
     }
 
     public Templates getTemplates(Parameters parameters) throws PostmarkException, IOException {

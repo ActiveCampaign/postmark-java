@@ -7,6 +7,11 @@ import java.util.ArrayList;
  */
 public class Bounces {
 
+    private int totalCount;
+    private ArrayList<Bounce> bounces;
+
+    // SETTERS AND GETTERS
+
     public int getTotalCount() {
         return totalCount;
     }
@@ -22,7 +27,4 @@ public class Bounces {
     public void setBounces(ArrayList<Bounce> bounces) {
         this.bounces = bounces;
     }
-
-    private int totalCount;
-    private ArrayList<Bounce> bounces;
 }

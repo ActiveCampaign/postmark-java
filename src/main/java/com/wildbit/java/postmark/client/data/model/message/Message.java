@@ -32,6 +32,8 @@ public class Message extends BaseMessage {
         super(from, to, subject, htmlBody, textBody);
     }
 
+    // SETTERS AND GETTERS
+
     public Boolean getTrackOpens() {
         return trackOpens;
     }

@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Created by bash on 9/4/17.
+ * Template Message with all details POJO.
  */
 public class TemplatedMessage extends BaseTemplatedMessage {
 
@@ -19,6 +19,8 @@ public class TemplatedMessage extends BaseTemplatedMessage {
 
     Boolean trackOpens;
     String trackLinks;
+
+    // SETTERS AND GETTERS
 
     public TemplatedMessage() {
         super();
