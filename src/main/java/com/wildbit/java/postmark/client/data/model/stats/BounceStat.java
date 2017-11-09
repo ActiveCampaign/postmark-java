@@ -5,60 +5,60 @@ package com.wildbit.java.postmark.client.data.model.stats;
  */
 public class BounceStat extends BaseStat {
 
-    private String hardBounce;
-    private String softBounce;
-    private String smtpApiError;
-    private String spamComplaint;
-    private String ispBlock;
-    private String Transient;
+    private Integer hardBounce;
+    private Integer softBounce;
+    private Integer smtpApiError;
+    private Integer spamComplaint;
+    private Integer ispBlock;
+    private Integer Transient;
 
     // SETTERS AND GETTERS
 
-    public String getTransient() {
+    public Integer getTransient() {
         return Transient;
     }
 
-    public void setTransient(String aTransient) {
+    public void setTransient(Integer aTransient) {
         Transient = aTransient;
     }
 
-    public String getHardBounce() {
+    public Integer getHardBounce() {
         return hardBounce;
     }
 
-    public void setHardBounce(String hardBounce) {
+    public void setHardBounce(Integer hardBounce) {
         this.hardBounce = hardBounce;
     }
 
-    public String getSoftBounce() {
+    public Integer getSoftBounce() {
         return softBounce;
     }
 
-    public void setSoftBounce(String softBounce) {
+    public void setSoftBounce(Integer softBounce) {
         this.softBounce = softBounce;
     }
 
-    public String getSmtpApiError() {
+    public Integer getSmtpApiError() {
         return smtpApiError;
     }
 
-    public void setSmtpApiError(String smtpApiError) {
+    public void setSmtpApiError(Integer smtpApiError) {
         this.smtpApiError = smtpApiError;
     }
 
-    public String getSpamComplaint() {
+    public Integer getSpamComplaint() {
         return spamComplaint;
     }
 
-    public void setSpamComplaint(String spamComplaint) {
+    public void setSpamComplaint(Integer spamComplaint) {
         this.spamComplaint = spamComplaint;
     }
 
-    public String getIspBlock() {
+    public Integer getIspBlock() {
         return ispBlock;
     }
 
-    public void setIspBlock(String ispBlock) {
+    public void setIspBlock(Integer ispBlock) {
         this.ispBlock = ispBlock;
     }
 }

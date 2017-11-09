@@ -17,6 +17,7 @@ import com.wildbit.java.postmark.client.exception.PostmarkException;
 import javax.ws.rs.core.MultivaluedHashMap;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Class that handles on very top level all API requests. All Postmark public endpoints which
@@ -258,19 +259,24 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, OutboundOpenPlatformStats.class);
     }
 
-    public String getOutboundOpenClientStats(Parameters parameters) throws PostmarkException, IOException {
+    public HashMap getOutboundOpenClientStats(Parameters parameters) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens/platforms" + parameters));
-        return dataHandler.fromJson(response, String.class);
+        return dataHandler.fromJson(response, HashMap.class);
     }
 
-    public String getOutboundOpenReadTimes(Parameters parameters) throws PostmarkException, IOException {
+    public HashMap getOutboundOpenReadTimes(Parameters parameters) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens/readTimes" + parameters));
-        return dataHandler.fromJson(response, String.class);
+        return dataHandler.fromJson(response, HashMap.class);
     }
 
     public OutboundClickStats getOutboundClickStats(Parameters parameters) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks" + parameters));
         return dataHandler.fromJson(response, OutboundClickStats.class);
+    }
+
+    public HashMap getOutboundClickBrowsersStats(Parameters parameters) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks/browserfamilies" + parameters));
+        return dataHandler.fromJson(response, HashMap.class);
     }
 
     public OutboundClickPlatformStats getOutboundClickPlatformStats(Parameters parameters) throws PostmarkException, IOException {
