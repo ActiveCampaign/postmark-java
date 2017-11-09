@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.messages;
 import java.util.ArrayList;
 
 /**
- * Outbound message opens POJO.
+ * Outbound message opens object.
  */
 public class OutboundMessageOpens {
     private Integer totalCount;

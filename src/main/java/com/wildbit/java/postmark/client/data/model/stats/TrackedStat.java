@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Tracked stats POJO.
+ * Tracked stats object.
  */
 public class TrackedStat extends BaseStat{
 

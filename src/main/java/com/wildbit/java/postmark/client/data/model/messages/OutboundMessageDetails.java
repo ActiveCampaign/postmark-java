@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.messages;
 import java.util.ArrayList;
 
 /**
- * Outbound message details POJO.
+ * Outbound message details object.
  */
 public class OutboundMessageDetails extends OutboundMessage {
 

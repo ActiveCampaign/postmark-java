@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Inbound message details POJO.
+ * Inbound message details object.
  */
 public class InboundMessageDetails extends InboundMessage {
 

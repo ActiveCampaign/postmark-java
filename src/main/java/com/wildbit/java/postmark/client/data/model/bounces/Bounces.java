@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.bounces;
 import java.util.ArrayList;
 
 /**
- * Bounces POJO
+ * Bounces object
  */
 public class Bounces {
 

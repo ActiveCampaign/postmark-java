@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Outbound message dump POJO
+ * Outbound message dump object
  */
 public class OutboundMessageDump {
 

@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Spam stats POJO.
+ * Spam stats object.
  */
 public class OutboundSpamStats {
 

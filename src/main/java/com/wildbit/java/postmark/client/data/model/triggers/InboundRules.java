@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.triggers;
 import java.util.ArrayList;
 
 /**
- * Inbound rules POJO.
+ * Inbound rules object.
  */
 public class InboundRules {
 

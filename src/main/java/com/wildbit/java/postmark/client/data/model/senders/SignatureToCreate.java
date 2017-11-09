@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.senders;
 
 /**
- * Signature to create POJO.
+ * Signature to create object.
  */
 public class SignatureToCreate {
 

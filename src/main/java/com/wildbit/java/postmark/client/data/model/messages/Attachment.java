@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Attachment POJO.
+ * Attachment object.
  */
 public class Attachment {
 

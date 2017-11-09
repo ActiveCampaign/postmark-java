@@ -4,7 +4,7 @@ import com.wildbit.java.postmark.client.data.model.server.Server;
 import java.util.ArrayList;
 
 /**
- * Servers POJO.
+ * Servers object.
  */
 public class Servers {
 

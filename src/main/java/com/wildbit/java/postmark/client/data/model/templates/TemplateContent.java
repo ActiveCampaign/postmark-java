@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Template Content POJO.
+ * Template Content object.
  */
 public class TemplateContent {
     private String name;

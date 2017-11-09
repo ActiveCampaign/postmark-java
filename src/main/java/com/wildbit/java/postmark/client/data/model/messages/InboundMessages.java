@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.messages;
 import java.util.ArrayList;
 
 /**
- * Inbound messages POJO.
+ * Inbound messages object.
  */
 public class InboundMessages {
 

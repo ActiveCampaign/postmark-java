@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.message;
 
 /**
- * Header POJO.
+ * Header object.
  */
 public class Header {
 

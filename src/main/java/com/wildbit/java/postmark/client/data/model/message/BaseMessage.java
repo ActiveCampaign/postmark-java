@@ -9,7 +9,7 @@ import java.util.*;
 import eu.medsea.mimeutil.MimeUtil;
 
 /**
- * Base email message POJO
+ * Base email message object
  */
 public class BaseMessage {
     private String from;

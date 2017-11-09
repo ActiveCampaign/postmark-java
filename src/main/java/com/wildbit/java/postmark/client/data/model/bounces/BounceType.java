@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.bounces;
 
 /**
- * Bounce Types POJO
+ * Bounce Types object
  */
 public class BounceType {
 

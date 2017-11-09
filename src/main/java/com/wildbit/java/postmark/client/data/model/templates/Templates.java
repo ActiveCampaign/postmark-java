@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.templates;
 import java.util.ArrayList;
 
 /**
- * Templates list POJO.
+ * Templates list object.
  */
 public class Templates {
 

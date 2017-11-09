@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 /**
- * Recipient POJO.
+ * Recipient object.
  */
 public class Recipient {
 

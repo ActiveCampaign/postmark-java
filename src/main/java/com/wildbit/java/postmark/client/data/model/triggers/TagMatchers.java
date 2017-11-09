@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.triggers;
 import java.util.ArrayList;
 
 /**
- * Tag matchers POJO.
+ * Tag matchers object.
  */
 public class TagMatchers {
 

@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
 /**
- * Tag matcher POJO.
+ * Tag matcher object.
  */
 public class TagMatcher {
 

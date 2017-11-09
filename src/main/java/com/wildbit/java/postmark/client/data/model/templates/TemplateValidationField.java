@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Template validation field details POJO.
+ * Template validation field details object.
  */
 public class TemplateValidationField {
     private Boolean contentIsValid;

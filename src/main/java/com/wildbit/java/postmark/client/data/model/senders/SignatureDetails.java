@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.senders;
 import com.wildbit.java.postmark.client.data.model.domains.DomainDetails;
 
 /**
- * Signature details POJO.
+ * Signature details object.
  */
 public class SignatureDetails extends DomainDetails {
 

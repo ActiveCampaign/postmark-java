@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Click stat POJO.
+ * Click stat object.
  */
 public class ClickStat extends BaseStat {
 

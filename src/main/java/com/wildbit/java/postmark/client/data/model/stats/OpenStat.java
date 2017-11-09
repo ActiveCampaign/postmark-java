@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Open stat POJO.
+ * Open stat object.
  */
 public class OpenStat extends BaseStat {
 

@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Spam stats POJO.
+ * Spam stats object.
  */
 public class SpamStat extends  BaseStat {
 

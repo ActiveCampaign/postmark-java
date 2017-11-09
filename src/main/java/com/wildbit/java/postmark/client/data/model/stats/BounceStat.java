@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Bounce stat POJO.
+ * Bounce stat object.
  */
 public class BounceStat extends BaseStat {
 

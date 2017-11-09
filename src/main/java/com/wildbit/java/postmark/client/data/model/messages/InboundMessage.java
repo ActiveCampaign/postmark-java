@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Inbound message POJO.
+ * Inbound message object.
  */
 public class InboundMessage {
 

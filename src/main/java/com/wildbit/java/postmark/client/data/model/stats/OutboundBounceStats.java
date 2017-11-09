@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Bounce stat POJO.
+ * Bounce stat object.
  */
 public class OutboundBounceStats {
 

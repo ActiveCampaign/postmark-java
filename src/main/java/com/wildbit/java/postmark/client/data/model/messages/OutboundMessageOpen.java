@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Outbound message open POJO.
+ * Outbound message open object.
  */
 public class OutboundMessageOpen {
 

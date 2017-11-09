@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Basic Template with no details POJO.
+ * Basic Template with no details object.
  */
 public class BaseTemplate {
 

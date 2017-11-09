@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Outbound message click POJO.
+ * Outbound message click object.
  */
 public class OutboundMessageClick {
 

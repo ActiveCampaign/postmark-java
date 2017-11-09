@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Stats overall POJO.
+ * Stats overall object.
  */
 public class OutboundStats {
 

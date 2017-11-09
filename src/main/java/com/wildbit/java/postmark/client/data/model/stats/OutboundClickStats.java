@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Clicks stats POJO.
+ * Clicks stats object.
  */
 public class OutboundClickStats {
 

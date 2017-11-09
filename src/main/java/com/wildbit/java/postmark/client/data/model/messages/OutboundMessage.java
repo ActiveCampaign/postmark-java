@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * Outbound message POJO.
+ * Outbound message object.
  */
 public class OutboundMessage {
 

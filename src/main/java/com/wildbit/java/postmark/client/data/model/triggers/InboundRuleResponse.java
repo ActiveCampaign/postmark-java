@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
 /**
- * Inbound rule response POJO.
+ * Inbound rule response object.
  */
 public class InboundRuleResponse extends InboundRule {
 

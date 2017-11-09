@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.message;
 
 /**
- * Postmark email message POJO
+ * Postmark email message object
  */
 public class Message extends BaseMessage {
 

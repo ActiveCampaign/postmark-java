@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Click location POJO.
+ * Click location object.
  */
 public class ClickLocationStat extends BaseStat {
 

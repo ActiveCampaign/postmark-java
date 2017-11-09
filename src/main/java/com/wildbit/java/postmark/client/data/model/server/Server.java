@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.server;
 import java.util.ArrayList;
 
 /**
- * Server POJO.
+ * Server object.
  */
 public class Server {
 

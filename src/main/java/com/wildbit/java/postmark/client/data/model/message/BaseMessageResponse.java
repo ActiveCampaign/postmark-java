@@ -2,7 +2,7 @@ package com.wildbit.java.postmark.client.data.model.message;
 import java.util.Date;
 
 /**
- * HTTP send request response POJO
+ * HTTP send request response object
  */
 public class BaseMessageResponse {
     private Integer errorCode;

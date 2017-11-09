@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 /**
- * Template validation result POJO.
+ * Template validation result object.
  */
 public class TemplateValidation {
     private Boolean allContentIsValid;

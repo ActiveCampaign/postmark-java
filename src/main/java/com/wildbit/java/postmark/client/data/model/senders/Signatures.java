@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.senders;
 import java.util.ArrayList;
 
 /**
- * Signatures POJO.
+ * Signatures object.
  */
 public class Signatures {
 

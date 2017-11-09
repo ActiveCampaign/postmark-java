@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.bounces;
 import java.util.Date;
 
 /**
- * Bounce POJO
+ * Bounce object
  */
 public class Bounce {
 

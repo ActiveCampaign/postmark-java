@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Open stats POJO.
+ * Open stats object.
  */
 public class OutboundOpenStats {
 

@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.domains;
 import java.util.ArrayList;
 
 /**
- * Domains POJO.
+ * Domains object.
  */
 public class Domains {
 

@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
- * Outbound message details POJO.
+ * Outbound message details object.
  */
 public class OutboundMessageDetailsEvents {
 

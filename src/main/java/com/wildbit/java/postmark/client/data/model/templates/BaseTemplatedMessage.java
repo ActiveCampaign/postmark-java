@@ -13,7 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 /**
- * Base Template POJO.
+ * Base Template object.
  */
 public class BaseTemplatedMessage {
 

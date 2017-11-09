@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Sent stats POJO.
+ * Sent stats object.
  */
 public class SentStat extends BaseStat {
 

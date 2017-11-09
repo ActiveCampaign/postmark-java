@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.domains;
 
 /**
- * Domain details POJO.
+ * Domain details object.
  */
 public class DomainDetails extends Domain {
 
