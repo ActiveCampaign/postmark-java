@@ -3,11 +3,13 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.Date;
 
 /**
- * Created by bash on 11/2/17.
+ * Parrent stats class - POJO. Contains attributes each stat contains.
  */
 public class BaseStat {
 
     private Date date;
+
+    // SETTERS AND GETTERS
 
     public Date getDate() {
         return date;

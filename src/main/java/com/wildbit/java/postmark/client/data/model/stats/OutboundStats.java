@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Stats overall POJO.
  */
 public class OutboundStats {
 
@@ -22,6 +22,8 @@ public class OutboundStats {
     private String withClientRecorded;
     private String withPlatformRecorded;
     private String withReadTimeRecorded;
+
+    // SETTERS AND GETTERS
 
     public String getSent() {
         return sent;

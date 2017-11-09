@@ -1,11 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Sent stats POJO.
  */
 public class SentStat extends BaseStat {
 
     private Integer sent;
+
+    // SETTERS AND GETTERS
 
     public Integer getSent() {
         return sent;

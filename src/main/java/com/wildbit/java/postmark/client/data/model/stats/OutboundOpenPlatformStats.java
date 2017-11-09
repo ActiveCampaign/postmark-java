@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Open platform stats POJO.
  */
 public class OutboundOpenPlatformStats {
 
@@ -12,6 +12,8 @@ public class OutboundOpenPlatformStats {
     private Integer webmail;
     private Integer unknown;
     private ArrayList<OpenPlatformStat> days;
+
+    // SETTERS AND GETTERS
 
     public Integer getDesktop() {
         return desktop;

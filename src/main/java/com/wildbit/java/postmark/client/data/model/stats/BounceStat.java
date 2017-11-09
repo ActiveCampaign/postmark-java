@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Bounce stat POJO.
  */
 public class BounceStat extends BaseStat {
 
@@ -11,6 +11,8 @@ public class BounceStat extends BaseStat {
     private String spamComplaint;
     private String ispBlock;
     private String Transient;
+
+    // SETTERS AND GETTERS
 
     public String getTransient() {
         return Transient;

@@ -1,12 +1,14 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Click stat POJO.
  */
 public class ClickStat extends BaseStat {
 
     private Integer clicks;
     private Integer unique;
+
+    // SETTERS AND GETTERS
 
     public Integer getClicks() {
         return clicks;

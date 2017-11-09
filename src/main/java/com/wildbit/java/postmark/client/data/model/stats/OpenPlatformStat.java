@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Open platform stat POJO.
  */
 public class OpenPlatformStat extends BaseStat {
 
@@ -9,6 +9,8 @@ public class OpenPlatformStat extends BaseStat {
     private Integer mobile;
     private Integer webmail;
     private Integer unknown;
+
+    // SETTERS AND GETTERS
 
     public Integer getDesktop() {
         return desktop;

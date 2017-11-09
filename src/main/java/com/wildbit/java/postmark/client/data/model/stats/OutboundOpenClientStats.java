@@ -4,11 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by bash on 11/2/17.
+ * Open clients stats POJO.
  */
 public class OutboundOpenClientStats {
 
     private ArrayList<HashMap<String,String>> days;
+
+    // SETTERS AND GETTERS
 
     public ArrayList<HashMap<String, String>> getDays() {
         return days;
@@ -17,4 +19,6 @@ public class OutboundOpenClientStats {
     public void setDays(ArrayList<HashMap<String, String>> days) {
         this.days = days;
     }
+
+
 }

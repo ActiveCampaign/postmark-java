@@ -1,11 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Tracked stats POJO.
  */
 public class TrackedStat extends BaseStat{
 
     private Integer tracked;
+
+    // SETTERS AND GETTERS
 
     public Integer getTracked() {
         return tracked;

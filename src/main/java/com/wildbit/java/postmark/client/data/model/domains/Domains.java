@@ -3,9 +3,14 @@ package com.wildbit.java.postmark.client.data.model.domains;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/1/17.
+ * Domains POJO.
  */
 public class Domains {
+
+    private Integer totalCount;
+    private ArrayList<Domain> domains;
+
+    // GETTERS AND SETTERS
 
     public Integer getTotalCount() {
         return totalCount;
@@ -22,7 +27,4 @@ public class Domains {
     public void setDomains(ArrayList<Domain> domains) {
         this.domains = domains;
     }
-
-    private Integer totalCount;
-    private ArrayList<Domain> domains;
 }

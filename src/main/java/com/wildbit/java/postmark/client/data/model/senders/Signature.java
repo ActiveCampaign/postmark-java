@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.senders;
 
 /**
- * Created by bash on 11/2/17.
+ * Signatre POJO.
  */
 public class Signature {
 
@@ -11,6 +11,8 @@ public class Signature {
     private String name;
     private Boolean confirmed;
     private Integer id;
+
+    // GETTERS AND SETTERS
 
     public String getDomain() {
         return domain;

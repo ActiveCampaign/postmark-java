@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Click location stat POJO.
  */
 public class OutboundClickLocationStats {
 
@@ -11,6 +11,8 @@ public class OutboundClickLocationStats {
     private Integer htmlAndText;
     private Integer text;
     private ArrayList<ClickLocationStat> days;
+
+    // SETTERS AND GETTERS
 
     public Integer getHtml() {
         return html;

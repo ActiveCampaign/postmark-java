@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.domains;
 
 /**
- * Created by bash on 11/1/17.
+ * Domain POJO.
  */
 public class Domain {
 
@@ -11,6 +11,8 @@ public class Domain {
     private Boolean weakDKIM;
     private Boolean returnPathDomainVerified;
     private Integer id;
+
+    // GETTERS AND SETTERS
 
     public String getName() {
         return name;

@@ -3,13 +3,15 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Open stats POJO.
  */
 public class OutboundOpenStats {
 
     private ArrayList<OpenStat> days;
     private Integer opens;
     private Integer unique;
+
+    // SETTERS AND GETTERS
 
     public ArrayList<OpenStat> getDays() {
         return days;

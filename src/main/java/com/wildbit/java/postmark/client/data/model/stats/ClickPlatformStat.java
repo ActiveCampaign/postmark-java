@@ -1,15 +1,16 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Click platform POJO.
  */
-// class is static so serializer can see it
 public class ClickPlatformStat extends BaseStat {
 
     private Integer desktop;
     private Integer mobile;
     private Integer webmail;
     private Integer unknown;
+
+    // SETTERS AND GETTERS
 
     public Integer getDesktop() {
         return desktop;

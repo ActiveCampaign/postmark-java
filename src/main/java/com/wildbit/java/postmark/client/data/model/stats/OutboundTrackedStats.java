@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Tracked stats POJO.
  */
 public class OutboundTrackedStats {
 
     private ArrayList<TrackedStat> days;
     private Integer tracked;
+
+    // SETTERS AND GETTERS
 
     public ArrayList<TrackedStat> getDays() {
         return days;

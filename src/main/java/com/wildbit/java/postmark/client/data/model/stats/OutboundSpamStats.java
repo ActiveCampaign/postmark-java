@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Spam stats POJO.
  */
 public class OutboundSpamStats {
 
     private ArrayList<SpamStat> days;
     private Integer spamComplaint;
+
+    // SETTERS AND GETTERS
 
     public ArrayList<SpamStat> getDays() {
         return days;

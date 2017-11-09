@@ -1,9 +1,24 @@
 package com.wildbit.java.postmark.client.data.model.domains;
 
 /**
- * Created by bash on 11/1/17.
+ * Domain details POJO.
  */
 public class DomainDetails extends Domain {
+
+    private String spfHost;
+    private String spfTextValue;
+    private String dkimHost;
+    private String dkimTextValue;
+    private String dkimPendingHost;
+    private String dkimPendingTextValue;
+    private String dkimRevokedHost;
+    private String dkimRevokedTextValue;
+    private String safeToRemoveRevokedKeyFromDNS;
+    private String dkimUpdateStatus;
+    private String returnPathDomain;
+    private String returnPathDomainCNAMEValue;
+
+    // GETTERS AND SETTERS
 
     public String getSpfHost() {
         return spfHost;
@@ -100,18 +115,5 @@ public class DomainDetails extends Domain {
     public void setReturnPathDomainCNAMEValue(String returnPathDomainCNAMEValue) {
         this.returnPathDomainCNAMEValue = returnPathDomainCNAMEValue;
     }
-
-    private String spfHost;
-    private String spfTextValue;
-    private String dkimHost;
-    private String dkimTextValue;
-    private String dkimPendingHost;
-    private String dkimPendingTextValue;
-    private String dkimRevokedHost;
-    private String dkimRevokedTextValue;
-    private String safeToRemoveRevokedKeyFromDNS;
-    private String dkimUpdateStatus;
-    private String returnPathDomain;
-    private String returnPathDomainCNAMEValue;
 
 }

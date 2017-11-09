@@ -1,13 +1,15 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
 /**
- * Created by bash on 11/2/17.
+ * Click location POJO.
  */
 public class ClickLocationStat extends BaseStat {
 
     private Integer html;
     private Integer htmlAndText;
     private Integer text;
+
+    // SETTERS AND GETTERS
 
     public Integer getHtml() {
         return html;

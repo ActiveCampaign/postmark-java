@@ -3,12 +3,14 @@ package com.wildbit.java.postmark.client.data.model.senders;
 import java.util.ArrayList;
 
 /**
- * Created by bash on 11/2/17.
+ * Signatures POJO.
  */
 public class Signatures {
 
     private ArrayList<Signature> senderSignatures;
     private Integer totalCount;
+
+    // SETTERS AND GETTERS
 
     public ArrayList<Signature> getSenderSignatures() {
         return senderSignatures;
