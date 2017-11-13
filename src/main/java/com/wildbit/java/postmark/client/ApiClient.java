@@ -52,7 +52,7 @@ public class ApiClient extends BaseApiClient {
 
     public ArrayList<MessageResponse> deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email/batch"), data);
-        return  dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
+        return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
     }
 
 
@@ -124,11 +124,9 @@ public class ApiClient extends BaseApiClient {
 
     public MessageResponse deliverMessage(TemplatedMessage data) throws PostmarkException, IOException {
 
-        /*
-
-          Since template models can be complex, it is allowed that template model is a String or Object.
-          If it's a String, we will auto convert it to Object.
-
+        /**
+         * Since template models can be complex, it is allowed that template model is a String or Object.
+         * If it's a String, we will auto convert it to Object.
          */
         if (data.getTemplateModel().getClass() == String.class) {
             data.setTemplateModel(dataHandler.fromJson(data.getTemplateModel().toString(),Object.class));

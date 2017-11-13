@@ -17,7 +17,7 @@ public class HttpClientHandler {
     private boolean secureConnection = true;
 
     protected HttpClientHandler(MultivaluedHashMap<String,Object> headers) {
-        this.dataHandler = new DataHandler(true);
+        this.dataHandler = new DataHandler(false);
         httpClient = new HttpClient(headers);
     }
 
@@ -54,6 +54,14 @@ public class HttpClientHandler {
         return response.getMessage();
     }
 
+    /**
+     * Main source of issues can be the Object serialization process. To debug it, this method will set strict mapping, which
+     * will fail on any issues.
+     */
+    public void setDebugMode() {
+        this.dataHandler.setStrictMapper();
+    }
+
     public void setSecureConnection(boolean secureConnection) {
         this.secureConnection = secureConnection;
     }
@@ -63,6 +71,24 @@ public class HttpClientHandler {
      */
     public HttpClient getHttpClient() {
         return httpClient;
+    }
+
+    /**
+     * Delegation method for HTTP client connection setttings
+     *
+     * @param connectTimeoutSeconds HTTP client connection timeout
+     */
+    public void setConnectTimeoutSeconds(int connectTimeoutSeconds) {
+        getHttpClient().setConnectTimeoutSeconds(connectTimeoutSeconds);
+    }
+
+    /**
+     * Delegation method for HTTP client connection setttings
+     *
+     * @param readTimeoutSeconds HTTP client read timeout
+     */
+    public void setReadTimeoutSeconds(int readTimeoutSeconds) {
+        getHttpClient().setReadTimeoutSeconds(readTimeoutSeconds);
     }
 
     /**

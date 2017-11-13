@@ -3,8 +3,8 @@ package com.wildbit.java.postmark.client;
 import javax.ws.rs.core.MultivaluedHashMap;
 
 /**
- * Class that handles on very high level API requests. All Postmark public endpoints which
- * are reachable can be accessible by classes extending this class.
+ * Class that handles (on very high level) API requests. All Postmark public endpoints which
+ * are reachable can be accessible by classes extending this parent class.
  *
  */
 public class BaseApiClient extends HttpClientHandler {

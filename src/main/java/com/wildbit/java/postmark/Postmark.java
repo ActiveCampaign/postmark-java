@@ -28,17 +28,38 @@ public class Postmark {
         }
     }
 
+    /**
+     *  Default headers sent always with API requests.
+     */
     public static class DefaultHeaders {
 
         public static MultivaluedHashMap<String, String> headers() {
             MultivaluedHashMap<String, String> headerValues = new MultivaluedHashMap<>();
-            headerValues.add("User-Agent", "Postmark Java Library " + libraryVersion());
+            headerValues.add("User-Agent", "Postmark Java Library: " + libraryVersion());
             headerValues.add("Accept", "application/json");
             headerValues.add("Content-Type", "application/json");
             return headerValues;
         }
 
     }
+
+    private static MultivaluedHashMap getHeaders(DEFAULTS authType, String apiToken) {
+        MultivaluedHashMap headers = DefaultHeaders.headers();
+        headers.add(authType.value, apiToken);
+        return headers;
+    }
+
+    private static String libraryVersion()  {
+        Properties prop = new Properties();
+        InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(".properties");
+
+        try { prop.load(in); } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return prop.getProperty("Version");
+    }
+
+    // main methods for accessing API clients
 
     public static ApiClient getApiClient(String apiToken) {
         return new ApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.SERVER_AUTH_HEADER, apiToken));
@@ -54,24 +75,6 @@ public class Postmark {
 
     public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection) {
         return new AccountApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
-    }
-
-    private static MultivaluedHashMap getHeaders(DEFAULTS authType, String apiToken) {
-        MultivaluedHashMap headers = DefaultHeaders.headers();
-        headers.add(authType.value, apiToken);
-        return headers;
-    }
-
-    private static String libraryVersion()  {
-        Properties prop = new Properties();
-        InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(".properties");
-
-        try {
-            prop.load(in);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return prop.getProperty("Version");
     }
 
 }
