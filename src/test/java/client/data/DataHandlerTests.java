@@ -1,0 +1,63 @@
+package client.data;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.wildbit.java.postmark.client.data.DataHandler;
+import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * Created by bash on 11/13/17.
+ */
+public class DataHandlerTests {
+
+    DataHandler dataHandler = new DataHandler();
+
+    HashMap<String, String> getHashMap() {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("Key1", "Value1");
+        hashMap.put("Key2", "Value2");
+
+        return hashMap;
+
+    }
+
+    String getStringHashMap() {
+        String stringHashMap = "{\n" +
+                "  \"Key2\" : \"Value2\",\n" +
+                "  \"Key1\" : \"Value1\"\n" +
+                "}";
+
+        return stringHashMap;
+    }
+
+    @Test
+    void toJson() throws IOException {
+        assertEquals(dataHandler.toJson(getHashMap()), getStringHashMap());
+    }
+
+    @Test
+    void fromJson() throws IOException {
+        HashMap<String,String> result = dataHandler.fromJson(getStringHashMap(), HashMap.class);
+        assertEquals(result,getHashMap());
+    }
+
+    @Test
+    void fromJsonTypeReference() throws IOException {
+        HashMap<String,String> result = dataHandler.fromJson(getStringHashMap(), new TypeReference<HashMap>() {});
+        assertEquals(result,getHashMap());
+    }
+
+    @Test
+    void formatErrorMessage() throws IOException {
+        HashMap<String, String> hashMap = new HashMap<>();
+        hashMap.put("ErrorCode", "Hey test");
+        hashMap.put("Message", "This is a message");
+
+        assertEquals(hashMap.get("Message"),dataHandler.formatErrorMessage(dataHandler.toJson(hashMap)));
+    }
+
+}
