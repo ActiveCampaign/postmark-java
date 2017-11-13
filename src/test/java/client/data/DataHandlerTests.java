@@ -1,7 +1,10 @@
 package client.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.wildbit.java.postmark.client.data.DataHandler;
+import com.wildbit.java.postmark.client.data.model.message.BaseMessageResponse;
+import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -32,6 +35,19 @@ public class DataHandlerTests {
                 "}";
 
         return stringHashMap;
+    }
+
+    @Test
+    void liberalMapper() throws IOException {
+        dataHandler.setLiberalMapper();
+        dataHandler.fromJson(getStringHashMap(), BaseMessageResponse.class);
+    }
+
+    @Test
+    void strictMapper() throws IOException {
+        Throwable exception = assertThrows(UnrecognizedPropertyException.class,
+                ()->{dataHandler.fromJson(getStringHashMap(), BaseMessageResponse.class);} );
+
     }
 
     @Test

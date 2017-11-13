@@ -12,7 +12,21 @@ public class PostmarkTests {
 
     @Test
     void getApiClient() {
-        ApiClient client = Postmark.getApiClient(apiToken);
-        assertNotNull(client.getDataHandler());
+        assertNotNull(Postmark.getApiClient(apiToken));
+    }
+
+    @Test
+    void getApiClientSecure() {
+        assertNotNull(Postmark.getApiClient(apiToken, true));
+    }
+
+    @Test
+    void getAccountApiClient() {
+        assertNotNull(Postmark.getAccountApiClient(apiToken));
+    }
+
+    @Test
+    void getAccountApiClientSecure() {
+        assertNotNull(Postmark.getAccountApiClient(apiToken,true));
     }
 }
