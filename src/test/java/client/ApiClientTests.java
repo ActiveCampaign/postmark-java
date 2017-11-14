@@ -2,9 +2,10 @@ package client;
 
 import com.wildbit.java.postmark.Postmark;
 import com.wildbit.java.postmark.client.ApiClient;
+import javax.ws.rs.core.MultivaluedHashMap;
+
 import org.junit.jupiter.api.Test;
-import javax.ws.rs.core.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * Created by bash on 11/13/17.
