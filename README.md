@@ -10,6 +10,24 @@ The Postmark Java Library makes it easier to use the Postmark API from your Java
 Please see the [wiki](https://github.com/wildbit/postmark-java/wiki) for detailed instructions about sending email, using the bounce api, and other Postmark API options.
 For details about Postmark API in general, please check out [Postmark developer docs](https://postmarkapp.com/developer).
 
+## Installation
+
+Add the dependency to your project:
+
+``` xml
+<dependency>
+    <groupId>com.wildbit.java</groupId>
+    <artifactId>postmark</artifactId>
+    <version>0.9-SNAPSHOT</version>
+</dependency>
+```
+
+Gpg public key used for signing:
+
+``` text
+gpg --keyserver hkp://pgp.mit.edu --recv-keys 6B03355296E2905EACE0755E901965AD92E737EF
+```
+
 ## Issues & Comments
 
 Feel free to contact us if you encounter any issues with the library or Postmark API.
