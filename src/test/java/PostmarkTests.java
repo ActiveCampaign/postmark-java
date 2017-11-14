@@ -1,6 +1,10 @@
 import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.ApiClient;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -11,7 +15,15 @@ public class PostmarkTests {
     String apiToken = "POSTMARK_API_TEST";
 
     @Test
-    void getApiClient() {
+    void getApiClient() throws IOException {
+
+        Properties prop = new Properties();
+        InputStream in = Thread.currentThread().getContextClassLoader().getResourceAsStream(".properties");
+        prop.load(in);
+
+        this.getClass().getResource("test");
+        System.out.println(prop.getProperty("Version"));
+
         assertNotNull(Postmark.getApiClient(apiToken));
     }
 

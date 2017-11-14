@@ -3,4 +3,5 @@
 **/*.idea
 target
 src/test/java/temp
+src/test/resources/*properties.*
 
