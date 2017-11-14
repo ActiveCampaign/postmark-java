@@ -1,4 +1,3 @@
-import com.wildbit.java.postmark.Postmark;
 import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounce;

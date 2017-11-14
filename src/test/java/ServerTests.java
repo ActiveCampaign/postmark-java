@@ -1,5 +1,4 @@
 import com.wildbit.java.postmark.client.ApiClient;
-import com.wildbit.java.postmark.client.data.model.bounces.DeliveryStats;
 import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 import org.junit.jupiter.api.Test;
