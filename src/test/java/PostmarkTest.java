@@ -2,6 +2,7 @@ import com.wildbit.java.postmark.Postmark;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.Map;
 
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,6 +16,9 @@ public class PostmarkTest extends BaseTest {
 
     @Test
     void getApiClient() throws IOException {
+        Map<String, String> env = System.getenv();
+
+        System.out.println(env.get("POSTMARK_API_KEY"));
         assertNotNull(Postmark.getApiClient(apiToken));
     }
 
