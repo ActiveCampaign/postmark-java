@@ -22,12 +22,6 @@ Add the dependency to your project:
 </dependency>
 ```
 
-Gpg public key used for signing:
-
-``` text
-gpg --keyserver hkp://pgp.mit.edu --recv-keys 6B03355296E2905EACE0755E901965AD92E737EF
-```
-
 ## Issues & Comments
 
 Feel free to contact us if you encounter any issues with the library or Postmark API.

@@ -11,6 +11,7 @@
     <version>${postmark.version}</version>
     <name>postmark</name>
     <description>Postmark is a transactional email service provider.</description>
+    <url>https://github.com/wildbit/postmark-java</url>
 
     <developers>
         <developer>
@@ -28,6 +29,14 @@
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
         <junit.platform.version>1.0.0-M4</junit.platform.version>
     </properties>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <dependencies>
 
