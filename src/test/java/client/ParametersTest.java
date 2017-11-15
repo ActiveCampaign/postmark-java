@@ -28,6 +28,11 @@ public class ParametersTest {
     }
 
     @Test
+    void build() {
+        assertEquals(Parameters.init().build("fromAddress","igor@example.com").getClass(), Parameters.class);
+    }
+
+    @Test
     void stringValue() {
         Parameters parameters = Parameters.init().build("fromAddress","igor@example.com");
         assertEquals(parameters.toString(),"?fromAddress=igor@example.com");

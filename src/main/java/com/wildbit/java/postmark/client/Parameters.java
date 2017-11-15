@@ -19,20 +19,42 @@ public class Parameters {
         return new Parameters();
     }
 
-    public Parameters build(String type, String value) {
-        parameters.put(type, value);
+    /**
+     * Add single parameter to HashMap of stored parameters
+     * @param name parameter name
+     * @param value parameter value
+     * @return object containing currently stored parameters
+     */
+    public Parameters build(String name, String value) {
+        parameters.put(name, value);
         return this;
     }
 
-    public Parameters build(String type, Integer value) {
-        return build(type, value.toString());
+    /**
+     *
+     * Add single parameter to the HashMap of stored parameters.
+     *
+     * @see #build(String, String)
+     */
+    public Parameters build(String name, Integer value) {
+        return build(name, value.toString());
     }
 
-    public Parameters build(String type, Date value) {
-        parameters.put(type, new SimpleDateFormat("yyyy-MM-dd").format(value));
+    /**
+     * Add single parameter to the HashMap of stored parameters.
+     *
+     * @see #build(String, String)
+     */
+    public Parameters build(String name, Date value) {
+        parameters.put(name, new SimpleDateFormat("yyyy-MM-dd").format(value));
         return this;
     }
 
+    /**
+     * It will convert group of parameter to a simple string.
+     *
+     * @return parameters transformed to proper string format API client accepts
+     */
     public String toString() {
         String parameterString = "";
 
@@ -43,6 +65,13 @@ public class Parameters {
         return parameterString;
     }
 
+    /**
+     * Convert parameter to a String to attach to parameter list string.
+     *
+     * @param parameter single HTTP request parameter name
+     * @param value single HTTP request parameter value
+     * @return parameter as String
+     */
     private String addParameters(String parameter, String value) {
         if (parameter.isEmpty()) {
             return  "?" + value;
