@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 /**
  * Parameters class tests.
  */
-public class ParametersTests {
+public class ParametersTest {
 
     private String dateString = "2017-01-01";
 

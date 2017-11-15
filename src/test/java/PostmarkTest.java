@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by bash on 11/8/17.
  */
-public class PostmarkTests extends BaseTest {
+public class PostmarkTest extends BaseTest {
 
     String apiToken = "POSTMARK_API_TEST";
 

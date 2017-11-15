@@ -8,7 +8,7 @@ import java.util.*;
 
 import static org.mockito.Mockito.*;
 
-public class HttpClientTests {
+public class HttpClientTest {
 
     @Test
     void execute() throws IOException, PostmarkException {

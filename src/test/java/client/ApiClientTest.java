@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  * Created by bash on 11/13/17.
  */
-public class ApiClientTests {
+public class ApiClientTest {
 
     MultivaluedHashMap headers = Postmark.DefaultHeaders.headers();
     ApiClient client = new ApiClient(Postmark.DEFAULTS.API_URL.value, headers);

@@ -14,7 +14,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * Created by bash on 11/13/17.
  */
-public class DataHandlerTests {
+public class DataHandlerTest {
 
     DataHandler dataHandler = new DataHandler();
 
