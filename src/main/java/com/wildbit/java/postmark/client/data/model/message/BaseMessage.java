@@ -135,7 +135,7 @@ public class BaseMessage {
      * @see #convertRecipients(HashMap) for details
      */
     public void setBcc(ArrayList<String > bcc) {
-        this.cc = convertRecipients(bcc);
+        this.bcc = convertRecipients(bcc);
     }
 
 

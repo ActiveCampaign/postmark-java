@@ -1,7 +1,9 @@
 import com.wildbit.java.postmark.Postmark;
 import com.wildbit.java.postmark.client.ApiClient;
+import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.data.model.message.Message;
 import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
+import com.wildbit.java.postmark.client.exception.InvalidMessageException;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
 import org.junit.jupiter.api.Test;
@@ -18,10 +20,21 @@ public class MessageTest extends BaseTest {
     ApiClient client = Postmark.getApiClient("POSTMARK_API_TEST", true);
 
     @Test
-    void bounce() throws PostmarkException, IOException {
+    void send() throws PostmarkException, IOException {
         Message message = new Message("from@example.com", "to@example.com", "Hello from Postmark!", "Hello body");
         MessageResponse response = client.deliverMessage(message);
         assertEquals(response.getMessage(),"Test job accepted");
         assertEquals(response.getErrorCode(), new Integer(0));
+    }
+
+    @Test
+    void invalidMessagetoSend() throws PostmarkException, IOException {
+        Message message = new Message("from@example.com", null, "Hello from Postmark!", "Hello body");
+
+        Throwable exception = assertThrows(InvalidMessageException.class, () -> {
+            client.deliverMessage(message);
+        });
+
+        assertEquals("Zero recipients specified", exception.getMessage());
     }
 }

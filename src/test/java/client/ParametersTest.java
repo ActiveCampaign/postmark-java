@@ -28,24 +28,29 @@ public class ParametersTest {
     }
 
     @Test
+    void initString() {
+        assertEquals(Parameters.init().toString(), "");
+    }
+
+    @Test
     void build() {
         assertEquals(Parameters.init().build("fromAddress","igor@example.com").getClass(), Parameters.class);
     }
 
     @Test
-    void stringValue() {
+    void stringParameter() {
         Parameters parameters = Parameters.init().build("fromAddress","igor@example.com");
         assertEquals(parameters.toString(),"?fromAddress=igor@example.com");
     }
 
     @Test
-    void integerValue() {
+    void integerParameter() {
         Parameters parameters = Parameters.init().build("count",1);
         assertEquals(parameters.toString(),"?count=1");
     }
 
     @Test
-    void date() throws ParseException {
+    void dateParameter() throws ParseException {
         String parameters = Parameters.init().build("fromDate", sampleDate(dateString)).toString();
         assertEquals(parameters,"?fromDate=" + dateString);
     }
