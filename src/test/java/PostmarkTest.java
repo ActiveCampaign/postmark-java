@@ -16,9 +16,7 @@ public class PostmarkTest extends BaseTest {
 
     @Test
     void getApiClient() throws IOException {
-        Map<String, String> env = System.getenv();
 
-        System.out.println(env.get("POSTMARK_API_KEY"));
         assertNotNull(Postmark.getApiClient(apiToken));
     }
 

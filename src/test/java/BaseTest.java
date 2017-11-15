@@ -4,6 +4,7 @@ import com.wildbit.java.postmark.client.ApiClient;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.Properties;
 
 /**
@@ -29,7 +30,8 @@ public class BaseTest {
     }
 
     public ApiClient getDefaultApiClient() {
-        return Postmark.getApiClient(config().getProperty("token"));
+        Map<String, String> env = System.getenv();
+        return Postmark.getApiClient(env.get("POSTMARK_API_TOKEN"));
     }
 
     public AccountApiClient getDefaultAccountApiClient() {
