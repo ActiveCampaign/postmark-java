@@ -34,7 +34,7 @@ public class BaseTest {
     public ApiClient getDefaultApiClient() {
 
         String token = "";
-        
+
         if (Files.exists(Paths.get("src/test/resources/"+propertyFile))) {
             token = properties.getProperty("token");
         }
