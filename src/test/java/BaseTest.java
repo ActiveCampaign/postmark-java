@@ -7,6 +7,8 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
 
+import java.nio.file.*;
+
 /**
  * Created by bash on 11/14/17.
  */
@@ -30,8 +32,20 @@ public class BaseTest {
     }
 
     public ApiClient getDefaultApiClient() {
-        Map<String, String> env = System.getenv();
-        return Postmark.getApiClient(env.get("POSTMARK_API_TOKEN"));
+
+        String token = "";
+
+        if (Postmark.class.getClassLoader().getResource(propertyFile) == null) {
+            Map<String, String> env = System.getenv();
+            token = env.get("POSTMARK_API_TOKEN");
+
+        }
+        else {
+            token = properties.getProperty("token");
+
+        }
+
+        return Postmark.getApiClient(token);
     }
 
     public AccountApiClient getDefaultAccountApiClient() {

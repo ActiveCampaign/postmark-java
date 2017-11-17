@@ -20,7 +20,7 @@ Add the dependency to your project:
 <dependency>
     <groupId>com.wildbit.java</groupId>
     <artifactId>postmark</artifactId>
-    <version>0.9-SNAPSHOT</version>
+    <version>0.9.1-SNAPSHOT</version>
 </dependency>
 ```
 
