@@ -34,15 +34,13 @@ public class BaseTest {
     public ApiClient getDefaultApiClient() {
 
         String token = "";
-
-        if (Postmark.class.getClassLoader().getResource(propertyFile) == null) {
-            Map<String, String> env = System.getenv();
-            token = env.get("POSTMARK_API_TOKEN");
-
+        
+        if (Files.exists(Paths.get("src/test/resources/"+propertyFile))) {
+            token = properties.getProperty("token");
         }
         else {
-            token = properties.getProperty("token");
-
+            Map<String, String> env = System.getenv();
+            token = env.get("POSTMARK_API_TOKEN");
         }
 
         return Postmark.getApiClient(token);
