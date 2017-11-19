@@ -20,14 +20,14 @@ Add the dependency to your project:
 <dependency>
     <groupId>com.wildbit.java</groupId>
     <artifactId>postmark</artifactId>
-    <version>0.9.1-SNAPSHOT</version>
+    <version>0.9.2</version>
 </dependency>
 ```
 
 ## Issues & Comments
 
 Feel free to contact us if you encounter any issues with the library or Postmark API.
-Please leave all comments, bugs, requests, and issues on the Issues page. 
+Please leave all comments, bugs, requests and issues on the Issues page. 
 
 ## License
 

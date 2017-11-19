@@ -13,6 +13,9 @@ import java.io.IOException;
  * Class that handles on very top level all API requests. All Postmark public endpoints which
  * are reachable can be accessible by methods in this class.
  *
+ * For details about each endpoint check out Developer Docs:
+ * https://postmarkapp.com/developer
+ *
  */
 public class AccountApiClient extends BaseApiClient {
 
@@ -25,13 +28,9 @@ public class AccountApiClient extends BaseApiClient {
     }
 
     /*
-      For details about each endpoint check out Developer Docs:
-      https://postmarkapp.com/developer
+      Servers endpoints for managing Servers in account.
      */
 
-    /**
-     * Servers endpoints for managing Servers in account.
-     */
 
     public Server getServers(Integer id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/servers/" + id));
@@ -58,8 +57,8 @@ public class AccountApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Domain endpoints
+    /*
+      Domain endpoints
      */
 
     public Domains getDomains(Parameters parameters) throws PostmarkException, IOException {
@@ -95,8 +94,8 @@ public class AccountApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Sender Signature endpoints
+    /*
+      Sender Signature endpoints
      */
 
     public Signatures getSenderSignatures(Parameters parameters) throws PostmarkException, IOException {

@@ -85,6 +85,10 @@ public class HttpClient {
     /**
      * Overload method for executing requests, which doesn't contain data
      *
+     * @param request_type type of HTTP request
+     * @param url request URL
+     * @return simplified HTTP request response (status and response text)
+     *
      * @see #execute(REQUEST_TYPES, String, String) for details
      */
     public ClientResponse execute(REQUEST_TYPES request_type, String url) {

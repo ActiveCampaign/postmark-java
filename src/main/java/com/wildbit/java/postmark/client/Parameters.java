@@ -34,7 +34,11 @@ public class Parameters {
      *
      * Add single parameter to the HashMap of stored parameters.
      *
+     * @param name parameter name
+     * @param value parameter value
+     *
      * @see #build(String, String)
+     * @return this class with additional parameter
      */
     public Parameters build(String name, Integer value) {
         return build(name, value.toString());
@@ -43,7 +47,11 @@ public class Parameters {
     /**
      * Add single parameter to the HashMap of stored parameters.
      *
+     * @param name parameter name
+     * @param value parameter value
+     *
      * @see #build(String, String)
+     * @return this class with additional parameter
      */
     public Parameters build(String name, Date value) {
         parameters.put(name, new SimpleDateFormat("yyyy-MM-dd").format(value));

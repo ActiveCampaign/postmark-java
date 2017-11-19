@@ -41,7 +41,7 @@ public class DataHandler {
      * @param response JSON object in String format
      * @param valueType accepts types like ArrayList
      * @param <T> Class type to return
-     * @return String object converted to type <T> object
+     * @return requested object type
      * @throws IOException in case converting String to Object fails
      */
     public <T> T fromJson(String response, Class<T> valueType) throws IOException {
@@ -51,9 +51,9 @@ public class DataHandler {
     /**
      *
      * @param response JSON object in String format
-     * @param valueType accepts parametrized types like ArrayList<String>
+     * @param valueType accepts parametrized types
      * @param <T> Class type to return
-     * @return String object converted to type <T> object
+     * @return String object converted to requested object
      * @throws IOException in case converting String to Object fails
      */
     public <T> T fromJson(String response, TypeReference valueType) throws IOException {

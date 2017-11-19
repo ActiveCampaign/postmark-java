@@ -30,7 +30,14 @@ public class HttpClientHandler {
      *
      * Execute HTTP requests with no data sending required.
      *
+     * @param request_type HTTP request type
+     * @param url HTTP request URL
+     * @throws PostmarkException Errors thrown by invalid or unhandled requests made to Postmark
+     * @throws IOException Errors thrown by Data Handler
+     *
      * @see #execute(HttpClient.REQUEST_TYPES, String, Object) for details
+     *
+     * @return request response
      */
     protected String execute(HttpClient.REQUEST_TYPES request_type, String url) throws PostmarkException, IOException {
         return execute(request_type, url, null);
@@ -42,11 +49,13 @@ public class HttpClientHandler {
      *
      * @param request_type HTTP request type
      * @param url HTTP request URL
+     * @param data request data to send
      * @return HTTP response message
      * @throws PostmarkException Errors thrown by invalid or unhandled requests made to Postmark
      * @throws IOException Errors thrown by Data Handler
      *
      * @see HttpClient for details about HTTP request execution.
+     * @return request response
      */
     protected String execute(HttpClient.REQUEST_TYPES request_type, String url, Object data) throws PostmarkException, IOException {
         HttpClient.ClientResponse response = httpClient.execute(request_type, getSecureUrl(url), dataHandler.toJson(data));

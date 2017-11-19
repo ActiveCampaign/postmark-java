@@ -23,7 +23,7 @@
     </developers>
 
     <properties>
-        <postmark.version>0.9.1-SNAPSHOT</postmark.version>
+        <postmark.version>0.9.2</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
@@ -37,6 +37,12 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <url>https://github.com/wildbit/postmark-java</url>
+        <connection>scm:git:git@github.com:wildbit/postmark-java.git</connection>
+        <developerConnection>scm:git:git@github.com:wildbit/postmark-java.git</developerConnection>
+    </scm>
 
     <dependencies>
 
@@ -92,7 +98,7 @@
 
     </dependencies>
 
-    <!-- all of the below needed for releasing -->
+    <!-- all of the below is needed for releasing -->
 
     <build>
         <plugins>
@@ -128,7 +134,7 @@
 
         </plugins>
 
-        <!-- Non code resources place -->
+        <!-- Resources path -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -137,7 +143,9 @@
         </resources>
     </build>
 
-    <!-- mvn deploy -P releaseId -->
+    <!-- mvn deploy -P releaseId
+    first release SNAPSHOT (with name SNAPSHOT in version, then release)
+    -->
 
     <profiles>
         <profile>
@@ -148,7 +156,6 @@
                     <name>performRelease</name>
                 </property>
             </activation>
-
 
             <build>
             <plugins>
@@ -166,8 +173,6 @@
                     </configuration>
                 </plugin>
 
-                <!-- attach sources
-
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
@@ -182,8 +187,7 @@
                     </executions>
                 </plugin>
 
-                attach docs
-
+                <!-- generate javadocs -->
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
@@ -197,7 +201,6 @@
                         </execution>
                     </executions>
                 </plugin>
-                -->
 
                 <!-- Signing files for release plugin -->
                 <plugin>

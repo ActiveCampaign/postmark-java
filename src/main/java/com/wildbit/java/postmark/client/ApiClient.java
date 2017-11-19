@@ -23,6 +23,9 @@ import java.util.HashMap;
  * Class that handles on very top level all API requests. All Postmark public endpoints which
  * are reachable can be accessible by methods in this class.
  *
+ * For details about each endpoint check out Developer Docs:
+ * https://postmarkapp.com/developer
+ *
  */
 public class ApiClient extends BaseApiClient {
 
@@ -35,14 +38,7 @@ public class ApiClient extends BaseApiClient {
     }
 
     /*
-
-      For details about each endpoint check out Developer Docs:
-      https://postmarkapp.com/developer
-
-     */
-
-    /**
-     * Email message sending endpoints
+      Email message sending endpoints
      */
 
     public MessageResponse deliverMessage(Message data) throws PostmarkException, IOException {
@@ -56,8 +52,8 @@ public class ApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Bounced messages endpoints
+    /*
+      Bounced messages endpoints
      */
 
     public DeliveryStats getDeliveryStats() throws PostmarkException, IOException {
@@ -89,8 +85,8 @@ public class ApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Template handling endpoints
+    /*
+      Template handling endpoints
      */
 
     public Template getTemplate(Integer id) throws PostmarkException, IOException {
@@ -137,8 +133,8 @@ public class ApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Server endpoints for managing Servers in account.
+    /*
+      Server endpoints for managing Servers in account.
      */
 
     public Server getServer() throws PostmarkException, IOException {
@@ -155,8 +151,8 @@ public class ApiClient extends BaseApiClient {
       Messages endpoints
      */
 
-    /**
-     * Outbound Messages
+    /*
+      Outbound Messages
      */
 
     public OutboundMessages getMessages(Parameters parameters) throws PostmarkException, IOException {
@@ -194,8 +190,8 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, OutboundMessageClicks.class);
     }
 
-    /**
-     * Inbound Messsages
+    /*
+      Inbound Messsages
      */
 
     public InboundMessages getInboundMessages(Parameters parameters) throws PostmarkException, IOException {
@@ -218,8 +214,8 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, String.class);
     }
 
-    /**
-     * Stats Endpoints
+    /*
+      Stats Endpoints
      */
 
     public OutboundStats getOutboundStats(Parameters parameters) throws PostmarkException, IOException {
@@ -288,8 +284,8 @@ public class ApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Trigger Tags endpoints
+    /*
+      Trigger Tags endpoints
      */
 
     public TagMatcher createTriggerTag(TagMatcher data) throws PostmarkException, IOException {
@@ -317,8 +313,8 @@ public class ApiClient extends BaseApiClient {
     }
 
 
-    /**
-     * Trigger Inbound Rules endpoints
+    /*
+      Trigger Inbound Rules endpoints
      */
 
     public InboundRuleResponse createInboundRule(String rule) throws PostmarkException, IOException {
