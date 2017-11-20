@@ -7,8 +7,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import java.io.IOException;
 
 /**
- * Client class acts as handler between HTTP requests handler class and class which provides endpoints to call.
- * This class provides correct data for both sides and acts as controller.
+ * Client class acts as handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
+ * This class provides correct data for both sides and acts as controller. Also it verifies whether data sent and received is correct.
  */
 public class HttpClientHandler {
 

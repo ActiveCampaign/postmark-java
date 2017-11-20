@@ -14,7 +14,7 @@ import java.util.Properties;
 public class Postmark {
 
     /**
-     * Base Application Constants
+     * Base Postmark APP Constants
      */
     public enum DEFAULTS {
         API_URL("api.postmarkapp.com"),
@@ -43,7 +43,7 @@ public class Postmark {
 
     }
 
-    private static MultivaluedHashMap getHeaders(DEFAULTS authType, String apiToken) {
+    private static MultivaluedHashMap getHeadersWithAuth(DEFAULTS authType, String apiToken) {
         MultivaluedHashMap headers = DefaultHeaders.headers();
         headers.add(authType.value, apiToken);
         return headers;
@@ -59,22 +59,22 @@ public class Postmark {
         return prop.getProperty("Version");
     }
 
-    // main methods for accessing API clients
+    // public class methods for accessing API clients
 
     public static ApiClient getApiClient(String apiToken) {
-        return new ApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.SERVER_AUTH_HEADER, apiToken));
+        return new ApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.SERVER_AUTH_HEADER, apiToken));
     }
 
     public static ApiClient getApiClient(String apiToken, Boolean secureConnection) {
-        return new ApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.SERVER_AUTH_HEADER, apiToken), secureConnection);
+        return new ApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.SERVER_AUTH_HEADER, apiToken), secureConnection);
     }
 
     public static AccountApiClient getAccountApiClient(String apiToken) {
-        return new AccountApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken));
+        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken));
     }
 
     public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection) {
-        return new AccountApiClient(DEFAULTS.API_URL.value, getHeaders(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
+        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
     }
 
 }
