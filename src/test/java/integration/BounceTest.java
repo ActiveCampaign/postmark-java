@@ -1,3 +1,6 @@
+package integration;
+
+import base.BaseTest;
 import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounce;

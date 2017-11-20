@@ -1,4 +1,4 @@
-package client;
+package unit.client;
 
 import com.wildbit.java.postmark.Postmark;
 import com.wildbit.java.postmark.client.ApiClient;

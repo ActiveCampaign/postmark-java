@@ -1,13 +1,16 @@
+package integration;
+
+import base.BaseTest;
 import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.messages.*;
+import com.wildbit.java.postmark.client.exception.InvalidMessageException;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by bash on 11/14/17.
@@ -56,5 +59,10 @@ public class MessagesTest extends BaseTest {
 
         InboundMessageDetails inboundMessageDetails = client.getInboundMessageDetails(messageId);
         assertNotNull(inboundMessageDetails.getFrom());
+    }
+
+    @Test
+    void exception() throws PostmarkException, IOException {
+        assertThrows(InvalidMessageException.class, () -> client.getMessages(Parameters.init().build("count", -4).build("offset", 0)));
     }
 }

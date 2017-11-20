@@ -1,3 +1,6 @@
+package unit;
+
+import base.BaseTest;
 import com.wildbit.java.postmark.Postmark;
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package client.data;
+package unit.client.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;

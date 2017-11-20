@@ -9,8 +9,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
  */
 public class BaseApiClient extends HttpClientHandler {
 
-    private final String baseUrl;
-    protected String getEndpointUrl(String endpoint) {
+    public final String baseUrl;
+    public String getEndpointUrl(String endpoint) {
         return baseUrl + endpoint;
     }
 
@@ -24,4 +24,7 @@ public class BaseApiClient extends HttpClientHandler {
         setSecureConnection(secureConnection);
     }
 
+    public String getBaseUrl() {
+        return baseUrl;
+    }
 }
