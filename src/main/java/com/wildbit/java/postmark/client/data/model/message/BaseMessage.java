@@ -189,13 +189,13 @@ public class BaseMessage {
 
     public void addHeader(String name, String value) {
         if (this.headers == null) {
-            setHeaders(new ArrayList<Header>());
+            setHeaders(new ArrayList<>());
         }
         this.headers.add(new Header(name,value));
     }
 
     public void clearHeaders() {
-        if (this.headers == null) {
+        if (this.headers != null) {
             this.headers.clear();
         }
     }

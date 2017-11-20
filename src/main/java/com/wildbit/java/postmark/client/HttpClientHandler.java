@@ -50,12 +50,11 @@ public class HttpClientHandler {
      * @param request_type HTTP request type
      * @param url HTTP request URL
      * @param data request data to send
-     * @return HTTP response message
      * @throws PostmarkException Errors thrown by invalid or unhandled requests made to Postmark
      * @throws IOException Errors thrown by Data Handler
      *
      * @see HttpClient for details about HTTP request execution.
-     * @return request response
+     * @return HTTP response message
      */
     protected String execute(HttpClient.REQUEST_TYPES request_type, String url, Object data) throws PostmarkException, IOException {
         HttpClient.ClientResponse response = httpClient.execute(request_type, getSecureUrl(url), dataHandler.toJson(data));

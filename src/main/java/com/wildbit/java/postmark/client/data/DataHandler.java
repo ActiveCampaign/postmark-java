@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 /**
  * This class represents data handler between API client and HTTP client.
@@ -72,8 +71,8 @@ public class DataHandler {
     }
 
     /**
-     * Sets data mapper to be strict when making conversion of data to POJO objects.
-     * If there is a mismatch between POJO object and String in any other case than letter case,
+     * Sets data mapper to be strict when making conversion of data to objects.
+     * If there is a mismatch between object and String in any other case than letter case,
      * exception will be thrown.
      */
     public void setStrictMapper() {
@@ -84,7 +83,7 @@ public class DataHandler {
     }
 
     /**
-     * Sets data mapper to be very liberal when making conversion of data to POJO objects.
+     * Sets data mapper to be very liberal when making conversion of data to objects.
      * Most of the time exception will NOT be thrown.
      */
     public void setLiberalMapper() {

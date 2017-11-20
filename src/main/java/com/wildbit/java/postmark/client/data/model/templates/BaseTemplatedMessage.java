@@ -162,13 +162,13 @@ public class BaseTemplatedMessage {
 
     public void addHeader(String name, String value) {
         if (this.headers == null) {
-            setHeaders(new ArrayList<Header>());
+            setHeaders(new ArrayList<>());
         }
         this.headers.add(new Header(name,value));
     }
 
     public void clearHeaders() {
-        if (this.headers == null) {
+        if (this.headers != null) {
             this.headers.clear();
         }
     }
@@ -211,16 +211,16 @@ public class BaseTemplatedMessage {
      */
     private String convertRecipients(HashMap<String,String> recipients) {
 
-        String recipientsString = "";
+        StringBuilder recipientsString = new StringBuilder();
 
         Iterator<HashMap.Entry<String, String>> entries = recipients.entrySet().iterator();
         while (entries.hasNext()) {
             HashMap.Entry<String, String> entry = entries.next();
-            recipientsString += "\"" + entry.getKey() + "\"" + "<" + entry.getValue() + ">";
-            if (entries.hasNext()) { recipientsString += ","; }
+            recipientsString.append("\"").append(entry.getKey()).append("\"").append("<").append(entry.getValue()).append(">");
+            if (entries.hasNext()) { recipientsString.append(","); }
         }
 
-        return recipientsString;
+        return recipientsString.toString();
     }
 
 }

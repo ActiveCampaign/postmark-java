@@ -68,7 +68,7 @@ public class Parameters {
 
         for (HashMap.Entry<String, String> entry : parameters.entrySet()) {
             parameterString += addParameters(parameterString, entry.getKey() + "=" + entry.getValue());
-        };
+        }
 
         return parameterString;
     }

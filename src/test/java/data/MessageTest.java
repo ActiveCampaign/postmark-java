@@ -1,13 +1,9 @@
 package data;
 
 
-import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.data.model.message.Message;
 import org.junit.jupiter.api.Test;
-
-import javax.ws.rs.core.MultivaluedHashMap;
 
 import java.io.IOException;
 import java.util.ArrayList;

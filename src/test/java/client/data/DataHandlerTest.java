@@ -28,12 +28,11 @@ public class DataHandlerTest {
     }
 
     String getStringHashMap() {
-        String stringHashMap = "{\n" +
+
+        return "{\n" +
                 "  \"Key2\" : \"Value2\",\n" +
                 "  \"Key1\" : \"Value1\"\n" +
                 "}";
-
-        return stringHashMap;
     }
 
     @Test
@@ -45,7 +44,7 @@ public class DataHandlerTest {
     @Test
     void strictMapper() throws IOException {
         Throwable exception = assertThrows(UnrecognizedPropertyException.class,
-                ()->{dataHandler.fromJson(getStringHashMap(), BaseMessageResponse.class);} );
+                ()-> dataHandler.fromJson(getStringHashMap(), BaseMessageResponse.class));
 
     }
 

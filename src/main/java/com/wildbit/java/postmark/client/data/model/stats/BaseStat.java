@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client.data.model.stats;
 import java.util.Date;
 
 /**
- * Parrent stats class - object. Contains attributes each stat contains.
+ * Parent stats class - object. Contains attributes each stat contains.
  */
 public class BaseStat {
 

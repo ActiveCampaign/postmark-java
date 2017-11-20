@@ -120,9 +120,9 @@ public class ApiClient extends BaseApiClient {
 
     public MessageResponse deliverMessage(TemplatedMessage data) throws PostmarkException, IOException {
 
-        /**
-         * Since template models can be complex, it is allowed that template model is a String or Object.
-         * If it's a String, we will auto convert it to Object.
+        /*
+          Since template models can be complex, it is allowed that template model is a String or Object.
+          If it's a String, we will auto convert it to Object.
          */
         if (data.getTemplateModel().getClass() == String.class) {
             data.setTemplateModel(dataHandler.fromJson(data.getTemplateModel().toString(),Object.class));
@@ -191,7 +191,7 @@ public class ApiClient extends BaseApiClient {
     }
 
     /*
-      Inbound Messsages
+      Inbound Messages
      */
 
     public InboundMessages getInboundMessages(Parameters parameters) throws PostmarkException, IOException {
