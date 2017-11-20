@@ -14,17 +14,39 @@ import java.nio.file.*;
  */
 public class BaseTest {
 
+    // Constants names for API tokens
+    private enum DEFAULT_KEY_NAMES {
+        API_TOKEN("POSTMARK_API_TOKEN"),
+        ACCOUNT_TOKEN("POSTMARK_ACCOUNT_TOKEN");
+
+        public final String value;
+        DEFAULT_KEY_NAMES(String value) {
+            this.value = value;
+        }
+    }
+
     private final String propertyFile = ".properties";
-    public final Properties properties = new Properties();
+    public Properties properties;
+    private final Path configFilePath = Paths.get("src/test/resources/" + propertyFile);
+
+    public String defaultApiToken;
+    public String defaultAccountToken;
 
     public BaseTest() {
-        InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(propertyFile);
 
-        try {
-            properties.load(in);
-        } catch (IOException e) {
-            e.printStackTrace();
+        // Read configuration from property file
+        if (Files.exists(configFilePath)) {
+            initConfingFromFile();
+            defaultApiToken = properties.getProperty(DEFAULT_KEY_NAMES.API_TOKEN.value);
+            defaultAccountToken = properties.getProperty(DEFAULT_KEY_NAMES.ACCOUNT_TOKEN.value);
         }
+        // read configuration from Environment variables
+        else {
+            Map<String, String> env = System.getenv();
+            defaultApiToken = env.get(DEFAULT_KEY_NAMES.API_TOKEN.value);
+            defaultAccountToken = env.get(DEFAULT_KEY_NAMES.ACCOUNT_TOKEN.value);
+        }
+
     }
 
     public Properties config() {
@@ -32,21 +54,23 @@ public class BaseTest {
     }
 
     public ApiClient getDefaultApiClient() {
-
-        String token = "";
-
-        if (Files.exists(Paths.get("src/test/resources/"+propertyFile))) {
-            token = properties.getProperty("token");
-        }
-        else {
-            Map<String, String> env = System.getenv();
-            token = env.get("POSTMARK_API_TOKEN");
-        }
-
-        return Postmark.getApiClient(token);
+        return Postmark.getApiClient(defaultApiToken);
     }
 
     public AccountApiClient getDefaultAccountApiClient() {
-        return Postmark.getAccountApiClient(config().getProperty("accountToken"));
+        return Postmark.getAccountApiClient(defaultAccountToken);
+    }
+
+    private void initConfingFromFile() {
+
+        InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(propertyFile);
+        properties = new Properties();
+
+        try {
+            properties.load(in);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

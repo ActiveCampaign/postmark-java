@@ -21,9 +21,11 @@ Add the dependency to your project:
 <dependency>
     <groupId>com.wildbit.java</groupId>
     <artifactId>postmark</artifactId>
-    <version>0.9.2</version>
+    <version>{version}</version>
 </dependency>
 ```
+
+Note: to retrieve version, visit [maven central repository](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) , or check the badge at top of the page,showing latest version in Maven repository archives.
 
 ## Issues & Comments
 
