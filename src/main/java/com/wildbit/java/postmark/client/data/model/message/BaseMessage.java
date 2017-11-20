@@ -25,6 +25,7 @@ public class BaseMessage {
     private ArrayList<HashMap<String, String>> attachments;
 
     public BaseMessage() {
+        this.attachments = new ArrayList<>();
     }
 
     public BaseMessage(String from, String to, String subject, String htmlBody) {
@@ -218,6 +219,9 @@ public class BaseMessage {
     }
 
     public void addAttachment(HashMap<String, String> attachment) {
+        if (this.attachments == null) {
+            this.attachments = new ArrayList<>();
+        }
         attachments.add(attachment);
     }
 

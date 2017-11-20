@@ -29,6 +29,7 @@ public class BaseTest {
 
     private final String propertyFile = ".properties";
     public Properties properties;
+    private final Path testResourcesPath = Paths.get("src/test/resources/");
     private final Path configFilePath = Paths.get("src/test/resources/" + propertyFile);
 
     public String defaultApiToken;
@@ -61,6 +62,10 @@ public class BaseTest {
 
     public AccountApiClient getDefaultAccountApiClient() {
         return Postmark.getAccountApiClient(defaultAccountToken);
+    }
+
+    public String getDefaultFilePath() {
+        return testResourcesPath.toString() + "/test.pdf";
     }
 
     private void initConfingFromFile() {

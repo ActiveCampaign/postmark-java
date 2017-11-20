@@ -1,20 +1,27 @@
 package unit.data;
 
 
+import base.BaseTest;
+import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.data.model.message.Message;
+import com.wildbit.java.postmark.client.exception.InvalidMessageException;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Created by bash on 11/13/17.
  */
-public class MessageTest {
+public class MessageTest extends BaseTest {
 
     DataHandler dataHandler = new DataHandler();
     String fromAddress = "igor@example.com";
@@ -146,6 +153,31 @@ public class MessageTest {
         message.setBcc(recipients);
         assertEquals(message.getBcc(), "\"John Smith\"<john@example.com>,\"Milan Gornik\"<milan@example.com>");
 
+    }
+
+    @Test
+    void attachmentException() throws IOException {
+        Message message = new Message();
+        assertThrows(java.nio.file.NoSuchFileException.class, () -> message.addAttachment("test"));
+    }
+
+    @Test
+    void addAttachment() throws IOException {
+        Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
+        message.addAttachment(getDefaultFilePath());
+
+        HashMap<String,String> attachment = message.getAttachments().get(0);
+        assertEquals(attachment.get("ContentType"), "application/pdf");
+        assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
+        assertNotNull(attachment.get("Content"));
+    }
+
+    @Test
+    void addMultipleAttachments() throws IOException {
+        Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
+        message.addAttachment(getDefaultFilePath());
+        message.addAttachment(getDefaultFilePath());
+        assertEquals(message.getAttachments().size(), 2);
     }
 
 }
