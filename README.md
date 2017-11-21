@@ -25,7 +25,7 @@ Add the dependency to your project:
 </dependency>
 ```
 
-Note: to retrieve latest version number, visit [maven central repository](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) , or check the badge at top of the page which is showing the latest version synced in Maven repository.
+Note: to retrieve latest version number, visit [maven central repository](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
 [Maven central repository link](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) might be slightly more acurrate, in case new version was published recently.
 
 ## Issues & Comments
