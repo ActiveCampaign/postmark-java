@@ -29,6 +29,16 @@ import java.util.HashMap;
  */
 public class ApiClient extends BaseApiClient {
 
+    private final String bouncesEndpoint        = "/bounces/";
+    private final String templatesEndpoint      = "/templates/";
+    private final String serverEndpoint         = "/server/";
+    private final String outboundMessagesEndpoint       = "/messages/outbound/";
+    private final String inboundMessagesEndpoint        = "/messages/inbound/";
+    private final String outboundStatsEndpoint          = "/stats/outbound/";
+    private final String triggerTagsEndpoint            = "/triggers/tags/";
+    private final String triggerInboundRulesEndpoint    = "/triggers/inboundRules/";
+    private final String sendingEndpoint                = "/email/";
+
     public ApiClient(String baseUrl, MultivaluedHashMap<String, Object> headers) {
         super(baseUrl,headers);
     }
@@ -42,12 +52,12 @@ public class ApiClient extends BaseApiClient {
      */
 
     public MessageResponse deliverMessage(Message data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint), data);
         return dataHandler.fromJson(response, MessageResponse.class);
     }
 
     public ArrayList<MessageResponse> deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email/batch"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batch"), data);
         return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
     }
 
@@ -62,26 +72,26 @@ public class ApiClient extends BaseApiClient {
     }
 
     public Bounces getBounces(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/bounces" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + parameters));
         return dataHandler.fromJson(response, Bounces.class);
     }
 
     public Bounce getBounce(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/bounces/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + id));
         return dataHandler.fromJson(response, Bounce.class);
     }
 
     public BounceDump getBounceDump(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/bounces/" + id + "/dump"));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + id + "/dump"));
         return dataHandler.fromJson(response, BounceDump.class);
     }
 
     public String activateBounce(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/bounces/" + id + "/activate"));
+        return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(bouncesEndpoint + id + "/activate"));
     }
 
     public ArrayList getBounceTags() throws PostmarkException, IOException {
-        return dataHandler.fromJson(execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/bounces/tags")), ArrayList.class);
+        return dataHandler.fromJson(execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + "tags")), ArrayList.class);
     }
 
 
@@ -90,31 +100,31 @@ public class ApiClient extends BaseApiClient {
      */
 
     public Template getTemplate(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/templates/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(templatesEndpoint + id));
         return dataHandler.fromJson(response, Template.class);
     }
 
     public BaseTemplate createTemplate(TemplateContent data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/templates/"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(templatesEndpoint), data);
         return dataHandler.fromJson(response, BaseTemplate.class);
     }
 
     public BaseTemplate setTemplate(Integer id, TemplateContent data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/templates/" + id), data);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(templatesEndpoint + id), data);
         return dataHandler.fromJson(response, BaseTemplate.class);
     }
 
     public Templates getTemplates(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/templates/" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(templatesEndpoint + parameters));
         return dataHandler.fromJson(response, Templates.class);
     }
 
     public String deleteTemplate(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/templates/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(templatesEndpoint + id));
     }
 
     public TemplateValidation validateTemplate(TemplateToValidate data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/templates/validate"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(templatesEndpoint + "validate"), data);
         return dataHandler.fromJson(response, TemplateValidation.class);
     }
 
@@ -127,7 +137,7 @@ public class ApiClient extends BaseApiClient {
         if (data.getTemplateModel().getClass() == String.class) {
             data.setTemplateModel(dataHandler.fromJson(data.getTemplateModel().toString(),Object.class));
         }
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/email/withTemplate"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "withTemplate"), data);
         System.out.println(response);
         return dataHandler.fromJson(response, MessageResponse.class);
     }
@@ -138,12 +148,12 @@ public class ApiClient extends BaseApiClient {
      */
 
     public Server getServer() throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/server"));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(serverEndpoint));
         return dataHandler.fromJson(response, Server.class);
     }
 
     public Server setServer(Server data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/server"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(serverEndpoint), data);
         return dataHandler.fromJson(response, Server.class);
     }
 
@@ -156,37 +166,37 @@ public class ApiClient extends BaseApiClient {
      */
 
     public OutboundMessages getMessages(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + parameters));
         return dataHandler.fromJson(response, OutboundMessages.class);
     }
 
     public OutboundMessageDetails getMessageDetails(String id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/" + id + "/details"));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + id + "/details"));
         return dataHandler.fromJson(response, OutboundMessageDetails.class);
     }
 
     public OutboundMessageDump getMessageDump(String id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/" + id + "/dump"));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + id + "/dump"));
         return dataHandler.fromJson(response, OutboundMessageDump.class);
     }
 
     public OutboundMessageOpens getMessageOpens(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/opens" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + "opens" + parameters));
         return dataHandler.fromJson(response, OutboundMessageOpens.class);
     }
 
     public OutboundMessageOpens getMessageOpens(String id, Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/opens/" + id + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + "opens/" + id + parameters));
         return dataHandler.fromJson(response, OutboundMessageOpens.class);
     }
 
     public OutboundMessageClicks getMessageClicks(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/clicks" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + "clicks" + parameters));
         return dataHandler.fromJson(response, OutboundMessageClicks.class);
     }
 
     public OutboundMessageClicks getMessageClicks(String id, Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/outbound/clicks/" + id + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + "clicks/" + id + parameters));
         return dataHandler.fromJson(response, OutboundMessageClicks.class);
     }
 
@@ -195,22 +205,22 @@ public class ApiClient extends BaseApiClient {
      */
 
     public InboundMessages getInboundMessages(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/inbound" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(inboundMessagesEndpoint + parameters));
         return dataHandler.fromJson(response, InboundMessages.class);
     }
 
     public InboundMessageDetails getInboundMessageDetails(String id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/messages/inbound/" + id + "/details"));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(inboundMessagesEndpoint + id + "/details"));
         return dataHandler.fromJson(response, InboundMessageDetails.class);
     }
 
     public String bypassInboundMessage(String id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/messages/inbound/" + id + "/bypass"));
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/bypass"));
         return dataHandler.fromJson(response, String.class);
     }
 
     public String retryFailedInboundMessage(String id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/messages/inbound/" + id + "/retry"));
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/retry"));
         return dataHandler.fromJson(response, String.class);
     }
 
@@ -219,67 +229,67 @@ public class ApiClient extends BaseApiClient {
      */
 
     public OutboundStats getOutboundStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + parameters));
         return dataHandler.fromJson(response, OutboundStats.class);
     }
 
     public OutboundSendStats getOutboundSendStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/sends" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "sends" + parameters));
         return dataHandler.fromJson(response, OutboundSendStats.class);
     }
 
     public OutboundBounceStats getOutboundBounceStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/bounces" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "bounces" + parameters));
         return dataHandler.fromJson(response, OutboundBounceStats.class);
     }
 
     public OutboundSpamStats getOutboundSpamStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/spam" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "spam" + parameters));
         return dataHandler.fromJson(response, OutboundSpamStats.class);
     }
 
     public OutboundTrackedStats getOutboundTrackedStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/tracked" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "tracked" + parameters));
         return dataHandler.fromJson(response, OutboundTrackedStats.class);
     }
 
     public OutboundOpenStats getOutboundOpenStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "opens" + parameters));
         return dataHandler.fromJson(response, OutboundOpenStats.class);
     }
 
     public OutboundOpenPlatformStats getOutboundOpenPlatformStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens/platforms" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "opens/platforms" + parameters));
         return dataHandler.fromJson(response, OutboundOpenPlatformStats.class);
     }
 
     public HashMap getOutboundOpenClientStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens/platforms" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "opens/platforms" + parameters));
         return dataHandler.fromJson(response, HashMap.class);
     }
 
     public HashMap getOutboundOpenReadTimes(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/opens/readTimes" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "opens/readTimes" + parameters));
         return dataHandler.fromJson(response, HashMap.class);
     }
 
     public OutboundClickStats getOutboundClickStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "clicks" + parameters));
         return dataHandler.fromJson(response, OutboundClickStats.class);
     }
 
     public HashMap getOutboundClickBrowsersStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks/browserfamilies" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "clicks/browserfamilies" + parameters));
         return dataHandler.fromJson(response, HashMap.class);
     }
 
     public OutboundClickPlatformStats getOutboundClickPlatformStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks/platforms" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "clicks/platforms" + parameters));
         return dataHandler.fromJson(response, OutboundClickPlatformStats.class);
     }
 
     public OutboundClickLocationStats getOutboundClickLocationStats(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/stats/outbound/clicks/location" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundStatsEndpoint + "clicks/location" + parameters));
         return dataHandler.fromJson(response, OutboundClickLocationStats.class);
     }
 
@@ -289,26 +299,26 @@ public class ApiClient extends BaseApiClient {
      */
 
     public TagMatcher createTriggerTag(TagMatcher data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/triggers/tags"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(triggerTagsEndpoint), data);
         return dataHandler.fromJson(response, TagMatcher.class);
     }
 
     public TagMatcher getTriggerTag(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/triggers/tags/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerTagsEndpoint + id));
         return dataHandler.fromJson(response, TagMatcher.class);
     }
 
     public TagMatcher setTriggerTag(Integer id, TagMatcher data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/triggers/tags/" + id), data);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(triggerTagsEndpoint + id), data);
         return dataHandler.fromJson(response, TagMatcher.class);
     }
 
     public String deleteTriggerTag(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/triggers/tags/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(triggerTagsEndpoint + id));
     }
 
     public TagMatchers getTriggerTags(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/triggers/tags" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerTagsEndpoint + parameters));
         return dataHandler.fromJson(response, TagMatchers.class);
     }
 
@@ -320,16 +330,16 @@ public class ApiClient extends BaseApiClient {
     public InboundRuleResponse createInboundRule(String rule) throws PostmarkException, IOException {
         InboundRule data = new InboundRule();
         data.setRule(rule);
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/triggers/inboundRules"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(triggerInboundRulesEndpoint), data);
         return dataHandler.fromJson(response, InboundRuleResponse.class);
     }
 
     public String deleteInboundRule(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/triggers/inboundRules/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(triggerInboundRulesEndpoint + id));
     }
 
     public InboundRules getInboundRules(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/triggers/inboundRules" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerInboundRulesEndpoint + parameters));
         return dataHandler.fromJson(response, InboundRules.class);
     }
 

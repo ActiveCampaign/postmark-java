@@ -19,6 +19,10 @@ import java.io.IOException;
  */
 public class AccountApiClient extends BaseApiClient {
 
+    private final String serversEndpoint = "/servers/";
+    private final String domainsEndpoint = "/domains/";
+    private final String sendersEndpoint = "/senders/";
+
     public AccountApiClient(String baseUrl, MultivaluedHashMap<String,Object> headers) {
         super(baseUrl,headers);
     }
@@ -33,27 +37,27 @@ public class AccountApiClient extends BaseApiClient {
 
 
     public Server getServers(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/servers/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(serversEndpoint + id));
         return dataHandler.fromJson(response, Server.class);
     }
 
     public Server createServer(Server data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/servers"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(serversEndpoint), data);
         return dataHandler.fromJson(response, Server.class);
     }
 
     public Server setServer(Integer id, Server data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/servers/" + id), data);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(serversEndpoint + id), data);
         return dataHandler.fromJson(response, Server.class);
     }
 
     public Servers getServers(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/servers" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(serversEndpoint + parameters));
         return dataHandler.fromJson(response, Servers.class);
     }
 
     public String deleteServer(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/servers/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(serversEndpoint + id));
     }
 
 
@@ -62,35 +66,35 @@ public class AccountApiClient extends BaseApiClient {
      */
 
     public Domains getDomains(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/domains" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(domainsEndpoint + parameters));
         return dataHandler.fromJson(response, Domains.class);
     }
 
     public DomainDetails getDomainDetails(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/domains/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(domainsEndpoint + id));
         return dataHandler.fromJson(response, DomainDetails.class);
     }
 
     public DomainDetails createDomain(Domain domain) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/domains"), domain);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint), domain);
         return dataHandler.fromJson(response, DomainDetails.class);
     }
 
     public DomainDetails setDomain(Integer id, DomainDetails domain) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/domains/" + id), domain);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(domainsEndpoint + id), domain);
         return dataHandler.fromJson(response, DomainDetails.class);
     }
 
     public String deleteDomain(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/domains/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(domainsEndpoint + id));
     }
 
     public String verifyDomainSPF(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/domains/" + id + "/verifySPF"));
+        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint + id + "/verifySPF"));
     }
 
     public String rotateDomainDKIM(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/domains/" + id + "/rotateDKIM"));
+        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint + id + "/rotateDKIM"));
     }
 
 
@@ -99,40 +103,40 @@ public class AccountApiClient extends BaseApiClient {
      */
 
     public Signatures getSenderSignatures(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/senders" + parameters));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(sendersEndpoint + parameters));
         return dataHandler.fromJson(response, Signatures.class);
     }
 
     public SignatureDetails getSenderSignatureDetails(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl("/senders/" + id));
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(sendersEndpoint + id));
         return dataHandler.fromJson(response, SignatureDetails.class);
     }
 
     public SignatureDetails createSenderSignature(SignatureToCreate signature) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/senders"), signature);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendersEndpoint), signature);
         return dataHandler.fromJson(response, SignatureDetails.class);
     }
 
     public SignatureDetails setSenderSignature(Integer id, SignatureToCreate signature) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/senders/" + id), signature);
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(sendersEndpoint + id), signature);
         return dataHandler.fromJson(response, SignatureDetails.class);
     }
 
     public String deleteSenderSignature(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl("/senders/" + id));
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(sendersEndpoint + id));
     }
 
     public String resendSenderSignatureConfirmation(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/senders/" + id + "/resend"));
+        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendersEndpoint + id + "/resend"));
     }
 
     public SignatureDetails verifySenderSignatureSPF(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/senders/" + id + "/verifySPF"));
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendersEndpoint + id + "/verifySPF"));
         return dataHandler.fromJson(response, SignatureDetails.class);
     }
 
     public String requestSenderSignatureDKIM(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl("/senders/" + id + "/requestNewDKIM"));
+        return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendersEndpoint + id + "/requestNewDKIM"));
     }
 
 }

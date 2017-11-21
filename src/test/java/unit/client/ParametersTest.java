@@ -40,24 +40,24 @@ public class ParametersTest {
     @Test
     void stringParameter() {
         Parameters parameters = Parameters.init().build("fromAddress","igor@example.com");
-        assertEquals(parameters.toString(),"?fromAddress=igor@example.com");
+        assertEquals("?fromAddress=igor@example.com",parameters.toString());
     }
 
     @Test
     void integerParameter() {
         Parameters parameters = Parameters.init().build("count",1);
-        assertEquals(parameters.toString(),"?count=1");
+        assertEquals("?count=1",parameters.toString());
     }
 
     @Test
     void dateParameter() throws ParseException {
         String parameters = Parameters.init().build("fromDate", sampleDate(dateString)).toString();
-        assertEquals(parameters,"?fromDate=" + dateString);
+        assertEquals("?fromDate=" + dateString, parameters.toString());
     }
 
     @Test
     void multipleParameters() throws ParseException {
         Parameters parameters = Parameters.init().build("fromDate",sampleDate(dateString)).build("count",1).build("offset",0);
-        assertEquals(parameters.toString(),"?fromDate=" + dateString + "&offset=0&count=1");
+        assertEquals("?fromDate=" + dateString + "&offset=0&count=1",parameters.toString());
     }
 }

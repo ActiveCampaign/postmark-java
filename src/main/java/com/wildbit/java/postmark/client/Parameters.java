@@ -3,6 +3,7 @@ package com.wildbit.java.postmark.client;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * Helper class for creating parameters to pass to API requests. It makes sure proper format of parameters
@@ -64,28 +65,17 @@ public class Parameters {
      * @return parameters transformed to proper string format API client accepts
      */
     public String toString() {
-        String parameterString = "";
+        StringBuilder parameterString = new StringBuilder();
 
+        int count = 0;
         for (HashMap.Entry<String, String> entry : parameters.entrySet()) {
-            parameterString += addParameters(parameterString, entry.getKey() + "=" + entry.getValue());
+            parameterString.append(count==0 ? "?" : "&");
+            parameterString.append(entry.getKey());
+            parameterString.append("=");
+            parameterString.append(entry.getValue());
+            count++;
         }
 
-        return parameterString;
-    }
-
-    /**
-     * Convert parameter to a String to attach to parameter list string.
-     *
-     * @param parameter single HTTP request parameter name
-     * @param value single HTTP request parameter value
-     * @return parameter as String
-     */
-    private String addParameters(String parameter, String value) {
-        if (parameter.isEmpty()) {
-            return  "?" + value;
-        }
-        else{
-            return  "&" + value;
-        }
+        return parameterString.toString();
     }
 }
