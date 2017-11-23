@@ -2,18 +2,14 @@ package integration;
 
 import base.BaseTest;
 import com.wildbit.java.postmark.client.AccountApiClient;
-import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.domains.DomainDetails;
 import com.wildbit.java.postmark.client.data.model.domains.Domains;
-import com.wildbit.java.postmark.client.data.model.templates.*;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
-import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

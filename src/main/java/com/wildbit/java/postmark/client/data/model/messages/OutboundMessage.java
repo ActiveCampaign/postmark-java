@@ -17,7 +17,7 @@ public class OutboundMessage {
     private Date receivedAt;
     private String from;
     private String subject;
-    private ArrayList<Attachment> attachments;
+    private ArrayList<String> attachments;
     private String status;
     private Boolean trackOpens;
     private String trackLinks;
@@ -96,11 +96,11 @@ public class OutboundMessage {
         this.subject = subject;
     }
 
-    public ArrayList<Attachment> getAttachments() {
+    public ArrayList<String> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(ArrayList<Attachment> attachments) {
+    public void setAttachments(ArrayList<String> attachments) {
         this.attachments = attachments;
     }
 

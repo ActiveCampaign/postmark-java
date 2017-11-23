@@ -3,8 +3,6 @@ package integration;
 import base.BaseTest;
 import com.wildbit.java.postmark.client.AccountApiClient;
 import com.wildbit.java.postmark.client.Parameters;
-import com.wildbit.java.postmark.client.data.model.domains.DomainDetails;
-import com.wildbit.java.postmark.client.data.model.domains.Domains;
 import com.wildbit.java.postmark.client.data.model.senders.SignatureDetails;
 import com.wildbit.java.postmark.client.data.model.senders.Signatures;
 import com.wildbit.java.postmark.client.exception.PostmarkException;

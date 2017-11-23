@@ -2,16 +2,13 @@ package unit.data;
 
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.data.model.message.Message;
-import com.wildbit.java.postmark.client.exception.InvalidMessageException;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashMap;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
