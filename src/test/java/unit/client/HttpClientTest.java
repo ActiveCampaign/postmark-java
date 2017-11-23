@@ -21,6 +21,19 @@ public class HttpClientTest {
 
         assertEquals(response.getCode(),302);
         assertNotNull(response.getMessage());
+    }
 
+    @Test
+    void executeIncorrectLink() throws IOException, PostmarkException {
+        HttpClient client = new HttpClient(new MultivaluedHashMap<>());
+        HttpClient.ClientResponse response = client.execute(HttpClient.REQUEST_TYPES.GET, "https://" + Postmark.DEFAULTS.API_URL.value + "/someweirdlink");
+
+        assertEquals(response.getCode(),404);
+    }
+
+    @Test
+    void getClient() throws IOException, PostmarkException {
+        HttpClient client = new HttpClient(new MultivaluedHashMap<>());
+        assertNotNull(client.getClient());
     }
 }

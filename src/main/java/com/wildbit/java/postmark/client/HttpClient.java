@@ -106,6 +106,15 @@ public class HttpClient {
     }
 
     /**
+     * Access to original HTTP client used for requests
+     *
+     * @return original HTTP client
+     */
+    public Client getClient() {
+        return client;
+    }
+
+    /**
      *  Gets simplified HTTP request response that will contain only response and status.
      *
      * @param response HTTP request response result
