@@ -6,9 +6,9 @@ package com.wildbit.java.postmark.client.data.model.message;
 public class Message extends BaseMessage {
 
     public enum TRACK_LINKS {
-        Html("Html"),
+        Html("HtmlOnly"),
         HtmlAndText("HtmlAndText"),
-        Text("Text");
+        Text("TextOnly");
 
         public final String value;
 
