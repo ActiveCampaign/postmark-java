@@ -32,6 +32,17 @@ public class Parameters {
     }
 
     /**
+     * Add single parameter to HashMap of stored parameters
+     * @param name parameter name
+     * @param value parameter value
+     * @return object containing currently stored parameters
+     */
+    public Parameters build(String name, Boolean value) {
+        parameters.put(name, value.toString());
+        return this;
+    }
+
+    /**
      *
      * Add single parameter to the HashMap of stored parameters.
      *

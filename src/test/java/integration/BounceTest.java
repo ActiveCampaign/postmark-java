@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,12 +53,12 @@ public class BounceTest extends BaseTest {
 
     @Test
     void activateBounce() throws PostmarkException, IOException {
-        Bounces bounces = client.getBounces(Parameters.init().build("count", 1).build("offset", 0));
+        Bounces bounces = client.getBounces(Parameters.init().build("count", 1).build("offset", 0).build("inactive",true));
         Integer bounceId = bounces.getBounces().get(0).getId();
 
-        Bounce bounce = client.getBounce(bounceId);
         String message = client.activateBounce(bounceId);
         assertNotNull(message);
+        assertFalse(client.getBounce(bounceId).getInactive());
     }
 
     @Test
