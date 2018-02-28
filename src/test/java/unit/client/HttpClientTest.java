@@ -19,7 +19,6 @@ public class HttpClientTest {
         HttpClient client = new HttpClient(new MultivaluedHashMap<>());
         HttpClient.ClientResponse response = client.execute(HttpClient.REQUEST_TYPES.GET, "https://" + Postmark.DEFAULTS.API_URL.value);
 
-        assertEquals(response.getCode(),302);
         assertNotNull(response.getMessage());
     }
 
