@@ -43,6 +43,7 @@ public class DataHandlerTest {
 
     @Test
     void strictMapper() throws IOException {
+        dataHandler.setStrictMapper();
         Throwable exception = assertThrows(UnrecognizedPropertyException.class,
                 ()-> dataHandler.fromJson(getStringHashMap(), BaseMessageResponse.class));
 
