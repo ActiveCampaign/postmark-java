@@ -28,6 +28,7 @@ public class MessageTest extends BaseTest {
         MessageResponse response = client.deliverMessage(message);
         assertEquals(response.getMessage(),"Test job accepted");
         assertEquals(response.getErrorCode(), new Integer(0));
+        assertEquals(response.getMessageId().length(),36);
     }
 
     @Test
