@@ -89,6 +89,14 @@ public class AccountApiClient extends BaseApiClient {
         return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(domainsEndpoint + id));
     }
 
+    public String verifyDomainDKIM(Integer id) throws PostmarkException, IOException {
+        return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(domainsEndpoint + id + "/verifyDKIM"));
+    }
+
+    public String verifyDomainReturnPath(Integer id) throws PostmarkException, IOException {
+        return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(domainsEndpoint + id + "/verifyReturnPath"));
+    }
+
     public String verifyDomainSPF(Integer id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint + id + "/verifySPF"));
     }
