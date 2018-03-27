@@ -5,11 +5,16 @@ package com.wildbit.java.postmark.client.data.model.templates;
  */
 public class BaseTemplate {
 
+    private String alias;
     private Boolean active;
     private String name;
     private Integer templateId;
 
     // SETTERS AND GETTERS
+
+    public String getAlias() { return alias; }
+
+    public void setAlias(String alias) { this.alias = alias; }
 
     public Boolean getActive() {
         return active;

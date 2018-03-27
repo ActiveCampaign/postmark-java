@@ -138,7 +138,6 @@ public class ApiClient extends BaseApiClient {
             data.setTemplateModel(dataHandler.fromJson(data.getTemplateModel().toString(),Object.class));
         }
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "withTemplate"), data);
-        System.out.println(response);
         return dataHandler.fromJson(response, MessageResponse.class);
     }
 

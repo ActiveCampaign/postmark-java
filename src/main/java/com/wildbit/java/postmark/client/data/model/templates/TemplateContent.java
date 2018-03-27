@@ -8,8 +8,13 @@ public class TemplateContent {
     private String subject;
     private String htmlBody;
     private String textBody;
+    private String alias;
 
     // SETTERS AND GETTERS
+
+    public String getAlias() { return alias; }
+
+    public void setAlias(String alias) { this.alias = alias; }
 
     public String getName() {
         return name;

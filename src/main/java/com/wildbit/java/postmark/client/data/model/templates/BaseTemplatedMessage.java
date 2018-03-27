@@ -15,6 +15,7 @@ import java.util.*;
 public class BaseTemplatedMessage {
 
     private Integer templateId;
+    private String templateAlias;
     private Object templateModel;
     private Boolean inlineCss;
     private String from;
@@ -38,6 +39,10 @@ public class BaseTemplatedMessage {
     }
 
     // SETTERS AND GETTERS
+
+    public String getTemplateAlias() { return templateAlias; }
+
+    public void setTemplateAlias(String templateAlias) { this.templateAlias = templateAlias; }
 
     public Integer getTemplateId() {
         return templateId;

@@ -17,10 +17,18 @@ public class TemplatedMessage extends BaseTemplatedMessage {
         }
     }
 
-    Boolean trackOpens;
-    String trackLinks;
+    private Boolean trackOpens;
+    private String trackLinks;
 
     // SETTERS AND GETTERS
+
+    public Boolean getTrackOpens() { return trackOpens; }
+
+    public void setTrackOpens(Boolean trackOpens) { this.trackOpens = trackOpens; }
+
+    public String getTrackLinks() { return trackLinks; }
+
+    public void setTrackLinks(String trackLinks) { this.trackLinks = trackLinks; }
 
     public TemplatedMessage() {
         super();
