@@ -104,6 +104,11 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, Template.class);
     }
 
+    public Template getTemplate(String alias) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(templatesEndpoint + alias));
+        return dataHandler.fromJson(response, Template.class);
+    }
+
     public BaseTemplate createTemplate(TemplateContent data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(templatesEndpoint), data);
         return dataHandler.fromJson(response, BaseTemplate.class);
@@ -114,6 +119,11 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, BaseTemplate.class);
     }
 
+    public BaseTemplate setTemplate(String alias, TemplateContent data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(templatesEndpoint + alias), data);
+        return dataHandler.fromJson(response, BaseTemplate.class);
+    }
+
     public Templates getTemplates(Parameters parameters) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(templatesEndpoint + parameters));
         return dataHandler.fromJson(response, Templates.class);
@@ -121,6 +131,10 @@ public class ApiClient extends BaseApiClient {
 
     public String deleteTemplate(Integer id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(templatesEndpoint + id));
+    }
+
+    public String deleteTemplate(String alias) throws PostmarkException, IOException {
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(templatesEndpoint + alias));
     }
 
     public TemplateValidation validateTemplate(TemplateToValidate data) throws PostmarkException, IOException {
