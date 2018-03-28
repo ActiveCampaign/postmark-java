@@ -142,8 +142,30 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, TemplateValidation.class);
     }
 
-    public MessageResponse deliverMessage(TemplatedMessage data) throws PostmarkException, IOException {
+    public MessageResponse deliverMessageWithTemplate(TemplatedMessage data) throws PostmarkException, IOException {
+        setTemplateModelToObject(data);
 
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "withTemplate"), data);
+        return dataHandler.fromJson(response, MessageResponse.class);
+    }
+
+    public ArrayList<MessageResponse> deliverMessageWithTemplate(ArrayList<TemplatedMessage> data) throws PostmarkException, IOException {
+
+        /*
+          When sending array of emails with templates, additional top level field is used called "Messages".
+          This introduces unnecessary difference between batch and batchWithTemplates endpoint in data model.
+          To keep it simple, this additional level is added before executing batch send.
+         */
+        HashMap<String, ArrayList> dataToSend = new HashMap<>();
+        dataToSend.put("Messages", data);
+
+        for(TemplatedMessage templateMessage:data) { setTemplateModelToObject(templateMessage); }
+
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batchWithTemplates"), data);
+        return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
+    }
+
+    private void setTemplateModelToObject(TemplatedMessage data) throws IOException {
         /*
           Since template models can be complex, it is allowed that template model is a String or Object.
           If it's a String, we will auto convert it to Object.
@@ -151,8 +173,6 @@ public class ApiClient extends BaseApiClient {
         if (data.getTemplateModel().getClass() == String.class) {
             data.setTemplateModel(dataHandler.fromJson(data.getTemplateModel().toString(),Object.class));
         }
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "withTemplate"), data);
-        return dataHandler.fromJson(response, MessageResponse.class);
     }
 
 
