@@ -24,8 +24,13 @@ public class Bounce {
     private Boolean canActivate;
     private String subject;
     private String content;
+    private String recordType;
 
     // SETTERS AND GETTERS
+
+    public String getRecordType() { return recordType; }
+
+    public void setRecordType(String recordType) { this.recordType = recordType; }
 
     public Integer getId() { return id;}
 

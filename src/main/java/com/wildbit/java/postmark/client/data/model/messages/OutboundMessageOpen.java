@@ -18,8 +18,13 @@ public class OutboundMessageOpen {
     private Date receivedAt;
     private String tag;
     private String recipient;
+    private String recordType;
 
     // GETTERS AND SETTERS
+
+    public String getRecordType() { return recordType; }
+
+    public void setRecordType(String recordType) { this.recordType = recordType; }
 
     public HashMap<String, String> getClient() {
         return client;

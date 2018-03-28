@@ -13,6 +13,11 @@ public class DeliveryWebhook {
     private String tag;
     private Date deliveredAt;
     private String details;
+    private String recordType;
+
+    public String getRecordType() { return recordType; }
+
+    public void setRecordType(String recordType) { this.recordType = recordType; }
 
     public Integer getServerId() {
         return serverId;
