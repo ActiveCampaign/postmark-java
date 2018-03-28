@@ -27,8 +27,13 @@ public class Server {
     private String inboundDomain;
     private String inboundHash;
     private String inboundSpamThreshold;
+    private String enableSmtpApiErrorHooks;
 
     // SETTERS AND GETTERS
+
+    public String getEnableSmtpApiErrorHooks() { return enableSmtpApiErrorHooks; }
+
+    public void setEnableSmtpApiErrorHooks(String enableSmtpApiErrorHooks) { this.enableSmtpApiErrorHooks = enableSmtpApiErrorHooks; }
 
     public Integer getId() {
         return id;
