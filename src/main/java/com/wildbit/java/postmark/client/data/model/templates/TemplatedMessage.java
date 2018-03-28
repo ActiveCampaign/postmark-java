@@ -38,4 +38,8 @@ public class TemplatedMessage extends BaseTemplatedMessage {
         super(from, to);
     }
 
+    public TemplatedMessage(String from, String to, Integer templateId) {
+        super(from, to, templateId);
+    }
+
 }

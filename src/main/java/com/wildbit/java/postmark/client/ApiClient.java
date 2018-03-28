@@ -161,7 +161,7 @@ public class ApiClient extends BaseApiClient {
 
         for(TemplatedMessage templateMessage:data) { setTemplateModelToObject(templateMessage); }
 
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batchWithTemplates"), data);
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batchWithTemplates"), dataToSend);
         return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
     }
 

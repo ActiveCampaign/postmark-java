@@ -28,15 +28,24 @@ public class BaseTemplatedMessage {
     private List<Map<String, String>> attachments;
 
     public BaseTemplatedMessage() {
+        this.setAttachments(new ArrayList<>());
         this.setInlineCss(false);
+        this.setTemplateModel(new HashMap<>());
     }
 
     public BaseTemplatedMessage(String from, String to) {
         this();
         this.from = from;
         this.to = to;
-        this.attachments = new ArrayList<>();
     }
+
+    public BaseTemplatedMessage(String from, String to, Integer templateId) {
+        this();
+        this.from = from;
+        this.to = to;
+        this.templateId = templateId;
+    }
+
 
     // SETTERS AND GETTERS
 
