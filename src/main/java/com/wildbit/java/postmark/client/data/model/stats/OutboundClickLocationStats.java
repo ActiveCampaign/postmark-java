@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Click location stat object.
@@ -10,7 +10,7 @@ public class OutboundClickLocationStats {
     private Integer html;
     private Integer htmlAndText;
     private Integer text;
-    private ArrayList<ClickLocationStat> days;
+    private List<ClickLocationStat> days;
 
     // SETTERS AND GETTERS
 
@@ -38,11 +38,11 @@ public class OutboundClickLocationStats {
         this.text = text;
     }
 
-    public ArrayList<ClickLocationStat> getDays() {
+    public List<ClickLocationStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<ClickLocationStat> days) {
+    public void setDays(List<ClickLocationStat> days) {
         this.days = days;
     }
 }

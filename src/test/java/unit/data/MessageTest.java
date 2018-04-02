@@ -163,7 +163,7 @@ public class MessageTest extends BaseTest {
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
         message.addAttachment(getDefaultFilePath());
 
-        HashMap<String,String> attachment = message.getAttachments().get(0);
+        HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "application/pdf");
         assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
         assertNotNull(attachment.get("Content"));

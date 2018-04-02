@@ -1,13 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Outbound message opens object.
  */
 public class OutboundMessageOpens {
     private Integer totalCount;
-    private ArrayList<OutboundMessageOpen> opens;
+    private List<OutboundMessageOpen> opens;
 
     // GETTERS AND SETTERS
 
@@ -19,11 +19,11 @@ public class OutboundMessageOpens {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<OutboundMessageOpen> getOpens() {
+    public List<OutboundMessageOpen> getOpens() {
         return opens;
     }
 
-    public void setOpens(ArrayList<OutboundMessageOpen> opens) {
+    public void setOpens(List<OutboundMessageOpen> opens) {
         this.opens = opens;
     }
 }

@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.server;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Server object.
@@ -9,7 +9,7 @@ public class Server {
 
     private Integer id;
     private String name;
-    private ArrayList<String> apiTokens;
+    private List<String> apiTokens;
     private String serverLink;
     private String color;
     private Boolean smtpApiActivated;
@@ -51,11 +51,11 @@ public class Server {
         this.name = name;
     }
 
-    public ArrayList<String> getApiTokens() {
+    public List<String> getApiTokens() {
         return apiTokens;
     }
 
-    public void setApiTokens(ArrayList<String> apiTokens) {
+    public void setApiTokens(List<String> apiTokens) {
         this.apiTokens = apiTokens;
     }
 

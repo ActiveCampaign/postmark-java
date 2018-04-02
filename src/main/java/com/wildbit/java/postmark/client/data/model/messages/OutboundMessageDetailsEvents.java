@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Outbound message details object.
@@ -11,7 +11,7 @@ public class OutboundMessageDetailsEvents {
     private String recipient;
     private String type;
     private Date receivedAt;
-    private HashMap<String,String> details;
+    private Map<String,String> details;
 
     // GETTERS AND SETTERS
 
@@ -39,11 +39,11 @@ public class OutboundMessageDetailsEvents {
         this.receivedAt = receivedAt;
     }
 
-    public HashMap<String, String> getDetails() {
+    public Map<String, String> getDetails() {
         return details;
     }
 
-    public void setDetails(HashMap<String, String> details) {
+    public void setDetails(Map<String, String> details) {
         this.details = details;
     }
 }

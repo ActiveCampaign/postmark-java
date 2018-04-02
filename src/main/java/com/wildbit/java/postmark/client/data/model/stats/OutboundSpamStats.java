@@ -1,22 +1,22 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Spam stats object.
  */
 public class OutboundSpamStats {
 
-    private ArrayList<SpamStat> days;
+    private List<SpamStat> days;
     private Integer spamComplaint;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<SpamStat> getDays() {
+    public List<SpamStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<SpamStat> days) {
+    public void setDays(List<SpamStat> days) {
         this.days = days;
     }
 

@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tag matchers object.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class TagMatchers {
 
     private Integer totalCount;
-    private ArrayList<TagMatcher> tags;
+    private List<TagMatcher> tags;
 
     // SETTERS AND GETTERS
 
@@ -20,11 +20,11 @@ public class TagMatchers {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<TagMatcher> getTags() {
+    public List<TagMatcher> getTags() {
         return tags;
     }
 
-    public void setTags(ArrayList<TagMatcher> tags) {
+    public void setTags(List<TagMatcher> tags) {
         this.tags = tags;
     }
 }

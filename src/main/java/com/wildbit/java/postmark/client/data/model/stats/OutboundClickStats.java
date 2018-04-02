@@ -1,23 +1,23 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Clicks stats object.
  */
 public class OutboundClickStats {
 
-    private ArrayList<ClickStat> days;
+    private List<ClickStat> days;
     private Integer clicks;
     private Integer unique;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<ClickStat> getDays() {
+    public List<ClickStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<ClickStat> days) {
+    public void setDays(List<ClickStat> days) {
         this.days = days;
     }
 

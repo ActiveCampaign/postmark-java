@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 /**
@@ -10,14 +10,14 @@ public class OutboundMessage {
 
     private String tag;
     private String messageId;
-    private ArrayList<Recipient> to;
-    private ArrayList<Recipient> cc;
-    private ArrayList<Recipient> bcc;
-    private ArrayList<String> recipients;
+    private List<Recipient> to;
+    private List<Recipient> cc;
+    private List<Recipient> bcc;
+    private List<String> recipients;
     private Date receivedAt;
     private String from;
     private String subject;
-    private ArrayList<String> attachments;
+    private List<String> attachments;
     private String status;
     private Boolean trackOpens;
     private String trackLinks;
@@ -40,35 +40,35 @@ public class OutboundMessage {
         this.messageId = messageId;
     }
 
-    public ArrayList<Recipient> getTo() {
+    public List<Recipient> getTo() {
         return to;
     }
 
-    public void setTo(ArrayList<Recipient> to) {
+    public void setTo(List<Recipient> to) {
         this.to = to;
     }
 
-    public ArrayList<Recipient> getCc() {
+    public List<Recipient> getCc() {
         return cc;
     }
 
-    public void setCc(ArrayList<Recipient> cc) {
+    public void setCc(List<Recipient> cc) {
         this.cc = cc;
     }
 
-    public ArrayList<Recipient> getBcc() {
+    public List<Recipient> getBcc() {
         return bcc;
     }
 
-    public void setBcc(ArrayList<Recipient> bcc) {
+    public void setBcc(List<Recipient> bcc) {
         this.bcc = bcc;
     }
 
-    public ArrayList<String> getRecipients() {
+    public List<String> getRecipients() {
         return recipients;
     }
 
-    public void setRecipients(ArrayList<String> recipients) {
+    public void setRecipients(List<String> recipients) {
         this.recipients = recipients;
     }
 
@@ -96,11 +96,11 @@ public class OutboundMessage {
         this.subject = subject;
     }
 
-    public ArrayList<String> getAttachments() {
+    public List<String> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(ArrayList<String> attachments) {
+    public void setAttachments(List<String> attachments) {
         this.attachments = attachments;
     }
 

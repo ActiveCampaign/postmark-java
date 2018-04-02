@@ -1,19 +1,19 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
 import java.util.Date;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Outbound message open object.
  */
 public class OutboundMessageOpen {
 
-    private HashMap<String,String> client;
-    private HashMap<String,String> os;
+    private Map<String,String> client;
+    private Map<String,String> os;
     private String platform;
     private String userAgent;
     private Integer readSeconds;
-    private HashMap<String,String> geo;
+    private Map<String,String> geo;
     private String messageId;
     private Date receivedAt;
     private String tag;
@@ -26,19 +26,19 @@ public class OutboundMessageOpen {
 
     public void setRecordType(String recordType) { this.recordType = recordType; }
 
-    public HashMap<String, String> getClient() {
+    public Map<String, String> getClient() {
         return client;
     }
 
-    public void setClient(HashMap<String, String> client) {
+    public void setClient(Map<String, String> client) {
         this.client = client;
     }
 
-    public HashMap<String, String> getOs() {
+    public Map<String, String> getOs() {
         return os;
     }
 
-    public void setOs(HashMap<String, String> os) {
+    public void setOs(Map<String, String> os) {
         this.os = os;
     }
 
@@ -66,11 +66,11 @@ public class OutboundMessageOpen {
         this.readSeconds = readSeconds;
     }
 
-    public HashMap<String, String> getGeo() {
+    public Map<String, String> getGeo() {
         return geo;
     }
 
-    public void setGeo(HashMap<String, String> geo) {
+    public void setGeo(Map<String, String> geo) {
         this.geo = geo;
     }
 

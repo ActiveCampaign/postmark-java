@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.servers;
 
 import com.wildbit.java.postmark.client.data.model.server.Server;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Servers object.
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Servers {
 
     private int totalCount;
-    private ArrayList<Server> servers;
+    private List<Server> servers;
 
     // GETTERS AND SETTERS
 
@@ -21,11 +21,11 @@ public class Servers {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<Server> getServers() {
+    public List<Server> getServers() {
         return servers;
     }
 
-    public void setServers(ArrayList<Server> servers) {
+    public void setServers(List<Server> servers) {
         this.servers = servers;
     }
 }

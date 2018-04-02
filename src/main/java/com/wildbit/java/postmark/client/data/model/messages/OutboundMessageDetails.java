@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Outbound message details object.
@@ -10,7 +10,7 @@ public class OutboundMessageDetails extends OutboundMessage {
     private String textBody;
     private String htmlBody;
     private String body;
-    private ArrayList<OutboundMessageDetailsEvents> messageEvents;
+    private List<OutboundMessageDetailsEvents> messageEvents;
 
     // GETTERS AND SETTERS
 
@@ -38,11 +38,11 @@ public class OutboundMessageDetails extends OutboundMessage {
         this.body = body;
     }
 
-    public ArrayList<OutboundMessageDetailsEvents> getMessageEvents() {
+    public List<OutboundMessageDetailsEvents> getMessageEvents() {
         return messageEvents;
     }
 
-    public void setMessageEvents(ArrayList<OutboundMessageDetailsEvents> messageEvents) {
+    public void setMessageEvents(List<OutboundMessageDetailsEvents> messageEvents) {
         this.messageEvents = messageEvents;
     }
 }

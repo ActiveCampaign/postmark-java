@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Open platform stats object.
@@ -11,7 +11,7 @@ public class OutboundOpenPlatformStats {
     private Integer mobile;
     private Integer webmail;
     private Integer unknown;
-    private ArrayList<OpenPlatformStat> days;
+    private List<OpenPlatformStat> days;
 
     // SETTERS AND GETTERS
 
@@ -47,11 +47,11 @@ public class OutboundOpenPlatformStats {
         this.unknown = unknown;
     }
 
-    public ArrayList<OpenPlatformStat> getDays() {
+    public List<OpenPlatformStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<OpenPlatformStat> days) {
+    public void setDays(List<OpenPlatformStat> days) {
         this.days = days;
     }
 }

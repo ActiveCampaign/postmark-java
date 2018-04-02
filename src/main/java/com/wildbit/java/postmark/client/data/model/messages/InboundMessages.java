@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Inbound messages object.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class InboundMessages {
 
     private Integer totalCount;
-    private ArrayList<InboundMessage> inboundMessages;
+    private List<InboundMessage> inboundMessages;
 
     // GETTERS AND SETTERS
 
@@ -20,11 +20,11 @@ public class InboundMessages {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<InboundMessage> getInboundMessages() {
+    public List<InboundMessage> getInboundMessages() {
         return inboundMessages;
     }
 
-    public void setInboundMessages(ArrayList<InboundMessage> inboundMessages) {
+    public void setInboundMessages(List<InboundMessage> inboundMessages) {
         this.inboundMessages = inboundMessages;
     }
 }

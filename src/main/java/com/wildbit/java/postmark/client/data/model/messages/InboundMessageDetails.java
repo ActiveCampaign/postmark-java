@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Inbound message details object.
@@ -11,7 +11,7 @@ public class InboundMessageDetails extends InboundMessage {
     private String textBody;
     private String htmlBody;
     private String strippedTextReply;
-    private ArrayList<HashMap<String, String>> headers;
+    private List<Map<String, String>> headers;
     private String blockedReason;
 
     // GETTERS AND SETTERS
@@ -40,11 +40,11 @@ public class InboundMessageDetails extends InboundMessage {
         this.htmlBody = htmlBody;
     }
 
-    public ArrayList<HashMap<String, String>> getHeaders() {
+    public List<Map<String, String>> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(ArrayList<HashMap<String, String>> headers) {
+    public void setHeaders(List<Map<String, String>> headers) {
         this.headers = headers;
     }
 

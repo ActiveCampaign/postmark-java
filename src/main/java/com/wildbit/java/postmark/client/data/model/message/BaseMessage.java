@@ -21,8 +21,8 @@ public class BaseMessage {
     private String htmlBody;
     private String textBody;
     private String tag;
-    private ArrayList<Header> headers;
-    private ArrayList<HashMap<String, String>> attachments;
+    private List<Header> headers;
+    private List<Map<String, String>> attachments;
 
     public BaseMessage() {
         this.attachments = new ArrayList<>();
@@ -67,9 +67,9 @@ public class BaseMessage {
      * Helper method for setting recipients with email address and their Full Name.
      *
      * @param to recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setTo(HashMap<String,String> to) {
+    public void setTo(Map<String,String> to) {
         this.to = convertRecipients(to);
     }
 
@@ -77,9 +77,9 @@ public class BaseMessage {
      * Helper method for setting Array of recipient email addresses.
      *
      * @param to recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setTo(ArrayList<String > to) {
+    public void setTo(List<String > to) {
         this.to = convertRecipients(to);
     }
 
@@ -95,9 +95,9 @@ public class BaseMessage {
      * Helper method for setting recipients with email address and their Full Name.
      *
      * @param cc recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setCc(HashMap<String,String> cc) {
+    public void setCc(Map<String,String> cc) {
         this.cc = convertRecipients(cc);
     }
 
@@ -105,9 +105,9 @@ public class BaseMessage {
      * Helper method for setting Array of recipient email addresses.
      *
      * @param cc recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setCc(ArrayList<String > cc) {
+    public void setCc(List<String > cc) {
         this.cc = convertRecipients(cc);
     }
 
@@ -123,9 +123,9 @@ public class BaseMessage {
      * Helper method for setting recipients with email address and their Full Name.
      *
      * @param bcc recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setBcc(HashMap<String,String> bcc) {
+    public void setBcc(Map<String,String> bcc) {
         this.bcc = convertRecipients(bcc);
     }
 
@@ -133,9 +133,9 @@ public class BaseMessage {
      * Helper method for setting Array of recipient email addresses.
      *
      * @param bcc recipients list
-     * @see #convertRecipients(HashMap) for details
+     * @see #convertRecipients(Map) for details
      */
-    public void setBcc(ArrayList<String > bcc) {
+    public void setBcc(List<String > bcc) {
         this.bcc = convertRecipients(bcc);
     }
 
@@ -180,11 +180,11 @@ public class BaseMessage {
         this.tag = tag;
     }
 
-    public ArrayList<Header> getHeaders() {
+    public List<Header> getHeaders() {
         return headers;
     }
 
-    public void setHeaders(ArrayList<Header> headers) {
+    public void setHeaders(List<Header> headers) {
         this.headers = headers;
     }
 
@@ -201,16 +201,16 @@ public class BaseMessage {
         }
     }
 
-    public ArrayList<HashMap<String, String>> getAttachments() {
+    public List<Map<String, String>> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(ArrayList<HashMap<String, String>> attachments) {
+    public void setAttachments(List<Map<String, String>> attachments) {
         this.attachments = attachments;
     }
 
     public void addAttachment(String path) throws IOException {
-        HashMap<String, String> attachment = new HashMap<>();
+        Map<String, String> attachment = new HashMap<>();
         attachment.put("Name", new File(path).getName());
         attachment.put("Content", readFileContent(path));
         attachment.put("ContentType", readFileContentType(path));
@@ -218,14 +218,14 @@ public class BaseMessage {
         addAttachment(attachment);
     }
 
-    public void addAttachment(HashMap<String, String> attachment) {
+    public void addAttachment(Map<String, String> attachment) {
         if (this.attachments == null) {
             this.attachments = new ArrayList<>();
         }
         attachments.add(attachment);
     }
 
-    public void addAttachments(ArrayList<HashMap<String, String>> attachments) {
+    public void addAttachments(List<Map<String, String>> attachments) {
         attachments.forEach(this::addAttachment);
     }
 
@@ -242,18 +242,18 @@ public class BaseMessage {
 
     /**
      * This helper method allows setting list of recipients which will contain full name next to email address.
-     * By passing something like HashMap of: key -> John Smith, value -> john@example.com
+     * By passing something like Map of: key -> John Smith, value -> john@example.com
      * you would be able to send email to recipient John Smith ("John Smith" <john@example.com>)
      *
-     * @param recipients recipient hashmap, with Full Name, Email address pairs.
+     * @param recipients recipient Map, with Full Name, Email address pairs.
      */
-    private String convertRecipients(HashMap<String,String> recipients) {
+    private String convertRecipients(Map<String,String> recipients) {
 
         StringBuilder recipientsString = new StringBuilder();
 
-        Iterator<HashMap.Entry<String, String>> entries = recipients.entrySet().iterator();
+        Iterator<Map.Entry<String, String>> entries = recipients.entrySet().iterator();
         while (entries.hasNext()) {
-            HashMap.Entry<String, String> entry = entries.next();
+            Map.Entry<String, String> entry = entries.next();
             recipientsString.append("\"").append(entry.getKey()).append("\"").append("<").append(entry.getValue()).append(">");
             if (entries.hasNext()) { recipientsString.append(","); }
         }
@@ -261,7 +261,7 @@ public class BaseMessage {
         return recipientsString.toString();
     }
 
-    private String convertRecipients(ArrayList<String> recipients) {
+    private String convertRecipients(List<String> recipients) {
 
         StringBuilder recipientsString = new StringBuilder();
 

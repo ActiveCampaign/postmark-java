@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Sent stats object.
@@ -8,14 +8,14 @@ import java.util.ArrayList;
 public class OutboundSendStats {
 
     private Integer sent;
-    private ArrayList<SentStat> days;
+    private List<SentStat> days;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<SentStat> getDays() {
+    public List<SentStat> getDays() {
         return days;
     }
-    public void setDays(ArrayList<SentStat> days) {
+    public void setDays(List<SentStat> days) {
         this.days = days;
     }
 

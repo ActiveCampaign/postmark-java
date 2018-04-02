@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.triggers;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Inbound rules object.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class InboundRules {
 
     private Integer totalCount;
-    private ArrayList<InboundRuleResponse> inboundRules;
+    private List<InboundRuleResponse> inboundRules;
 
     // SETTERS AND GETTERS
 
@@ -20,11 +20,11 @@ public class InboundRules {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<InboundRuleResponse> getInboundRules() {
+    public List<InboundRuleResponse> getInboundRules() {
         return inboundRules;
     }
 
-    public void setInboundRules(ArrayList<InboundRuleResponse> inboundRules) {
+    public void setInboundRules(List<InboundRuleResponse> inboundRules) {
         this.inboundRules = inboundRules;
     }
 }

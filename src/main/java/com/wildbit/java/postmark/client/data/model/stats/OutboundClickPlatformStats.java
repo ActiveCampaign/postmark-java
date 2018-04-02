@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Click platform stat object.
@@ -12,7 +12,7 @@ public class OutboundClickPlatformStats {
     private Integer webmail;
     private Integer unknown;
 
-    private ArrayList<ClickPlatformStat> days;
+    private List<ClickPlatformStat> days;
 
     // SETTERS AND GETTERS
 
@@ -48,11 +48,11 @@ public class OutboundClickPlatformStats {
         this.unknown = unknown;
     }
 
-    public ArrayList<ClickPlatformStat> getDays() {
+    public List<ClickPlatformStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<ClickPlatformStat> days) {
+    public void setDays(List<ClickPlatformStat> days) {
         this.days = days;
     }
 }

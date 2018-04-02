@@ -1,23 +1,23 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Open stats object.
  */
 public class OutboundOpenStats {
 
-    private ArrayList<OpenStat> days;
+    private List<OpenStat> days;
     private Integer opens;
     private Integer unique;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<OpenStat> getDays() {
+    public List<OpenStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<OpenStat> days) {
+    public void setDays(List<OpenStat> days) {
         this.days = days;
     }
 

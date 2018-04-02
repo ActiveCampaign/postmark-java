@@ -1,22 +1,22 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Tracked stats object.
  */
 public class OutboundTrackedStats {
 
-    private ArrayList<TrackedStat> days;
+    private List<TrackedStat> days;
     private Integer tracked;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<TrackedStat> getDays() {
+    public List<TrackedStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<TrackedStat> days) {
+    public void setDays(List<TrackedStat> days) {
         this.days = days;
     }
 

@@ -1,22 +1,22 @@
 package com.wildbit.java.postmark.client.data.model.senders;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Signatures object.
  */
 public class Signatures {
 
-    private ArrayList<Signature> senderSignatures;
+    private List<Signature> senderSignatures;
     private Integer totalCount;
 
     // SETTERS AND GETTERS
 
-    public ArrayList<Signature> getSenderSignatures() {
+    public List<Signature> getSenderSignatures() {
         return senderSignatures;
     }
 
-    public void setSenderSignatures(ArrayList<Signature> senderSignatures) {
+    public void setSenderSignatures(List<Signature> senderSignatures) {
         this.senderSignatures = senderSignatures;
     }
 

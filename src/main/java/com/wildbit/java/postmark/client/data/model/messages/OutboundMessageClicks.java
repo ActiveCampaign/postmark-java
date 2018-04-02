@@ -1,13 +1,13 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Outbound message clicks object.
  */
 public class OutboundMessageClicks {
     private Integer totalCount;
-    private ArrayList<OutboundMessageClick> clicks;
+    private List<OutboundMessageClick> clicks;
 
     // GETTERS AND SETTERS
 
@@ -19,11 +19,11 @@ public class OutboundMessageClicks {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<OutboundMessageClick> getClicks() {
+    public List<OutboundMessageClick> getClicks() {
         return clicks;
     }
 
-    public void setClicks(ArrayList<OutboundMessageClick> clicks) {
+    public void setClicks(List<OutboundMessageClick> clicks) {
         this.clicks = clicks;
     }
 }

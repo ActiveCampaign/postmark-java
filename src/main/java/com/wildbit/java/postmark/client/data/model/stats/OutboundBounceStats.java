@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.stats;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Bounce stat object.
@@ -16,7 +16,7 @@ public class OutboundBounceStats {
 
     // SETTERS AND GETTERS
 
-    private ArrayList<BounceStat> days;
+    private List<BounceStat> days;
 
     public Integer getHardBounce() {
         return hardBounce;
@@ -66,11 +66,11 @@ public class OutboundBounceStats {
         Transient = aTransient;
     }
 
-    public ArrayList<BounceStat> getDays() {
+    public List<BounceStat> getDays() {
         return days;
     }
 
-    public void setDays(ArrayList<BounceStat> days) {
+    public void setDays(List<BounceStat> days) {
         this.days = days;
     }
 }

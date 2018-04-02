@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Templates list object.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Templates {
 
     private Integer totalCount;
-    private ArrayList<BaseTemplate> templates;
+    private List<BaseTemplate> templates;
 
     // SETTERS AND GETTERS
 
@@ -20,11 +20,11 @@ public class Templates {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<BaseTemplate> getTemplates() {
+    public List<BaseTemplate> getTemplates() {
         return templates;
     }
 
-    public void setTemplates(ArrayList<BaseTemplate> templates) {
+    public void setTemplates(List<BaseTemplate> templates) {
         this.templates = templates;
     }
 }

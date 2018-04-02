@@ -1,14 +1,14 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Template validation field details object.
  */
 public class TemplateValidationField {
     private Boolean contentIsValid;
-    private ArrayList<HashMap<String,String>> validationErrors;
+    private List<Map<String,String>> validationErrors;
     private String renderedContent;
 
     // SETTERS AND GETTERS
@@ -21,11 +21,11 @@ public class TemplateValidationField {
         this.contentIsValid = contentIsValid;
     }
 
-    public ArrayList<HashMap<String, String>> getValidationErrors() {
+    public List<Map<String, String>> getValidationErrors() {
         return validationErrors;
     }
 
-    public void setValidationErrors(ArrayList<HashMap<String, String>> validationErrors) {
+    public void setValidationErrors(List<Map<String, String>> validationErrors) {
         this.validationErrors = validationErrors;
     }
 

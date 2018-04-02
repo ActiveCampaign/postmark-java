@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 /**
@@ -12,11 +12,11 @@ public class InboundMessage {
     private String fromName;
     private InboundRecipient fromFull;
     private String to;
-    private ArrayList<InboundRecipient> toFull;
+    private List<InboundRecipient> toFull;
     private String cc;
-    private ArrayList<InboundRecipient> ccFull;
+    private List<InboundRecipient> ccFull;
     private String bcc;
-    private ArrayList<InboundRecipient> bccFull;
+    private List<InboundRecipient> bccFull;
     private String replyTo;
     private String originalRecipient;
     private String subject;
@@ -25,7 +25,7 @@ public class InboundMessage {
     private String tag;
     private String messageId;
     private String status;
-    private ArrayList<Attachment> attachments;
+    private List<Attachment> attachments;
 
     // GETTERS AND SETTERS
 
@@ -61,11 +61,11 @@ public class InboundMessage {
         this.to = to;
     }
 
-    public ArrayList<InboundRecipient> getToFull() {
+    public List<InboundRecipient> getToFull() {
         return toFull;
     }
 
-    public void setToFull(ArrayList<InboundRecipient> toFull) {
+    public void setToFull(List<InboundRecipient> toFull) {
         this.toFull = toFull;
     }
 
@@ -77,11 +77,11 @@ public class InboundMessage {
         this.cc = cc;
     }
 
-    public ArrayList<InboundRecipient> getCcFull() {
+    public List<InboundRecipient> getCcFull() {
         return ccFull;
     }
 
-    public void setCcFull(ArrayList<InboundRecipient> ccFull) {
+    public void setCcFull(List<InboundRecipient> ccFull) {
         this.ccFull = ccFull;
     }
 
@@ -93,11 +93,11 @@ public class InboundMessage {
         this.bcc = bcc;
     }
 
-    public ArrayList<InboundRecipient> getBccFull() {
+    public List<InboundRecipient> getBccFull() {
         return bccFull;
     }
 
-    public void setBccFull(ArrayList<InboundRecipient> bccFull) {
+    public void setBccFull(List<InboundRecipient> bccFull) {
         this.bccFull = bccFull;
     }
 
@@ -165,11 +165,11 @@ public class InboundMessage {
         this.status = status;
     }
 
-    public ArrayList<Attachment> getAttachments() {
+    public List<Attachment> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(ArrayList<Attachment> attachments) {
+    public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
     }
 }
