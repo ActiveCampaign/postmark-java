@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.bounces;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Bounces object
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Bounces {
 
     private int totalCount;
-    private ArrayList<Bounce> bounces;
+    private List<Bounce> bounces;
 
     // SETTERS AND GETTERS
 
@@ -20,11 +20,11 @@ public class Bounces {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<Bounce> getBounces() {
+    public List<Bounce> getBounces() {
         return bounces;
     }
 
-    public void setBounces(ArrayList<Bounce> bounces) {
+    public void setBounces(List<Bounce> bounces) {
         this.bounces = bounces;
     }
 }

@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.domains;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Domains object.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Domains {
 
     private Integer totalCount;
-    private ArrayList<Domain> domains;
+    private List<Domain> domains;
 
     // GETTERS AND SETTERS
 
@@ -20,11 +20,11 @@ public class Domains {
         this.totalCount = totalCount;
     }
 
-    public ArrayList<Domain> getDomains() {
+    public List<Domain> getDomains() {
         return domains;
     }
 
-    public void setDomains(ArrayList<Domain> domains) {
+    public void setDomains(List<Domain> domains) {
         this.domains = domains;
     }
 }

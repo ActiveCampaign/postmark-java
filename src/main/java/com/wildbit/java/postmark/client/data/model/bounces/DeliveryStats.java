@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.bounces;
 
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Delivery Stats object
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class DeliveryStats {
 
     private int inactiveMails;
-    private ArrayList<BounceType> bounces;
+    private List<BounceType> bounces;
 
     // SETTERS AND GETTERS
 
@@ -20,11 +20,11 @@ public class DeliveryStats {
         this.inactiveMails = inactiveMails;
     }
 
-    public ArrayList<BounceType> getBounces() {
+    public List<BounceType> getBounces() {
         return bounces;
     }
 
-    public void setBounces(ArrayList<BounceType> bounces) {
+    public void setBounces(List<BounceType> bounces) {
         this.bounces = bounces;
     }
 }
