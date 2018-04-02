@@ -42,4 +42,20 @@ public class DomainTest extends BaseTest {
         assertNotNull(response);
     }
 
+    @Test
+    void verifyDKIM() throws PostmarkException, IOException {
+        Domains domains = client.getDomains(Parameters.init().build("count",6).build("offset",0));
+        Integer domainId = domains.getDomains().get(0).getId();
+        DomainDetails domainDetails = client.verifyDomainDKIM(domainId);
+        assertNotNull(domainDetails.getDkimTextValue());
+    }
+
+    @Test
+    void verifyReturnPath() throws PostmarkException, IOException {
+        Domains domains = client.getDomains(Parameters.init().build("count",6).build("offset",0));
+        Integer domainId = domains.getDomains().get(0).getId();
+        DomainDetails domainDetails = client.verifyDomainReturnPath(domainId);
+        assertNotNull(domainDetails.getDkimTextValue());
+    }
+
 }

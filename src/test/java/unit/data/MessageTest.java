@@ -16,7 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
- * Created by bash on 11/13/17.
+ * Message data tests.
  */
 public class MessageTest extends BaseTest {
 

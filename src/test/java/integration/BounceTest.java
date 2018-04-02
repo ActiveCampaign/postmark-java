@@ -1,22 +1,23 @@
 package integration;
 
 import base.BaseTest;
+import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.wildbit.java.postmark.client.ApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounce;
 import com.wildbit.java.postmark.client.data.model.bounces.BounceDump;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
 import com.wildbit.java.postmark.client.data.model.bounces.DeliveryStats;
+import com.wildbit.java.postmark.client.data.model.message.BaseMessageResponse;
+import com.wildbit.java.postmark.client.exception.InvalidMessageException;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-
 import java.io.IOException;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by bash on 11/14/17.
@@ -40,6 +41,19 @@ public class BounceTest extends BaseTest {
 
         assertTrue(bounces.getTotalCount() > 0);
         assertNotNull(bounces.getBounces().get(0).getBouncedAt());
+    }
+
+    @Test
+    void bounceListEmpty() throws PostmarkException, IOException {
+        Bounces bounces = client.getBounces(Parameters.init().build("count", 5).build("offset", 0).build("emailFilter","notexist292random"));
+        assertEquals(bounces.getTotalCount(),0);
+    }
+
+    @Test
+    void invalidBounceList() throws PostmarkException, IOException {
+        Throwable exception = assertThrows(InvalidMessageException.class,
+                ()-> client.getBounces(Parameters.init().build("count", -1).build("offset", 0)));
+
     }
 
     @Test
@@ -68,7 +82,6 @@ public class BounceTest extends BaseTest {
 
         BounceDump bounceDump = client.getBounceDump(bounceId);
         assertNotNull(bounceDump.getBody());
-
     }
 
     @Test

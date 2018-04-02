@@ -50,9 +50,15 @@ public class ParametersTest {
     }
 
     @Test
-    void dateParameter() throws ParseException {
+    void dateFromParameter() throws ParseException {
         String parameters = Parameters.init().build("fromDate", sampleDate(dateString)).toString();
         assertEquals("?fromDate=" + dateString, parameters.toString());
+    }
+
+    @Test
+    void dateToParameter() throws ParseException {
+        String parameters = Parameters.init().build("toDate", sampleDate(dateString)).toString();
+        assertEquals("?toDate=" + dateString, parameters.toString());
     }
 
     @Test
