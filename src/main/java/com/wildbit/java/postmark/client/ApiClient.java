@@ -61,7 +61,6 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
     }
 
-
     /*
       Bounced messages endpoints
      */
@@ -140,6 +139,16 @@ public class ApiClient extends BaseApiClient {
     public TemplateValidation validateTemplate(TemplateToValidate data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(templatesEndpoint + "validate"), data);
         return dataHandler.fromJson(response, TemplateValidation.class);
+    }
+
+    /**
+     * Old method for sending messages with templates.
+     *
+     * @deprecated use {@link #deliverMessageWithTemplate(TemplatedMessage)} ()} instead.
+     */
+    @Deprecated
+    public MessageResponse deliverMessage(TemplatedMessage data) throws PostmarkException, IOException {
+        return deliverMessageWithTemplate(data);
     }
 
     public MessageResponse deliverMessageWithTemplate(TemplatedMessage data) throws PostmarkException, IOException {
