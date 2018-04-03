@@ -4,12 +4,16 @@ import base.BaseTest;
 import com.wildbit.java.postmark.client.AccountApiClient;
 import com.wildbit.java.postmark.client.Parameters;
 import com.wildbit.java.postmark.client.data.model.senders.SignatureDetails;
+import com.wildbit.java.postmark.client.data.model.senders.SignatureToCreate;
 import com.wildbit.java.postmark.client.data.model.senders.Signatures;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
+import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -19,6 +23,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class SendersTest extends BaseTest {
 
     AccountApiClient client = getDefaultAccountApiClient();
+
+    SignatureToCreate testSignatureObject() {
+        SignatureToCreate signature = new SignatureToCreate();
+        signature.setFromEmail("igor@wildbit.cexample.com");
+        signature.setName("Igor Test");
+        return signature;
+    }
 
     @Test
     void list() throws PostmarkException, IOException {
@@ -34,6 +45,24 @@ public class SendersTest extends BaseTest {
         Integer senderId = senders.getSenderSignatures().get(0).getId();
         SignatureDetails senderDetails = client.getSenderSignatureDetails(senderId);
         assertNotNull(senderDetails.getConfirmed());
+    }
+
+    @Test
+    void createSignature() throws PostmarkException, IOException {
+        Integer senderId = null;
+
+        SignatureDetails senderDetails = client.createSenderSignature(testSignatureObject());
+        senderId = senderDetails.getId();
+        assertTrue(senderId instanceof Integer);
+
+        client.deleteSenderSignature(senderId);
+    }
+
+    @Test
+    void deleteSignature() throws PostmarkException, IOException {
+        SignatureDetails senderDetails = client.createSenderSignature(testSignatureObject());
+        String response = client.deleteSenderSignature(senderDetails.getId());
+        assertTrue(response.contains("removed"));
     }
 
 

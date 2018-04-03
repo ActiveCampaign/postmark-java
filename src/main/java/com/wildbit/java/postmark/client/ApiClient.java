@@ -159,7 +159,6 @@ public class ApiClient extends BaseApiClient {
     }
 
     public ArrayList<MessageResponse> deliverMessageWithTemplate(ArrayList<TemplatedMessage> data) throws PostmarkException, IOException {
-
         /*
           When sending array of emails with templates, additional top level field is used called "Messages".
           This introduces unnecessary difference between batch and batchWithTemplates endpoint in data model.
