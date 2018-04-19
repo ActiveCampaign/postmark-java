@@ -1,6 +1,7 @@
 **/*.log
 **/*.DS_Store
 **/*.idea
+**/*.iml
 target
 src/test/java/temp
 src/test/resources/*properties*
