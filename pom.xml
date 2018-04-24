@@ -24,7 +24,7 @@
     </developers>
 
     <properties>
-        <postmark.version>1.1.1</postmark.version>
+        <postmark.version>1.1.2</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <junit.jupiter.version>5.0.0-M4</junit.jupiter.version>
