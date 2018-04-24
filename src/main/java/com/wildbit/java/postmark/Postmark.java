@@ -13,8 +13,7 @@ import java.util.Properties;
  */
 public class Postmark {
 
-    private Postmark() {
-    }
+    private Postmark() {}
     
     /**
      * Base Postmark APP Constants
