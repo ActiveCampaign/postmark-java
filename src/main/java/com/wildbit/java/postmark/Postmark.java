@@ -13,8 +13,6 @@ import java.util.Properties;
  */
 public class Postmark {
 
-    private Postmark() {}
-    
     /**
      * Base Postmark APP Constants
      */
@@ -45,13 +43,7 @@ public class Postmark {
 
     }
 
-    private static MultivaluedHashMap getHeadersWithAuth(DEFAULTS authType, String apiToken) {
-        MultivaluedHashMap headers = DefaultHeaders.headers();
-        headers.add(authType.value, apiToken);
-        return headers;
-    }
-
-    private static String libraryVersion()  {
+    public static String libraryVersion()  {
         Properties prop = new Properties();
         InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(".properties");
 
@@ -79,4 +71,13 @@ public class Postmark {
         return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
     }
 
+    // private methods
+
+    private Postmark() {}
+
+    private static MultivaluedHashMap getHeadersWithAuth(DEFAULTS authType, String apiToken) {
+        MultivaluedHashMap headers = DefaultHeaders.headers();
+        headers.add(authType.value, apiToken);
+        return headers;
+    }
 }
