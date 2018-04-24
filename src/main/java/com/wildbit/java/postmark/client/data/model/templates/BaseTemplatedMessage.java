@@ -77,14 +77,6 @@ public class BaseTemplatedMessage {
         this.inlineCss = inlineCss;
     }
 
-    public List<Map<String, String>> getAttachments() {
-        return attachments;
-    }
-
-    public void setAttachments(List<Map<String, String>> attachments) {
-        this.attachments = attachments;
-    }
-
     public String getFrom() {
         return from;
     }
@@ -184,17 +176,63 @@ public class BaseTemplatedMessage {
         }
     }
 
+    public List<Map<String, String>> getAttachments() {
+        return attachments;
+    }
 
+    public void setAttachments(List<Map<String, String>> attachments) {
+        this.attachments = attachments;
+    }
+
+    /**
+     * Add attachments from file path
+     *
+     * @param path file path
+     */
     public void addAttachment(String path) throws IOException {
+        addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path));
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param filename filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     */
+    public void addAttachment(String filename, String content, String contentType) {
+        addAttachment(filename, content.getBytes(),contentType);
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param name filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     */
+    public void addAttachment(String name, byte[] content, String contentType) {
         Map<String, String> attachment = new HashMap<>();
-        attachment.put("Name", new File(path).getName());
-        attachment.put("Content", readFileContent(path));
-        attachment.put("ContentType", readFileContentType(path));
+        attachment.put("Name", name);
+        attachment.put("Content", Base64.getEncoder().encodeToString(content));
+        attachment.put("ContentType", contentType);
 
         addAttachment(attachment);
     }
 
+    /**
+     * Add attachments as hash. To add it, attachment needs to look like this:
+     *
+     * attachment.put("Name", "filename.txt");
+     * attachment.put("Content", Base64.getEncoder().encodeToString("test content".getBytes()));
+     * attachment.put("ContentType", "application/text");
+     *
+     * @param attachment hash map of attachment.
+     */
     public void addAttachment(Map<String, String> attachment) {
+        if (this.attachments == null) {
+            this.attachments = new ArrayList<>();
+        }
         attachments.add(attachment);
     }
 
@@ -202,9 +240,8 @@ public class BaseTemplatedMessage {
         attachments.forEach(this::addAttachment);
     }
 
-    private String readFileContent(String path) throws IOException {
-        byte[] bytes = Files.readAllBytes(Paths.get(path));
-        return Base64.getEncoder().encodeToString(bytes);
+    private byte[] readFileContent(String path) throws IOException {
+        return Files.readAllBytes(Paths.get(path));
     }
 
     private String readFileContentType(String path) {

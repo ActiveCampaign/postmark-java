@@ -248,7 +248,6 @@ public class BaseMessage {
     /**
      * Add attachments as hash. To add it, attachment needs to look like this:
      *
-     * HashMap<String,String> attachment = new HashMap<>();
      * attachment.put("Name", "filename.txt");
      * attachment.put("Content", Base64.getEncoder().encodeToString("test content".getBytes()));
      * attachment.put("ContentType", "application/text");
