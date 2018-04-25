@@ -30,8 +30,8 @@ Note: to retrieve latest version number, visit [maven central repository](http:/
 
 ## Issues & Comments
 
-Feel free to contact us if you encounter any issues with the library or Postmark API.
-Please leave all comments, bugs, requests and issues on the Issues page. 
+Feel free to contact us if you encounter any issues with the library or Postmark API. For any known issues and resolutions, please check out the [wiki section](https://github.com/wildbit/postmark-java/wiki/Known-issues-and-how-to-resolve-them).
+Please leave all comments, bugs, requests and issues on the Issues page.  
 
 ## License
 
