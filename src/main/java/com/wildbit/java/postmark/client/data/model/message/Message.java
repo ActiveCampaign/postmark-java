@@ -1,5 +1,10 @@
 package com.wildbit.java.postmark.client.data.model.message;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * Postmark email message object
  */
@@ -19,6 +24,7 @@ public class Message extends BaseMessage {
 
     private Boolean trackOpens;
     private String trackLinks;
+    private List<HashMap<String, String>> metadata;
 
     public Message() {
         super();
@@ -46,8 +52,19 @@ public class Message extends BaseMessage {
         return trackLinks;
     }
 
-    public void setTrackLinks(TRACK_LINKS trackLinks) {
-        this.trackLinks = trackLinks.value;
+    public void setTrackLinks(TRACK_LINKS trackLinks) { this.trackLinks = trackLinks.value; }
+
+    public List<HashMap<String, String>> getMetadata() { return metadata; }
+
+    public void setMetadata(List<HashMap<String, String>> metadata) { this.metadata = metadata; }
+
+    public void addMetadata(String key, String value) {
+        if (metadata == null) {
+            metadata = new ArrayList<>();
+        }
+        HashMap<String,String> field = new HashMap<>();
+        field.put(key, value);
+        metadata.add(field);
     }
 
 }

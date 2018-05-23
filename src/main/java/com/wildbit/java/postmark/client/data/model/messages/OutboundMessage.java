@@ -1,5 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class OutboundMessage {
     private String status;
     private Boolean trackOpens;
     private String trackLinks;
+    private List<HashMap<String, String>> metadata;
 
     // GETTERS AND SETTERS
 
@@ -127,5 +129,9 @@ public class OutboundMessage {
     public void setTrackLinks(String trackLinks) {
         this.trackLinks = trackLinks;
     }
+
+    public List<HashMap<String, String>> getMetadata() { return metadata; }
+
+    public void setMetadata(List<HashMap<String, String>> metadata) { this.metadata = metadata; }
 
 }

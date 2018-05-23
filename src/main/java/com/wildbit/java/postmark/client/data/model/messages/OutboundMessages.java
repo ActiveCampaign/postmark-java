@@ -20,9 +20,7 @@ public class OutboundMessages {
         this.totalCount = totalCount;
     }
 
-    public List<OutboundMessage> getMessages() {
-        return messages;
-    }
+    public List<OutboundMessage> getMessages() { return messages; }
 
     public void setMessages(List<OutboundMessage> messages) {
         this.messages = messages;
