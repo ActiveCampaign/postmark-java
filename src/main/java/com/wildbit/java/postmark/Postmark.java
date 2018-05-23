@@ -2,9 +2,9 @@ package com.wildbit.java.postmark;
 
 import com.wildbit.java.postmark.client.AccountApiClient;
 import com.wildbit.java.postmark.client.ApiClient;
+import org.apache.log4j.Logger;
 
 import javax.ws.rs.core.MultivaluedHashMap;
-import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
@@ -47,8 +47,10 @@ public class Postmark {
         Properties prop = new Properties();
         InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(".properties");
 
-        try { prop.load(in); } catch (IOException e) {
-            e.printStackTrace();
+        try {
+            prop.load(in);
+        } catch (Exception e) {
+            log.error(e.toString());
         }
         return prop.getProperty("Version");
     }
@@ -74,6 +76,8 @@ public class Postmark {
     // private methods
 
     private Postmark() {}
+
+    private static Logger log = Logger.getLogger(Postmark.class);
 
     private static MultivaluedHashMap getHeadersWithAuth(DEFAULTS authType, String apiToken) {
         MultivaluedHashMap headers = DefaultHeaders.headers();
