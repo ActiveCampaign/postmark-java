@@ -50,7 +50,7 @@ public class Postmark {
         try {
             prop.load(in);
         } catch (Exception e) {
-            log.error(e.toString());
+            log.warn(e.toString());
         }
         return prop.getProperty("Version");
     }
