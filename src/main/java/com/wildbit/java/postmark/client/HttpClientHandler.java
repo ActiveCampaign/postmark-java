@@ -6,6 +6,7 @@ import org.apache.log4j.Level;
 import org.apache.log4j.spi.RootLogger;
 
 import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
 /**
@@ -18,7 +19,7 @@ public class HttpClientHandler {
     protected final DataHandler dataHandler;
     private boolean secureConnection = true;
 
-    protected HttpClientHandler(MultivaluedHashMap<String,Object> headers) {
+    protected HttpClientHandler(MultivaluedMap<String,Object> headers) {
         this.dataHandler = new DataHandler(false);
         httpClient = new HttpClient(headers);
     }

@@ -6,7 +6,7 @@ import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.servers.Servers;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
-import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
 /**
@@ -23,11 +23,11 @@ public class AccountApiClient extends BaseApiClient {
     private final String domainsEndpoint = "/domains/";
     private final String sendersEndpoint = "/senders/";
 
-    public AccountApiClient(String baseUrl, MultivaluedHashMap<String,Object> headers) {
+    public AccountApiClient(String baseUrl, MultivaluedMap<String,Object> headers) {
         super(baseUrl,headers);
     }
 
-    public AccountApiClient(String baseUrl, MultivaluedHashMap<String,Object> headers, boolean secureConnection) {
+    public AccountApiClient(String baseUrl, MultivaluedMap<String,Object> headers, boolean secureConnection) {
         super(baseUrl, headers, secureConnection);
     }
 
