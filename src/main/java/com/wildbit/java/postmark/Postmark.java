@@ -35,7 +35,7 @@ public class Postmark {
     public static class DefaultHeaders {
 
         public static MultivaluedMap<String, String> headers() {
-            MultivaluedHashMap<String, String> headerValues = new MultivaluedHashMap<>();
+            MultivaluedMap<String, String> headerValues = new MultivaluedHashMap<>();
             headerValues.add("User-Agent", "Postmark Java Library: " + libraryVersion());
             headerValues.add("Accept", "application/json");
             headerValues.add("Content-Type", "application/json");
