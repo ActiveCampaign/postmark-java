@@ -5,7 +5,6 @@ import com.wildbit.java.postmark.client.exception.*;
 import org.apache.log4j.Level;
 import org.apache.log4j.spi.RootLogger;
 
-import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
@@ -24,7 +23,7 @@ public class HttpClientHandler {
         httpClient = new HttpClient(headers);
     }
 
-    protected HttpClientHandler(MultivaluedHashMap<String,Object> headers, boolean secureConnection) {
+    protected HttpClientHandler(MultivaluedMap<String,Object> headers, boolean secureConnection) {
         this(headers);
         this.secureConnection = secureConnection;
     }
