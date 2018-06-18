@@ -2,7 +2,7 @@ package unit.client;
 
 import com.wildbit.java.postmark.Postmark;
 import com.wildbit.java.postmark.client.ApiClient;
-import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class ApiClientTest {
 
-    MultivaluedHashMap headers = Postmark.DefaultHeaders.headers();
+    MultivaluedMap headers = Postmark.DefaultHeaders.headers();
     ApiClient client = new ApiClient(Postmark.DEFAULTS.API_URL.value, headers);
 
     @Test

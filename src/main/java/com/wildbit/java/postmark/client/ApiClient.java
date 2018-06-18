@@ -14,7 +14,7 @@ import com.wildbit.java.postmark.client.data.model.templates.*;
 import com.wildbit.java.postmark.client.data.model.triggers.*;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
-import javax.ws.rs.core.MultivaluedHashMap;
+import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,11 +39,11 @@ public class ApiClient extends BaseApiClient {
     private final String triggerInboundRulesEndpoint    = "/triggers/inboundRules/";
     private final String sendingEndpoint                = "/email/";
 
-    public ApiClient(String baseUrl, MultivaluedHashMap<String, Object> headers) {
+    public ApiClient(String baseUrl, MultivaluedMap<String, Object> headers) {
         super(baseUrl,headers);
     }
 
-    public ApiClient(String baseUrl, MultivaluedHashMap<String, Object>  headers, boolean secureConnection) {
+    public ApiClient(String baseUrl, MultivaluedMap<String, Object>  headers, boolean secureConnection) {
         super(baseUrl, headers, secureConnection);
     }
 
