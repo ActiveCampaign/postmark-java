@@ -11,13 +11,13 @@ import java.util.List;
 public class OpenWebhook extends OutboundMessageOpen {
 
     private Boolean firstOpen;
-    private List<HashMap<String, String>> metadata;
+    private HashMap<String, String> metadata;
 
     // GETTERS AND SETTERS
 
-    public List<HashMap<String, String>> getMetadata() { return metadata; }
+    public HashMap<String, String> getMetadata() { return metadata; }
 
-    public void setMetadata(List<HashMap<String, String>> metadata) { this.metadata = metadata; }
+    public void setMetadata(HashMap<String, String> metadata) { this.metadata = metadata; }
 
     public Boolean getFirstOpen() {
         return firstOpen;

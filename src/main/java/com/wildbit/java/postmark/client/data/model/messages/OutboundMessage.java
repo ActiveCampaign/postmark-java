@@ -22,7 +22,7 @@ public class OutboundMessage {
     private String status;
     private Boolean trackOpens;
     private String trackLinks;
-    private List<HashMap<String, String>> metadata;
+    private HashMap<String, String> metadata;
 
     // GETTERS AND SETTERS
 
@@ -130,8 +130,8 @@ public class OutboundMessage {
         this.trackLinks = trackLinks;
     }
 
-    public List<HashMap<String, String>> getMetadata() { return metadata; }
+    public HashMap<String, String> getMetadata() { return metadata; }
 
-    public void setMetadata(List<HashMap<String, String>> metadata) { this.metadata = metadata; }
+    public void setMetadata(HashMap<String, String> metadata) { this.metadata = metadata; }
 
 }
