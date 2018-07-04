@@ -1,4 +1,6 @@
-<img src="postmark.png" alt="Postmark Logo" title="Postmark" width="148" height="148" align="right">
+<a href="https://postmarkapp.com">
+    <img src="postmark.png" alt="Postmark Logo" title="Postmark" width="120" height="120" align="right">
+</a>
 
 # Postmark Java Library
 [![Build Status](https://travis-ci.org/wildbit/postmark-java.svg?branch=master)](https://travis-ci.org/wildbit/postmark-java)
