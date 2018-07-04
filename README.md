@@ -1,3 +1,5 @@
+<img src="postmark.png" alt="Postmark Logo" title="Postmark" width="148" height="148" align="right">
+
 # Postmark Java Library
 [![Build Status](https://travis-ci.org/wildbit/postmark-java.svg?branch=master)](https://travis-ci.org/wildbit/postmark-java)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
