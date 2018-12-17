@@ -1,5 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
+import java.util.HashMap;
+
 /**
  * Template Message with all details object.
  */
@@ -19,16 +21,7 @@ public class TemplatedMessage extends BaseTemplatedMessage {
 
     private Boolean trackOpens;
     private String trackLinks;
-
-    // SETTERS AND GETTERS
-
-    public Boolean getTrackOpens() { return trackOpens; }
-
-    public void setTrackOpens(Boolean trackOpens) { this.trackOpens = trackOpens; }
-
-    public String getTrackLinks() { return trackLinks; }
-
-    public void setTrackLinks(String trackLinks) { this.trackLinks = trackLinks; }
+    private HashMap<String, String> metadata;
 
     public TemplatedMessage() {
         super();
@@ -42,4 +35,24 @@ public class TemplatedMessage extends BaseTemplatedMessage {
         super(from, to, templateId);
     }
 
+    // SETTERS AND GETTERS
+
+    public Boolean getTrackOpens() { return trackOpens; }
+
+    public void setTrackOpens(Boolean trackOpens) { this.trackOpens = trackOpens; }
+
+    public String getTrackLinks() { return trackLinks; }
+
+    public void setTrackLinks(String trackLinks) { this.trackLinks = trackLinks; }
+
+    public HashMap<String, String> getMetadata() { return metadata; }
+
+    public void setMetadata(HashMap<String, String> metadata) { this.metadata = metadata; }
+
+    public void addMetadata(String key, String value) {
+        if (metadata == null) {
+            metadata = new HashMap<>();
+        }
+        metadata.put(key,value);
+    }
 }
