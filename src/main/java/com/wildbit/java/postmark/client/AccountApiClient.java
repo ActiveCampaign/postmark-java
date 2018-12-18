@@ -4,6 +4,9 @@ import com.wildbit.java.postmark.client.data.model.domains.*;
 import com.wildbit.java.postmark.client.data.model.senders.*;
 import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.servers.Servers;
+import com.wildbit.java.postmark.client.data.model.templates.TemplatesPush;
+import com.wildbit.java.postmark.client.data.model.templates.TemplatesPushAction;
+import com.wildbit.java.postmark.client.data.model.templates.TemplatesPushRequest;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -35,7 +38,6 @@ public class AccountApiClient extends BaseApiClient {
       Servers endpoints for managing Servers in account.
      */
 
-
     public Server getServers(Integer id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(serversEndpoint + id));
         return dataHandler.fromJson(response, Server.class);
@@ -59,7 +61,6 @@ public class AccountApiClient extends BaseApiClient {
     public String deleteServer(Integer id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(serversEndpoint + id));
     }
-
 
     /*
       Domain endpoints
@@ -107,7 +108,6 @@ public class AccountApiClient extends BaseApiClient {
         return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint + id + "/rotateDKIM"));
     }
 
-
     /*
       Sender Signature endpoints
      */
@@ -149,4 +149,12 @@ public class AccountApiClient extends BaseApiClient {
         return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendersEndpoint + id + "/requestNewDKIM"));
     }
 
+    /*
+      Templates endpoints
+     */
+
+    public TemplatesPush pushTemplates(TemplatesPushRequest data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/templates/push"), data);
+        return dataHandler.fromJson(response, TemplatesPush.class);
+    }
 }
