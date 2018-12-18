@@ -103,7 +103,6 @@ public class TemplateTest extends BaseTest {
     void list() throws PostmarkException, IOException {
         Templates templates = client.getTemplates(Parameters.init().build("offset", 0).build("count", 4));
         assertNotNull(templates.getTotalCount());
-
     }
 
 }
