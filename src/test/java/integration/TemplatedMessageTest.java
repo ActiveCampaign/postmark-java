@@ -15,6 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Map;
 
 public class TemplatedMessageTest extends BaseTest {
 
@@ -32,14 +33,14 @@ public class TemplatedMessageTest extends BaseTest {
     void metadata() throws PostmarkException, IOException {
         TemplatedMessage message = new TemplatedMessage("from@example.com", "to@example.com", 1);
 
-        HashMap<String,String> metadata = new HashMap<String, String>();
+        Map<String,String> metadata = new HashMap<String, String>();
         metadata.put("test1","value1");
 
         message.setMetadata(metadata);
         message.addMetadata("test2","value2");
         message.addMetadata("test3","value3");
 
-        HashMap<String,String> templatedMessageMetadata = message.getMetadata();
+        Map<String,String> templatedMessageMetadata = message.getMetadata();
         assertEquals(templatedMessageMetadata.get("test1"), "value1");
         assertEquals(templatedMessageMetadata.get("test2"), "value2");
         assertEquals(templatedMessageMetadata.get("test3"), "value3");
