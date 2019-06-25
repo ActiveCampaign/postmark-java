@@ -12,6 +12,10 @@ import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
 
+/**
+ * In some of the responses from Postmark API, date format is not detected correctly by Jackson.
+ * This class handles additional custom date formats when deserializing data.
+ */
 public class CustomDateDeserializer extends StdDeserializer<Date> {
     private static final long serialVersionUID = 1L;
 
