@@ -9,6 +9,8 @@ public class BaseTemplate {
     private Boolean active;
     private String name;
     private Integer templateId;
+    private TemplateTypes templateType;
+    private String layoutTemplate;
 
     // SETTERS AND GETTERS
 
@@ -38,5 +40,17 @@ public class BaseTemplate {
 
     public void setTemplateId(Integer templateId) {
         this.templateId = templateId;
+    }
+
+    public String getLayoutTemplate() { return layoutTemplate; }
+
+    public void setLayoutTemplate(String layoutTemplate) { this.layoutTemplate = layoutTemplate; }
+
+    public TemplateTypes getTemplateType() {
+        return templateType;
+    }
+
+    public void setTemplateType(TemplateTypes templateType) {
+        this.templateType = templateType;
     }
 }

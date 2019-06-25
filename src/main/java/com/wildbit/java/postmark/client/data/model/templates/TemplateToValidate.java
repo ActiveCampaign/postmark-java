@@ -8,6 +8,9 @@ public class TemplateToValidate {
     private String htmlBody;
     private String textBody;
     private Object testRenderModel;
+    private TemplateTypes templateType;
+    private String layoutTemplate;
+    private Boolean inlineCssForHtmlTestRender;
 
     // SETTERS AND GETTERS
 
@@ -42,4 +45,18 @@ public class TemplateToValidate {
     public void setTextBody(String textBody) {
         this.textBody = textBody;
     }
+
+    public TemplateTypes getTemplateType() { return templateType; }
+
+    public void setTemplateType(TemplateTypes templateType) { this.templateType = templateType; }
+
+    public Boolean getInlineCssForHtmlTestRender() { return inlineCssForHtmlTestRender; }
+
+    public void setInlineCssForHtmlTestRender(Boolean inlineCssForHtmlTestRender) {
+        this.inlineCssForHtmlTestRender = inlineCssForHtmlTestRender;
+    }
+
+    public String getLayoutTemplate() { return layoutTemplate; }
+
+    public void setLayoutTemplate(String layoutTemplate) { this.layoutTemplate = layoutTemplate; }
 }

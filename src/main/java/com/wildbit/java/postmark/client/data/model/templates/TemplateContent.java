@@ -9,6 +9,12 @@ public class TemplateContent {
     private String htmlBody;
     private String textBody;
     private String alias;
+    private TemplateTypes templateType;
+    private String layoutTemplate;
+
+    public TemplateContent() {
+        this.setTemplateType(TemplateTypes.Standard);
+    }
 
     // SETTERS AND GETTERS
 
@@ -47,4 +53,12 @@ public class TemplateContent {
     public void setTextBody(String textBody) {
         this.textBody = textBody;
     }
+
+    public TemplateTypes getTemplateType() { return templateType; }
+
+    public void setTemplateType(TemplateTypes templateType) { this.templateType = templateType; }
+
+    public String getLayoutTemplate() { return layoutTemplate; }
+
+    public void setLayoutTemplate(String layoutTemplate) { this.layoutTemplate = layoutTemplate; }
 }
