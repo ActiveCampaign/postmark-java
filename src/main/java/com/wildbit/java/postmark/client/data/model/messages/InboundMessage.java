@@ -1,4 +1,6 @@
 package com.wildbit.java.postmark.client.data.model.messages;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.wildbit.java.postmark.client.jackson.CustomDateDeserializer;
 
 import java.util.List;
 import java.util.Date;
@@ -20,6 +22,8 @@ public class InboundMessage {
     private String replyTo;
     private String originalRecipient;
     private String subject;
+
+    @JsonDeserialize(using = CustomDateDeserializer.class)
     private Date date;
     private String mailboxHash;
     private String tag;
