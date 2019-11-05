@@ -1,4 +1,4 @@
-package com.wildbit.java.postmark.client.data.model.webhooks;
+package com.wildbit.java.postmark.client.data.model.webhooks.sent_payload;
 
 import com.wildbit.java.postmark.client.data.model.messages.OutboundMessageOpen;
 

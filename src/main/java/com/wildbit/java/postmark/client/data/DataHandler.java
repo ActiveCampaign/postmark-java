@@ -55,7 +55,7 @@ public class DataHandler {
      * @return String object converted to requested object
      * @throws IOException in case converting String to Object fails
      */
-    public <T> T fromJson(String response, TypeReference valueType) throws IOException {
+    public <T> T fromJson(String response, TypeReference<T> valueType) throws IOException {
         return this.mapper.readValue(response, valueType);
     }
 

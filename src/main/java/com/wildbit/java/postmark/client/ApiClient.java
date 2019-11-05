@@ -12,6 +12,8 @@ import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.stats.*;
 import com.wildbit.java.postmark.client.data.model.templates.*;
 import com.wildbit.java.postmark.client.data.model.triggers.*;
+import com.wildbit.java.postmark.client.data.model.webhooks.Webhook;
+import com.wildbit.java.postmark.client.data.model.webhooks.Webhooks;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
 import javax.ws.rs.core.MultivaluedMap;
@@ -38,6 +40,7 @@ public class ApiClient extends BaseApiClient {
     private final String triggerTagsEndpoint            = "/triggers/tags/";
     private final String triggerInboundRulesEndpoint    = "/triggers/inboundRules/";
     private final String sendingEndpoint                = "/email/";
+    private final String webhooksEndpoint               = "/webhooks/";
 
     public ApiClient(String baseUrl, MultivaluedMap<String, Object> headers) {
         super(baseUrl,headers);
@@ -382,6 +385,38 @@ public class ApiClient extends BaseApiClient {
     public InboundRules getInboundRules(Parameters parameters) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerInboundRulesEndpoint + parameters));
         return dataHandler.fromJson(response, InboundRules.class);
+    }
+
+    /*
+        Webhooks endpoints
+     */
+
+    public Webhooks getWebhooks() throws PostmarkException, IOException {
+        return getWebhooks(Parameters.init());
+    }
+
+    public Webhooks getWebhooks(Parameters parameters) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(webhooksEndpoint + parameters));
+        return dataHandler.fromJson(response, Webhooks.class);
+    }
+
+    public Webhook getWebhook(Integer id) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(webhooksEndpoint + id));
+        return dataHandler.fromJson(response, Webhook.class);
+    }
+
+    public Webhook createWebhook(Webhook data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(webhooksEndpoint), data);
+        return dataHandler.fromJson(response, Webhook.class);
+    }
+
+    public Webhook setWebhook(Integer id, Webhook data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(webhooksEndpoint + id), data);
+        return dataHandler.fromJson(response, Webhook.class);
+    }
+
+    public String deleteWebhook(Integer id) throws PostmarkException, IOException {
+        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(webhooksEndpoint + id));
     }
 
 }
