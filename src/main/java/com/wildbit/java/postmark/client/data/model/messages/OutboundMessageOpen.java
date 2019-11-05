@@ -19,8 +19,17 @@ public class OutboundMessageOpen {
     private String tag;
     private String recipient;
     private String recordType;
+    private String messageStream;
 
     // GETTERS AND SETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getRecordType() { return recordType; }
 

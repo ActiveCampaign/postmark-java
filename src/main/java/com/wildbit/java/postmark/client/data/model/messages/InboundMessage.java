@@ -30,8 +30,17 @@ public class InboundMessage {
     private String messageId;
     private String status;
     private List<Attachment> attachments;
+    private String messageStream;
 
     // GETTERS AND SETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getFrom() {
         return from;

@@ -23,8 +23,17 @@ public class OutboundMessage {
     private Boolean trackOpens;
     private String trackLinks;
     private Map<String, String> metadata;
+    private String messageStream;
 
     // GETTERS AND SETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getTag() {
         return tag;

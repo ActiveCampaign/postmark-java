@@ -25,8 +25,17 @@ public class Bounce {
     private String subject;
     private String content;
     private String recordType;
+    private String messageStream;
 
     // SETTERS AND GETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getRecordType() { return recordType; }
 
