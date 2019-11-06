@@ -6,7 +6,6 @@ env:
     - # ^^ POSTMARK_ACCOUNT_TOKEN=?
 language: java
 jdk:
-  - oraclejdk8
   - openjdk8
   - openjdk9
   - openjdk10
