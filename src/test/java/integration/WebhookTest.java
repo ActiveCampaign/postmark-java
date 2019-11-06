@@ -27,13 +27,13 @@ public class WebhookTest extends BaseTest {
         Webhook webhookCreated = client.createWebhook(new Webhook("http://example.com"));
         assertNotNull(webhookCreated.getId());
 
-        client.deleteTemplate(webhookCreated.getId());
+        client.deleteWebhook(webhookCreated.getId());
     }
 
     @Test
     void deleteWebhook() throws PostmarkException, IOException {
         Webhook webhookCreated = client.createWebhook(new Webhook("http://example.com"));
-        String stringResponse = client.deleteTemplate(webhookCreated.getId());
+        String stringResponse = client.deleteWebhook(webhookCreated.getId());
         assertNotNull(stringResponse);
     }
 
