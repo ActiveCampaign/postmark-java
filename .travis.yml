@@ -5,4 +5,10 @@ env:
     - secure: "V17wfqVlzmjRZ7UlA/LnSpYJTObBmozSw1xT+tu70+FCF3qPfE2zx27Vfp4jYIi7i0wNmW2DtTII9/skACyZMDERfnst3NSzAK6b4UZnh/1UdeKvMwdzPNFOL+lMHhG6G1DrlIjeswjhpcxgvGgRdpYl+Uj+a4I1EyfgSbduSqULl7kJLfkZADzszwIKfTd7OH4/ZNPzWirCj1gr9CWSnP3g8BqgqpuedkFqnI/7+a4uY6N6rWtJT/CF2syeS0sHGkqeMEG2JCKRp63jBeEWk3ED09DLwqOP+ZQZyhEC5WwXj8RF4pPSqOyrIHNWsoQMQ8cpa9+25Vz2sKubGq0E4gP8Eairf7U9ur6hs1ChNXNkLCqwm+amHgxp+xrSWeqeNA9wQb/H10OTLKvtMxEKQH0pH+l6eA5YLbsanx9FwZC++iQBxmSZfObd691aFRqIRTjy8sNMcn87X60V5j5z0JXh1ufPeQq0cWmu3aupOj+1MWMY56W883Ll6qnt+0eQJAxJCcoSvog1Cn28EG1222jcW+HPEB3S62CbaOBAe5Q5e27H3X78c2YszLiB0c8p1ytjSTrMtEWCiQ6ErszfhFBMmYkFqEXo1pfhcufcJe5gvSDtT1ej3a/mp+HMblssxxUyiNgqgvazqPNXNLdLwF5N0IDrT6zlD+RuGkSDkDk="
     - # ^^ POSTMARK_ACCOUNT_TOKEN=?
 language: java
+jdk:
+  - oraclejdk8
+  - openjdk8
+  - openjdk9
+  - openjdk10
+  - openjdk11
 install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
