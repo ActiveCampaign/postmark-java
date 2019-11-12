@@ -92,11 +92,6 @@ public class ApiClient extends BaseApiClient {
         return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(bouncesEndpoint + id + "/activate"));
     }
 
-    public ArrayList getBounceTags() throws PostmarkException, IOException {
-        return dataHandler.fromJson(execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + "tags")), ArrayList.class);
-    }
-
-
     /*
       Template handling endpoints
      */

@@ -83,13 +83,4 @@ public class BounceTest extends BaseTest {
         BounceDump bounceDump = client.getBounceDump(bounceId);
         assertNotNull(bounceDump.getBody());
     }
-
-    @Test
-    void bounceTags() throws PostmarkException, IOException {
-        ArrayList<String> bounceTags = client.getBounceTags();
-
-        assertTrue(bounceTags.size() > 0);
-        assertNotNull(bounceTags.get(0));
-    }
-
 }
