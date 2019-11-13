@@ -219,6 +219,28 @@ public class BaseMessage {
     }
 
     /**
+     * Add attachments from file path with content id. Easiest way to add inline image attachments.
+     *
+     * @param path file path
+     * @param contentId file content id, like "cid:image.jpg", very usefull for inline images
+     */
+    public void addAttachment(String path, String contentId) throws IOException {
+        addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path), contentId);
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param filename filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     * @param contentId file content id
+     */
+    public void addAttachment(String filename, String content, String contentType, String contentId) {
+        addAttachment(filename, content.getBytes(),contentType, contentId);
+    }
+
+    /**
      * Add attachments by file details
      *
      * @param filename filename to show up in email
@@ -241,6 +263,24 @@ public class BaseMessage {
         attachment.put("Name", name);
         attachment.put("Content", Base64.getEncoder().encodeToString(content));
         attachment.put("ContentType", contentType);
+
+        addAttachment(attachment);
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param name filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     * @param contentId file content id, like "cid:image.jpg", very usefull for inline images
+     */
+    public void addAttachment(String name, byte[] content, String contentType, String contentId) {
+        Map<String, String> attachment = new HashMap<>();
+        attachment.put("Name", name);
+        attachment.put("Content", Base64.getEncoder().encodeToString(content));
+        attachment.put("ContentType", contentType);
+        attachment.put("ContentId", contentId);
 
         addAttachment(attachment);
     }
