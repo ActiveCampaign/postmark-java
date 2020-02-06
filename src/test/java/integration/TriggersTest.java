@@ -23,12 +23,6 @@ public class TriggersTest extends BaseTest {
     ApiClient client = getDefaultApiClient();
 
     @Test
-    void listTagTriggers() throws PostmarkException, IOException {
-        TagMatchers matchers = client.getTriggerTags(Parameters.init().build("count",5).build("offset",0));
-        assertNotNull(matchers.getTotalCount());
-    }
-
-    @Test
     void listInboundRuleTriggers() throws PostmarkException, IOException {
         InboundRules inboundRules = client.getInboundRules(Parameters.init().build("count",5).build("offset",0));
         assertNotNull(inboundRules.getTotalCount());

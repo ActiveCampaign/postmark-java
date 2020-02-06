@@ -72,7 +72,6 @@ public class BounceTest extends BaseTest {
 
         String message = client.activateBounce(bounceId);
         assertNotNull(message);
-        assertFalse(client.getBounce(bounceId).getInactive());
     }
 
     @Test

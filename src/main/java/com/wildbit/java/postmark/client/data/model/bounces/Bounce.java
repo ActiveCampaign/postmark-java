@@ -12,8 +12,8 @@ public class Bounce {
     private Integer typeCode;
     private String name;
     private String tag;
-    private String messageID;
-    private Integer serverID;
+    private String messageId;
+    private Integer serverId;
     private String description;
     private String details;
     private String email;
@@ -79,20 +79,20 @@ public class Bounce {
         this.tag = tag;
     }
 
-    public String getMessageID() {
-        return messageID;
+    public String getmessageId() {
+        return messageId;
     }
 
-    public void setMessageID(String messageID) {
-        this.messageID = messageID;
+    public void setmessageId(String messageId) {
+        this.messageId = messageId;
     }
 
-    public Integer getServerID() {
-        return serverID;
+    public Integer getserverId() {
+        return serverId;
     }
 
-    public void setServerID(Integer serverID) {
-        this.serverID = serverID;
+    public void setserverId(Integer serverId) {
+        this.serverId = serverId;
     }
 
     public String getDescription() {

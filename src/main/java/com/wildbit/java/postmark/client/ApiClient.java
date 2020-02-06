@@ -10,6 +10,9 @@ import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
 import com.wildbit.java.postmark.client.data.model.messages.*;
 import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.stats.*;
+import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionEntries;
+import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionStatuses;
+import com.wildbit.java.postmark.client.data.model.suppressions.Suppressions;
 import com.wildbit.java.postmark.client.data.model.templates.*;
 import com.wildbit.java.postmark.client.data.model.triggers.*;
 import com.wildbit.java.postmark.client.data.model.webhooks.Webhook;
@@ -41,6 +44,8 @@ public class ApiClient extends BaseApiClient {
     private final String triggerInboundRulesEndpoint    = "/triggers/inboundRules/";
     private final String sendingEndpoint                = "/email/";
     private final String webhooksEndpoint               = "/webhooks/";
+    private final String suppressionsEndpoint           = "/suppressions/";
+    private final String messageStreamsEndpoint           = "/message-streams/";
 
     public ApiClient(String baseUrl, MultivaluedMap<String, Object> headers) {
         super(baseUrl,headers);
@@ -332,36 +337,6 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, OutboundClickLocationStats.class);
     }
 
-
-    /*
-      Trigger Tags endpoints
-     */
-
-    public TagMatcher createTriggerTag(TagMatcher data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(triggerTagsEndpoint), data);
-        return dataHandler.fromJson(response, TagMatcher.class);
-    }
-
-    public TagMatcher getTriggerTag(Integer id) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerTagsEndpoint + id));
-        return dataHandler.fromJson(response, TagMatcher.class);
-    }
-
-    public TagMatcher setTriggerTag(Integer id, TagMatcher data) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(triggerTagsEndpoint + id), data);
-        return dataHandler.fromJson(response, TagMatcher.class);
-    }
-
-    public String deleteTriggerTag(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(triggerTagsEndpoint + id));
-    }
-
-    public TagMatchers getTriggerTags(Parameters parameters) throws PostmarkException, IOException {
-        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(triggerTagsEndpoint + parameters));
-        return dataHandler.fromJson(response, TagMatchers.class);
-    }
-
-
     /*
       Trigger Inbound Rules endpoints
      */
@@ -413,5 +388,32 @@ public class ApiClient extends BaseApiClient {
     public String deleteWebhook(Integer id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(webhooksEndpoint + id));
     }
+
+    /*
+        Suppression endpoints
+    */
+
+    public Suppressions getSuppressions(String messageStream) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET,
+                getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint + "dump");
+        return dataHandler.fromJson(response, Suppressions.class);
+    }
+
+    public SuppressionStatuses createSuppressions(String messageStream, SuppressionEntries suppressions)
+            throws PostmarkException, IOException {
+
+        String response = execute(HttpClient.REQUEST_TYPES.POST,
+                getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint, suppressions);
+        return dataHandler.fromJson(response, SuppressionStatuses.class);
+    }
+
+    public SuppressionStatuses deleteSuppressions(String messageStream, SuppressionEntries suppressions)
+            throws PostmarkException, IOException {
+
+        String response = execute(HttpClient.REQUEST_TYPES.POST,
+                getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint + "delete", suppressions);
+        return dataHandler.fromJson(response, SuppressionStatuses.class);
+    }
+
 
 }

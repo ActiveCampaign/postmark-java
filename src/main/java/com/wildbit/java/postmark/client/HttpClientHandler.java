@@ -2,11 +2,11 @@ package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.exception.*;
-import org.apache.log4j.Level;
 import org.apache.log4j.spi.RootLogger;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
+import org.apache.log4j.Level;
 
 /**
  * Client class acts as handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
