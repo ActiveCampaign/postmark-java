@@ -59,7 +59,7 @@ public class BounceTest extends BaseTest {
     @Test
     void bounceById() throws PostmarkException, IOException {
         Bounces bounces = client.getBounces(Parameters.init().build("count", 1).build("offset", 0));
-        Integer bounceId = bounces.getBounces().get(0).getId();
+        Long bounceId = bounces.getBounces().get(0).getId();
 
         Bounce bounce = client.getBounce(bounceId);
         assertNotNull(bounce.getDescription());
@@ -68,7 +68,7 @@ public class BounceTest extends BaseTest {
     @Test
     void activateBounce() throws PostmarkException, IOException {
         Bounces bounces = client.getBounces(Parameters.init().build("count", 1).build("offset", 0).build("inactive",true));
-        Integer bounceId = bounces.getBounces().get(0).getId();
+        Long bounceId = bounces.getBounces().get(0).getId();
 
         String message = client.activateBounce(bounceId);
         assertNotNull(message);
@@ -77,7 +77,7 @@ public class BounceTest extends BaseTest {
     @Test
     void bounceByIdDump() throws PostmarkException, IOException {
         Bounces bounces = client.getBounces(Parameters.init().build("count", 1).build("offset", 0));
-        Integer bounceId = bounces.getBounces().get(0).getId();
+        Long bounceId = bounces.getBounces().get(0).getId();
 
         BounceDump bounceDump = client.getBounceDump(bounceId);
         assertNotNull(bounceDump.getBody());

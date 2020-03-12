@@ -35,7 +35,7 @@ public class BounceTest extends BaseTest {
                 "}";
 
         Bounce bounce = new Bounce();
-        bounce.setId(1);
+        bounce.setId(1L);
         bounce.setContent("test");
         ArrayList<Bounce> data = new ArrayList<>();
         data.add(bounce);

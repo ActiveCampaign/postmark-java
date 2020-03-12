@@ -83,17 +83,17 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, Bounces.class);
     }
 
-    public Bounce getBounce(Integer id) throws PostmarkException, IOException {
+    public Bounce getBounce(Long id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + id));
         return dataHandler.fromJson(response, Bounce.class);
     }
 
-    public BounceDump getBounceDump(Integer id) throws PostmarkException, IOException {
+    public BounceDump getBounceDump(Long id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(bouncesEndpoint + id + "/dump"));
         return dataHandler.fromJson(response, BounceDump.class);
     }
 
-    public String activateBounce(Integer id) throws PostmarkException, IOException {
+    public String activateBounce(Long id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(bouncesEndpoint + id + "/activate"));
     }
 

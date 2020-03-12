@@ -7,7 +7,7 @@ import java.util.Date;
  */
 public class Bounce {
 
-    private Integer id;
+    private Long id;
     private String type;
     private Integer typeCode;
     private String name;
@@ -41,9 +41,9 @@ public class Bounce {
 
     public void setRecordType(String recordType) { this.recordType = recordType; }
 
-    public Integer getId() { return id;}
+    public Long getId() { return id;}
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
