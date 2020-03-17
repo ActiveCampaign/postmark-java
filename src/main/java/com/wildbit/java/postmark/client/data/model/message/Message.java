@@ -36,6 +36,10 @@ public class Message extends BaseMessage {
         super(from, to, subject, htmlBody, textBody);
     }
 
+    public Message(String from, String to, String subject, String htmlBody, String textBody, String messageStream) {
+        super(from, to, subject, htmlBody, textBody, messageStream);
+    }
+
     // SETTERS AND GETTERS
 
     public Boolean getTrackOpens() {

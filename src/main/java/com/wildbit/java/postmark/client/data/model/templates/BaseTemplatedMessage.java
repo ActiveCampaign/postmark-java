@@ -17,6 +17,7 @@ public class BaseTemplatedMessage {
     private Integer templateId;
     private String templateAlias;
     private Object templateModel;
+    private String messageStream;
     private Boolean inlineCss;
     private String from;
     private String to;
@@ -39,6 +40,21 @@ public class BaseTemplatedMessage {
         this.to = to;
     }
 
+    public BaseTemplatedMessage(String from, String to, String templateAlias) {
+        this();
+        this.from = from;
+        this.to = to;
+        this.templateAlias = templateAlias;
+    }
+
+    public BaseTemplatedMessage(String from, String to, String templateAlias, String messageStream) {
+        this();
+        this.from = from;
+        this.to = to;
+        this.templateAlias = templateAlias;
+        this.messageStream = messageStream;
+    }
+
     public BaseTemplatedMessage(String from, String to, Integer templateId) {
         this();
         this.from = from;
@@ -46,8 +62,24 @@ public class BaseTemplatedMessage {
         this.templateId = templateId;
     }
 
+    public BaseTemplatedMessage(String from, String to, Integer templateId, String messageStream) {
+        this();
+        this.from = from;
+        this.to = to;
+        this.templateId = templateId;
+        this.messageStream = messageStream;
+    }
+
 
     // SETTERS AND GETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getTemplateAlias() { return templateAlias; }
 
@@ -194,6 +226,28 @@ public class BaseTemplatedMessage {
     }
 
     /**
+     * Add attachments from file path with content id. Easiest way to add inline image attachments.
+     *
+     * @param path file path
+     * @param contentId file content id, like "cid:image.jpg", very usefull for inline images
+     */
+    public void addAttachment(String path, String contentId) throws IOException {
+        addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path), contentId);
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param filename filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     * @param contentId file content id
+     */
+    public void addAttachment(String filename, String content, String contentType, String contentId) {
+        addAttachment(filename, content.getBytes(),contentType, contentId);
+    }
+
+    /**
      * Add attachments by file details
      *
      * @param filename filename to show up in email
@@ -216,6 +270,24 @@ public class BaseTemplatedMessage {
         attachment.put("Name", name);
         attachment.put("Content", Base64.getEncoder().encodeToString(content));
         attachment.put("ContentType", contentType);
+
+        addAttachment(attachment);
+    }
+
+    /**
+     * Add attachments by file details
+     *
+     * @param name filename to show up in email
+     * @param content file content
+     * @param contentType file content type
+     * @param contentId file content id, like "cid:image.jpg", very usefull for inline images
+     */
+    public void addAttachment(String name, byte[] content, String contentType, String contentId) {
+        Map<String, String> attachment = new HashMap<>();
+        attachment.put("Name", name);
+        attachment.put("Content", Base64.getEncoder().encodeToString(content));
+        attachment.put("ContentType", contentType);
+        attachment.put("ContentId", contentId);
 
         addAttachment(attachment);
     }

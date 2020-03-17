@@ -12,6 +12,7 @@ import eu.medsea.mimeutil.MimeUtil;
  * Base email message object
  */
 public class BaseMessage {
+    private String messageStream;
     private String from;
     private String to;
     private String cc;
@@ -45,7 +46,25 @@ public class BaseMessage {
         this.attachments = new ArrayList<>();
     }
 
+    public BaseMessage(String from, String to, String subject, String htmlBody, String textBody, String messageStream) {
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.htmlBody = htmlBody;
+        this.textBody = textBody;
+        this.messageStream = messageStream;
+        this.attachments = new ArrayList<>();
+    }
+
     // SETTERS AND GETTERS
+
+    public String getMessageStream() {
+        return messageStream;
+    }
+
+    public void setMessageStream(String messageStream) {
+        this.messageStream = messageStream;
+    }
 
     public String getFrom() {
         return from;

@@ -36,6 +36,18 @@ public class TemplatedMessage extends BaseTemplatedMessage {
         super(from, to, templateId);
     }
 
+    public TemplatedMessage(String from, String to, String templateAlias) {
+        super(from, to, templateAlias);
+    }
+
+    public TemplatedMessage(String from, String to, String templateAlias, String messageStream) {
+        super(from, to, templateAlias, messageStream);
+    }
+
+    public TemplatedMessage(String from, String to, Integer templateId, String messageStream) {
+        super(from, to, templateId, messageStream);
+    }
+
     // SETTERS AND GETTERS
 
     public Boolean getTrackOpens() { return trackOpens; }
