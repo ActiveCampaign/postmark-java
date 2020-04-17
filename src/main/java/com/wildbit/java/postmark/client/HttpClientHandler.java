@@ -140,7 +140,7 @@ public class HttpClientHandler {
                 throw new InvalidAPIKeyException(dataHandler.formatErrorMessage(message));
 
             case 422:
-                throw new InvalidMessageException(dataHandler.formatErrorMessage(message));
+                throw new InvalidMessageException(dataHandler.formatErrorMessage(message), dataHandler.formatErrorCode(message));
 
             case 500:
                 throw new InternalServerException(dataHandler.formatErrorMessage(message));

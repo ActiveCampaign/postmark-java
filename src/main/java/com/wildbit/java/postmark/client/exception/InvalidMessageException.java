@@ -5,8 +5,15 @@ package com.wildbit.java.postmark.client.exception;
  */
 
 public class InvalidMessageException extends PostmarkException {
-    public InvalidMessageException(String message) {
+    private final Integer errorCode;
+
+    public InvalidMessageException(String message, Integer errorCode) {
         super(message);
+        this.errorCode = errorCode;
+    }
+
+    public Integer getErrorCode() {
+        return errorCode;
     }
 }
 
