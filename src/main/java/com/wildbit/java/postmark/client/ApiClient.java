@@ -219,6 +219,11 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, OutboundMessageDetails.class);
     }
 
+    public OutboundMessageDetails getMessageDetails(String id, Parameters parameters) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + id + "/details" + parameters));
+        return dataHandler.fromJson(response, OutboundMessageDetails.class);
+    }
+
     public OutboundMessageDump getMessageDump(String id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(outboundMessagesEndpoint + id + "/dump"));
         return dataHandler.fromJson(response, OutboundMessageDump.class);
