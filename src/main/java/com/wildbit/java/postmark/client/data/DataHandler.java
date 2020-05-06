@@ -71,6 +71,23 @@ public class DataHandler {
     }
 
     /**
+     * Helper for filtering out error code returned by Postmark in case of HTTP status code 422
+     * @param data JSON object as String
+     * @return error code
+     * @throws IOException in case converting String to Object fails
+     */
+    public Integer formatErrorCode(String data) throws IOException {
+        JsonNode node = fromJson(data, JsonNode.class);
+        JsonNode errorCodeNode = node.get("ErrorCode");
+
+        if (errorCodeNode == null || errorCodeNode.isNull()) {
+            return null;
+        }
+
+        return errorCodeNode.intValue();
+    }
+
+    /**
      * Sets data mapper to be strict when making conversion of data to objects.
      * If there is a mismatch between object and String in any other case than letter case,
      * exception will be thrown.
