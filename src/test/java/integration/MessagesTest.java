@@ -40,8 +40,7 @@ public class MessagesTest extends BaseTest {
     void messageByIdWithParameters() throws PostmarkException, IOException {
         OutboundMessages messages = client.getMessages(Parameters.init().build("count", 1).build("offset", 0));
         String messageId = messages.getMessages().get(0).getMessageId();
-        Parameters parameters = new Parameters()
-            .build("includeMessageContent", "Full");
+        Parameters parameters = new Parameters().build("includeMessageContent", "Full");
         OutboundMessageDetails message = client.getMessageDetails(messageId, parameters);
 
         assertNotNull(message.getReceivedAt());

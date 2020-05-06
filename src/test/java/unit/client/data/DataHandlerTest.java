@@ -66,13 +66,4 @@ public class DataHandlerTest {
         assertEquals(result,getHashMap());
     }
 
-    @Test
-    void formatErrorMessage() throws IOException {
-        HashMap<String, String> hashMap = new HashMap<>();
-        hashMap.put("ErrorCode", "Hey test");
-        hashMap.put("Message", "This is a message");
-
-        assertEquals(hashMap.get("Message"),dataHandler.formatErrorMessage(dataHandler.toJson(hashMap)));
-    }
-
 }

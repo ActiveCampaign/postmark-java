@@ -1,6 +1,7 @@
 package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.DataHandler;
+import com.wildbit.java.postmark.client.data.model.PostmarkError;
 import com.wildbit.java.postmark.client.exception.*;
 import org.apache.log4j.spi.RootLogger;
 
@@ -16,10 +17,12 @@ public class HttpClientHandler {
 
     private final HttpClient httpClient;
     protected final DataHandler dataHandler;
+    private final HttpClientErrorHandler httpClientErrorHandler;
     private boolean secureConnection = true;
 
     protected HttpClientHandler(MultivaluedMap<String,Object> headers) {
         this.dataHandler = new DataHandler(false);
+        this.httpClientErrorHandler = new HttpClientErrorHandler(this.dataHandler);
         httpClient = new HttpClient(headers);
     }
 
@@ -60,8 +63,13 @@ public class HttpClientHandler {
      */
     protected String execute(HttpClient.REQUEST_TYPES request_type, String url, Object data) throws PostmarkException, IOException {
         HttpClient.ClientResponse response = httpClient.execute(request_type, getSecureUrl(url), dataHandler.toJson(data));
-        validateResponse(response);
-        return response.getMessage();
+
+        if (response.getCode() == 200) {
+            return response.getMessage();
+        }
+        else {
+            throw httpClientErrorHandler.throwErrorBasedOnStatusCode(response.getCode(), response.getMessage());
+        }
     }
 
     /**
@@ -120,35 +128,4 @@ public class HttpClientHandler {
         String urlPrefix = this.secureConnection ? "https://" : "http://";
         return urlPrefix + url;
     }
-
-    /**
-     *
-     * Validates HTTP request responses.
-     *
-     * @param response HTTP request response
-     * @throws PostmarkException in case invalid HTTP response is returned.
-     */
-    private void validateResponse(HttpClient.ClientResponse response) throws PostmarkException, IOException {
-        int code = response.getCode();
-        String message = response.getMessage();
-
-        switch (code) {
-
-            case 200: break;
-
-            case 401:
-                throw new InvalidAPIKeyException(dataHandler.formatErrorMessage(message));
-
-            case 422:
-                throw new InvalidMessageException(dataHandler.formatErrorMessage(message), dataHandler.formatErrorCode(message));
-
-            case 500:
-                throw new InternalServerException(dataHandler.formatErrorMessage(message));
-
-            default:
-                throw new UnknownException(message);
-
-        }
-    }
-
 }
