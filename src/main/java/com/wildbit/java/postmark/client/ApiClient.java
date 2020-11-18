@@ -403,6 +403,12 @@ public class ApiClient extends BaseApiClient {
                 getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint + "dump");
         return dataHandler.fromJson(response, Suppressions.class);
     }
+    
+    public Suppressions getSuppressions(String messageStream, Parameters parameters) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET,
+                getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint + "dump" + parameters);
+        return dataHandler.fromJson(response, Suppressions.class);
+    }
 
     public SuppressionStatuses createSuppressions(String messageStream, SuppressionEntries suppressions)
             throws PostmarkException, IOException {
