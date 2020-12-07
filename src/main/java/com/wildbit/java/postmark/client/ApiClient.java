@@ -147,6 +147,9 @@ public class ApiClient extends BaseApiClient {
     /**
      * Old method for sending messages with templates.
      *
+     * @param data - template message data
+     * @return message response
+     *
      * @deprecated use {@link #deliverMessageWithTemplate(TemplatedMessage)} ()} instead.
      */
     @Deprecated

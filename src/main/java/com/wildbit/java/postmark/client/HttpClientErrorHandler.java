@@ -21,7 +21,9 @@ public class HttpClientErrorHandler {
      *
      * @param statusCode - HTTP status code
      * @param message - HTTP response message
-     * @throws PostmarkException in case invalid HTTP response is returned.
+     * @return postmark error
+     *
+     * @throws java.io.IOException in case invalid HTTP response is returned.
      */
     public PostmarkException throwErrorBasedOnStatusCode(Integer statusCode, String message) throws IOException {
         switch (statusCode) {

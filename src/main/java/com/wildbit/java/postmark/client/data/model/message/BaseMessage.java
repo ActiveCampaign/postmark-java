@@ -232,6 +232,7 @@ public class BaseMessage {
      * Add attachments from file path
      *
      * @param path file path
+     * @throws IOException
      */
     public void addAttachment(String path) throws IOException {
         addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path));
