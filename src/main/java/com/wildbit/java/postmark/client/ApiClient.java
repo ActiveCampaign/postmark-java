@@ -5,6 +5,7 @@ import com.wildbit.java.postmark.client.data.model.bounces.Bounce;
 import com.wildbit.java.postmark.client.data.model.bounces.BounceDump;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
 import com.wildbit.java.postmark.client.data.model.bounces.DeliveryStats;
+import com.wildbit.java.postmark.client.data.model.message.BaseMessageResponse;
 import com.wildbit.java.postmark.client.data.model.message.Message;
 import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
 import com.wildbit.java.postmark.client.data.model.messages.*;
@@ -265,12 +266,12 @@ public class ApiClient extends BaseApiClient {
 
     public String bypassInboundMessage(String id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/bypass"));
-        return dataHandler.fromJson(response, String.class);
+        return dataHandler.fromJson(response, BaseMessageResponse.class).getMessage();
     }
 
-    public String retryFailedInboundMessage(String id) throws PostmarkException, IOException {
+    public String retryFailedInboundMessage( String id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/retry"));
-        return dataHandler.fromJson(response, String.class);
+        return dataHandler.fromJson(response, BaseMessageResponse.class).getMessage();
     }
 
     /*
