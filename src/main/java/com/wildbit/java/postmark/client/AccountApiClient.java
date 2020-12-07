@@ -1,5 +1,6 @@
 package com.wildbit.java.postmark.client;
 
+import com.wildbit.java.postmark.client.data.model.RequestResponse;
 import com.wildbit.java.postmark.client.data.model.domains.*;
 import com.wildbit.java.postmark.client.data.model.senders.*;
 import com.wildbit.java.postmark.client.data.model.server.Server;
@@ -58,8 +59,9 @@ public class AccountApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, Servers.class);
     }
 
-    public String deleteServer(Integer id) throws PostmarkException, IOException {
-        return execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(serversEndpoint + id));
+    public RequestResponse deleteServer(Integer id) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.DELETE, getEndpointUrl(serversEndpoint + id));
+        return dataHandler.fromJson(response, RequestResponse.class);
     }
 
     /*

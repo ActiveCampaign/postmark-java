@@ -1,11 +1,11 @@
 package com.wildbit.java.postmark.client;
 
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.wildbit.java.postmark.client.data.model.RequestResponse;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounce;
 import com.wildbit.java.postmark.client.data.model.bounces.BounceDump;
 import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
 import com.wildbit.java.postmark.client.data.model.bounces.DeliveryStats;
-import com.wildbit.java.postmark.client.data.model.message.BaseMessageResponse;
 import com.wildbit.java.postmark.client.data.model.message.Message;
 import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
 import com.wildbit.java.postmark.client.data.model.messages.*;
@@ -41,7 +41,6 @@ public class ApiClient extends BaseApiClient {
     private final String outboundMessagesEndpoint       = "/messages/outbound/";
     private final String inboundMessagesEndpoint        = "/messages/inbound/";
     private final String outboundStatsEndpoint          = "/stats/outbound/";
-    private final String triggerTagsEndpoint            = "/triggers/tags/";
     private final String triggerInboundRulesEndpoint    = "/triggers/inboundRules/";
     private final String sendingEndpoint                = "/email/";
     private final String webhooksEndpoint               = "/webhooks/";
@@ -267,14 +266,14 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, InboundMessageDetails.class);
     }
 
-    public String bypassInboundMessage(String id) throws PostmarkException, IOException {
+    public RequestResponse bypassInboundMessage(String id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/bypass"));
-        return dataHandler.fromJson(response, BaseMessageResponse.class).getMessage();
+        return dataHandler.fromJson(response, RequestResponse.class);
     }
 
-    public String retryFailedInboundMessage( String id) throws PostmarkException, IOException {
+    public RequestResponse retryFailedInboundMessage(String id) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(inboundMessagesEndpoint + id + "/retry"));
-        return dataHandler.fromJson(response, BaseMessageResponse.class).getMessage();
+        return dataHandler.fromJson(response, RequestResponse.class);
     }
 
     /*
@@ -429,6 +428,10 @@ public class ApiClient extends BaseApiClient {
                 getEndpointUrl(messageStreamsEndpoint) + messageStream + suppressionsEndpoint + "delete", suppressions);
         return dataHandler.fromJson(response, SuppressionStatuses.class);
     }
+
+    /*
+        Message stream endpoints
+     */
 
 
 }
