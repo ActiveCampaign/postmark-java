@@ -1,6 +1,7 @@
 package com.wildbit.java.postmark.client;
 
 import org.glassfish.jersey.client.ClientProperties;
+import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -67,6 +68,13 @@ public class HttpClient {
 
             case PUT:
                 response = target.request().headers(headers).put(Entity.json(data), Response.class);
+                break;
+
+            case PATCH:
+                // client doesn't have PATCH method, therefore workaround has to be used
+                // https://stackoverflow.com/questions/55778145/how-to-use-patch-method-with-jersey-invocation-builder
+                target.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+                response = target.request().headers(headers).method("PATCH", Entity.json(data), Response.class);
                 break;
 
             case DELETE:
@@ -152,6 +160,7 @@ public class HttpClient {
         POST,
         GET,
         PUT,
+        PATCH,
         DELETE
     }
 

@@ -11,6 +11,10 @@ import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
 import com.wildbit.java.postmark.client.data.model.messages.*;
 import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.stats.*;
+import com.wildbit.java.postmark.client.data.model.streams.MessageStream;
+import com.wildbit.java.postmark.client.data.model.streams.MessageStreamArchiveResponse;
+import com.wildbit.java.postmark.client.data.model.streams.MessageStreamUnarchiveResponse;
+import com.wildbit.java.postmark.client.data.model.streams.MessageStreams;
 import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionEntries;
 import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionStatuses;
 import com.wildbit.java.postmark.client.data.model.suppressions.Suppressions;
@@ -430,8 +434,43 @@ public class ApiClient extends BaseApiClient {
     }
 
     /*
-        Message stream endpoints
+        Message streams
      */
 
+    public MessageStreams getMessageStreams() throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(messageStreamsEndpoint));
+        return dataHandler.fromJson(response, MessageStreams.class);
+    }
+
+    public MessageStreams getMessageStreams(Parameters parameters) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(messageStreamsEndpoint) + parameters);
+        return dataHandler.fromJson(response, MessageStreams.class);
+    }
+
+    public MessageStream getMessageStream(String messageStreamId) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(messageStreamsEndpoint + messageStreamId));
+        return dataHandler.fromJson(response, MessageStream.class);
+    }
+
+    public MessageStream setMessageStream(String messageStreamId, MessageStream data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.PATCH,
+                getEndpointUrl(messageStreamsEndpoint + messageStreamId), data);
+        return dataHandler.fromJson(response, MessageStream.class);
+    }
+
+    public MessageStream createMessageStream(MessageStream data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(messageStreamsEndpoint), data);
+        return dataHandler.fromJson(response, MessageStream.class);
+    }
+
+    public MessageStreamArchiveResponse archiveMessageStream(String messageStreamId) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(messageStreamsEndpoint + messageStreamId + "/archive"));
+        return dataHandler.fromJson(response, MessageStreamArchiveResponse.class);
+    }
+
+    public MessageStreamUnarchiveResponse unarchiveMessageStream(String messageStreamId) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(messageStreamsEndpoint + messageStreamId + "/unarchive"));
+        return dataHandler.fromJson(response, MessageStreamUnarchiveResponse.class);
+    }
 
 }
