@@ -3,7 +3,7 @@
 </a>
 
 # Postmark Java Library
-[![Build Status](https://travis-ci.org/wildbit/postmark-java.svg?branch=master)](https://travis-ci.org/wildbit/postmark-java)
+[![Build Status](https://circleci.com/gh/wildbit/postmark-java.svg?style=shield)](https://circleci.com/gh/wildbit/postmark-java)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.wildbit.java/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.wildbit.java/postmark)
  
