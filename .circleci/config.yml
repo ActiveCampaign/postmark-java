@@ -12,10 +12,15 @@ workflows:
           requires:
             - java8
       - unit-tests:
+          name: java10
+          version: "10"
+          requires:
+            - java9
+      - unit-tests:
           name: java11
           version: "11"
           requires:
-            - java9
+            - java10
       - unit-tests:
           name: java-latest
           version: "latest"
