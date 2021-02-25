@@ -66,12 +66,26 @@ public class Postmark {
         return new ApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.SERVER_AUTH_HEADER, apiToken), secureConnection);
     }
 
+    /**
+     * In rare cases, other than default API url might need to be used, mainly for testing purposes.
+     */
+    public static ApiClient getApiClient(String apiToken, Boolean secureConnection, String customApiUrl) {
+        return new ApiClient(customApiUrl, getHeadersWithAuth(DEFAULTS.SERVER_AUTH_HEADER, apiToken), secureConnection);
+    }
+
     public static AccountApiClient getAccountApiClient(String apiToken) {
         return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken));
     }
 
     public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection) {
         return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
+    }
+
+    /**
+     * In rare cases, other than default API url might need to be used, mainly for testing purposes.
+     */
+    public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection, String customApiUrl) {
+        return new AccountApiClient(customApiUrl, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
     }
 
     // private methods

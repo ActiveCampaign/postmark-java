@@ -6,4 +6,5 @@ target
 out
 src/test/java/temp
 src/test/resources/*properties*
+.gradle
 
