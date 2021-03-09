@@ -1,7 +1,6 @@
 package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.DataHandler;
-import com.wildbit.java.postmark.client.data.model.PostmarkError;
 import com.wildbit.java.postmark.client.exception.*;
 import org.apache.log4j.spi.RootLogger;
 

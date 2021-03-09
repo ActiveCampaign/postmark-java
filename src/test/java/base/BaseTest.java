@@ -36,7 +36,6 @@ public class BaseTest {
     public String defaultAccountToken;
 
     public BaseTest() {
-
         // Read configuration from property file
         if (Files.exists(configFilePath)) {
             initConfingFromFile();
@@ -49,7 +48,6 @@ public class BaseTest {
             defaultApiToken = env.get(DEFAULT_KEY_NAMES.API_TOKEN.value);
             defaultAccountToken = env.get(DEFAULT_KEY_NAMES.ACCOUNT_TOKEN.value);
         }
-
     }
 
     public Properties config() {
@@ -69,7 +67,6 @@ public class BaseTest {
     }
 
     private void initConfingFromFile() {
-
         InputStream in =  Postmark.class.getClassLoader().getResourceAsStream(propertyFile);
         properties = new Properties();
 
@@ -78,6 +75,5 @@ public class BaseTest {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }
