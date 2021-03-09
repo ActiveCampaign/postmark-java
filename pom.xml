@@ -24,7 +24,7 @@
     </developers>
 
     <properties>
-        <postmark.version>1.5.6</postmark.version>
+        <postmark.version>1.5.7</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <jackson.minimum.version>2.9.7</jackson.minimum.version>
@@ -125,7 +125,7 @@
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
         </dependency>
-
+        
         <!-- javax.xml.bind is removed from java 11 , Jackson will throw error without dependencies for it-->
         <!-- https://stackoverflow.com/questions/52502189/java-11-package-javax-xml-bind-does-not-exist -->
         <dependency>

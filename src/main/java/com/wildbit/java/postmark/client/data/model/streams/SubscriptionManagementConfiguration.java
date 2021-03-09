@@ -11,7 +11,6 @@ public class SubscriptionManagementConfiguration {
         this.unsubscribeHandlingType = unsubscribeHandlingType;
     }
 
-
     public String getUnsubscribeHandlingType() {
         return unsubscribeHandlingType;
     }
