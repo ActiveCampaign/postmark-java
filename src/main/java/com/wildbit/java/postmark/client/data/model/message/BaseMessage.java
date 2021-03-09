@@ -74,6 +74,10 @@ public class BaseMessage {
         this.from = from;
     }
 
+    public void setFrom(String name, String address) {
+        this.from = convertRecipient(name, address);
+    }
+
     public String getTo() {
         return to;
     }
@@ -336,28 +340,31 @@ public class BaseMessage {
     }
 
     /**
-     * This helper method allows setting list of recipients which will contain full name next to email address.
+     * Converts list of recipients which contains full name next to email address to a string.
      * By passing something like Map of: key -> John Smith, value -> john@example.com
      * you would be able to send email to recipient John Smith ("John Smith" <john@example.com>)
      *
      * @param recipients recipient Map, with Full Name, Email address pairs.
      */
     private String convertRecipients(Map<String,String> recipients) {
-
         StringBuilder recipientsString = new StringBuilder();
 
         Iterator<Map.Entry<String, String>> entries = recipients.entrySet().iterator();
         while (entries.hasNext()) {
             Map.Entry<String, String> entry = entries.next();
-            recipientsString.append("\"").append(entry.getKey()).append("\"").append("<").append(entry.getValue()).append(">");
+            recipientsString.append(convertRecipient(entry.getKey(), entry.getValue()));
             if (entries.hasNext()) { recipientsString.append(","); }
         }
 
         return recipientsString.toString();
     }
 
+    /**
+     * Converts list of recipients to string list like "john@example.com,smith@example.com".
+     *
+     * @param recipients recipient List.
+     */
     private String convertRecipients(List<String> recipients) {
-
         StringBuilder recipientsString = new StringBuilder();
 
         Iterator<String> entries = recipients.iterator();
@@ -370,4 +377,9 @@ public class BaseMessage {
         return recipientsString.toString();
     }
 
+    private String convertRecipient(String name, String address) {
+        StringBuilder recipientsString = new StringBuilder();
+        return recipientsString.append("\"").append(name).append("\"")
+                .append("<").append(address).append(">").toString();
+    }
 }

@@ -66,6 +66,33 @@ public class MessageTest extends BaseTest {
     }
 
     @Test
+    void singleMessageFromRecipient() {
+        Message message = new Message();
+
+        message.setFrom("igor@example.com");
+        assertEquals(message.getFrom(), "igor@example.com");
+    }
+
+    @Test
+    void singleMessageFromRecipientFullName() {
+        Message message = new Message();
+
+        message.setFrom("John Smith","igor@example.com");
+        assertEquals(message.getFrom(), "\"John Smith\"<igor@example.com>");
+    }
+
+    @Test
+    void singleMessageToRecipient() {
+        Message message = new Message();
+
+        ArrayList<String> recipients = new ArrayList<>();
+        recipients.add("igor@example.com");
+
+        message.setTo(recipients);
+        assertEquals(message.getTo(), "\"igor@example.com\"");
+    }
+
+    @Test
     void simpleMessageToRecipients() throws IOException {
 
         Message message = new Message();
@@ -167,14 +194,31 @@ public class MessageTest extends BaseTest {
         assertEquals(attachment.get("ContentType"), "application/pdf");
         assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
         assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("ContentId"), null);
+    }
+
+    @Test
+    void addAttachmentWithContentId() throws IOException {
+        String contentId = "test-id";
+        Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
+        message.addAttachment(getDefaultFilePath(), contentId);
+
+        HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
+        assertEquals(attachment.get("ContentType"), "application/pdf");
+        assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
+        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("ContentId"), contentId);
     }
 
     @Test
     void addMultipleAttachments() throws IOException {
+        String contentId = "test-id";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
-        message.addAttachment(getDefaultFilePath());
+        message.addAttachment(getDefaultFilePath(), contentId);
         message.addAttachment(getDefaultFilePath());
         assertEquals(message.getAttachments().size(), 2);
+        assertEquals(message.getAttachments().get(0).get("ContentId"), contentId);
+        assertEquals(message.getAttachments().get(1).get("ContentId"), null);
     }
 
 }
