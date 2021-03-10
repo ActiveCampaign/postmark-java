@@ -2,11 +2,14 @@ package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.exception.*;
-import org.apache.log4j.spi.RootLogger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Level;
+import org.apache.logging.log4j.core.LoggerContext;
+import org.apache.logging.log4j.core.config.Configuration;
+import org.apache.logging.log4j.core.config.LoggerConfig;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
-import org.apache.log4j.Level;
 
 /**
  * Client class acts as handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
@@ -86,7 +89,12 @@ public class HttpClientHandler {
      * @param level - debugging level - OFF, DEBUG, ERROR etc.
      */
     public void setLoggingLevel(Level level) {
-        RootLogger.getRootLogger().setLevel(level);
+        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
+        Configuration config = ctx.getConfiguration();
+
+        LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
+        loggerConfig.setLevel(level);
+        ctx.updateLoggers();
     }
 
     public void setSecureConnection(boolean secureConnection) {

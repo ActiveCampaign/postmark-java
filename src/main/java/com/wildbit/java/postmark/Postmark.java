@@ -2,13 +2,14 @@ package com.wildbit.java.postmark;
 
 import com.wildbit.java.postmark.client.AccountApiClient;
 import com.wildbit.java.postmark.client.ApiClient;
-import org.apache.log4j.Logger;
 
 import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Top level class allowing simple access to API clients for doing Postmark API calls.
  */
@@ -92,7 +93,7 @@ public class Postmark {
 
     private Postmark() {}
 
-    private static Logger log = Logger.getLogger(Postmark.class);
+    private static Logger log = LogManager.getLogger(Postmark.class);
 
     private static MultivaluedMap<String,Object> getHeadersWithAuth(DEFAULTS authType, String apiToken) {
         MultivaluedMap headers = DefaultHeaders.headers();

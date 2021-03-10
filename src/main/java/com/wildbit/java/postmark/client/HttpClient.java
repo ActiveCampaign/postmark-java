@@ -71,7 +71,7 @@ public class HttpClient {
                 break;
 
             case PATCH:
-                // client doesn't have PATCH method, therefore workaround has to be used
+                // Jersey client doesn't have PATCH method, therefore workaround has to be used by using reflection
                 // https://stackoverflow.com/questions/55778145/how-to-use-patch-method-with-jersey-invocation-builder
                 target.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
                 response = target.request().headers(headers).method("PATCH", Entity.json(data), Response.class);
