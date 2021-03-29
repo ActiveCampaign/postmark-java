@@ -58,6 +58,10 @@ public class BaseTest {
         return Postmark.getApiClient(defaultApiToken);
     }
 
+    public ApiClient getDefaultApiClientCustomUrl() {
+        return Postmark.getApiClient(defaultApiToken, true, Postmark.DEFAULTS.API_URL.value);
+    }
+
     public AccountApiClient getDefaultAccountApiClient() {
         return Postmark.getAccountApiClient(defaultAccountToken);
     }

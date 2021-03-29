@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class BounceTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client = getDefaultApiClientCustomUrl();
 
     @Test
     void deliveryStats() throws PostmarkException, IOException {
