@@ -5,8 +5,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
-
-import eu.medsea.mimeutil.MimeUtil;
+import org.apache.tika.Tika;
 
 /**
  * Base email message object
@@ -333,10 +332,8 @@ public class BaseMessage {
         return Files.readAllBytes(Paths.get(path));
     }
 
-    private String readFileContentType(String path) {
-        File file = new File(path);
-        MimeUtil.registerMimeDetector("eu.medsea.mimeutil.detector.MagicMimeMimeDetector");
-        return MimeUtil.getMimeTypes(file).toString();
+    private String readFileContentType(String path) throws IOException {
+        return new Tika().detect(new File(path));
     }
 
     /**

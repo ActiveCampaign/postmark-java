@@ -2,11 +2,6 @@ package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.exception.*;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.core.LoggerContext;
-import org.apache.logging.log4j.core.config.Configuration;
-import org.apache.logging.log4j.core.config.LoggerConfig;
 
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
@@ -76,25 +71,10 @@ public class HttpClientHandler {
 
     /**
      * Main source of issues can be the Object serialization process. To debug it, this method will set strict mapping, which
-     * will fail on any issues. Also by choosing debug mode, logging will be set to DEBUG level
+     * will fail on any issues.
      */
     public void setDebugMode() {
-        setLoggingLevel(Level.DEBUG);
         this.dataHandler.setStrictMapper();
-    }
-
-    /**
-     * Custom level of logging can be set.
-     *
-     * @param level - debugging level - OFF, DEBUG, ERROR etc.
-     */
-    public void setLoggingLevel(Level level) {
-        LoggerContext ctx = (LoggerContext) LogManager.getContext(false);
-        Configuration config = ctx.getConfiguration();
-
-        LoggerConfig loggerConfig = config.getLoggerConfig(LogManager.ROOT_LOGGER_NAME);
-        loggerConfig.setLevel(level);
-        ctx.updateLoggers();
     }
 
     public void setSecureConnection(boolean secureConnection) {

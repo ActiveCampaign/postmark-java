@@ -7,9 +7,8 @@ import javax.ws.rs.core.MultivaluedHashMap;
 import javax.ws.rs.core.MultivaluedMap;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.logging.Logger;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 /**
  * Top level class allowing simple access to API clients for doing Postmark API calls.
  */
@@ -21,7 +20,7 @@ public class Postmark {
     public enum DEFAULTS {
         API_URL("api.postmarkapp.com"),
         SERVER_AUTH_HEADER("X-Postmark-Server-Token"),
-        ACOUNT_AUTH_HEADER("X-Postmark-Account-Token");
+        ACCOUNT_AUTH_HEADER("X-Postmark-Account-Token");
 
         public final String value;
 
@@ -52,7 +51,7 @@ public class Postmark {
         try {
             prop.load(in);
         } catch (Exception e) {
-            log.warn(e.toString());
+            LOGGER.warning(e.toString());
         }
         return prop.getProperty("Version");
     }
@@ -75,25 +74,25 @@ public class Postmark {
     }
 
     public static AccountApiClient getAccountApiClient(String apiToken) {
-        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken));
+        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACCOUNT_AUTH_HEADER, apiToken));
     }
 
     public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection) {
-        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
+        return new AccountApiClient(DEFAULTS.API_URL.value, getHeadersWithAuth(DEFAULTS.ACCOUNT_AUTH_HEADER, apiToken), secureConnection);
     }
 
     /**
      * In rare cases, other than default API url might need to be used, mainly for testing purposes.
      */
     public static AccountApiClient getAccountApiClient(String apiToken, Boolean secureConnection, String customApiUrl) {
-        return new AccountApiClient(customApiUrl, getHeadersWithAuth(DEFAULTS.ACOUNT_AUTH_HEADER, apiToken), secureConnection);
+        return new AccountApiClient(customApiUrl, getHeadersWithAuth(DEFAULTS.ACCOUNT_AUTH_HEADER, apiToken), secureConnection);
     }
 
     // private methods
 
     private Postmark() {}
 
-    private static Logger log = LogManager.getLogger(Postmark.class);
+    private final static Logger LOGGER = Logger.getLogger(Postmark.class.getName());
 
     private static MultivaluedMap<String,Object> getHeadersWithAuth(DEFAULTS authType, String apiToken) {
         MultivaluedMap headers = DefaultHeaders.headers();

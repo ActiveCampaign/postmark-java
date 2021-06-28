@@ -1,7 +1,7 @@
 package com.wildbit.java.postmark.client.data.model.templates;
 
 import com.wildbit.java.postmark.client.data.model.message.Header;
-import eu.medsea.mimeutil.MimeUtil;
+import org.apache.tika.Tika;
 
 import java.io.File;
 import java.io.IOException;
@@ -316,10 +316,8 @@ public class BaseTemplatedMessage {
         return Files.readAllBytes(Paths.get(path));
     }
 
-    private String readFileContentType(String path) {
-        File file = new File(path);
-        MimeUtil.registerMimeDetector("eu.medsea.mimeutil.detector.MagicMimeMimeDetector");
-        return MimeUtil.getMimeTypes(file).toString();
+    private String readFileContentType(String path) throws IOException {
+        return new Tika().detect(new File(path));
     }
 
     /**
