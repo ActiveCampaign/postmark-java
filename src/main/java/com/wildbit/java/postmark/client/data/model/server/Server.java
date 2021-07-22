@@ -28,6 +28,7 @@ public class Server {
     private String inboundHash;
     private String inboundSpamThreshold;
     private String enableSmtpApiErrorHooks;
+    private String deliveryType;
 
     // SETTERS AND GETTERS
 
@@ -194,4 +195,12 @@ public class Server {
     public void setInboundSpamThreshold(String inboundSpamThreshold) {
         this.inboundSpamThreshold = inboundSpamThreshold;
     }
+    
+    public String getDeliveryType() {
+		return deliveryType;
+	}
+
+	public void setDeliveryType(String deliveryType) {
+		this.deliveryType = deliveryType;
+	}
 }
