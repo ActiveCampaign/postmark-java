@@ -27,14 +27,14 @@ public class Server {
     private String inboundDomain;
     private String inboundHash;
     private String inboundSpamThreshold;
-    private String enableSmtpApiErrorHooks;
+    private Boolean enableSmtpApiErrorHooks;
     private String deliveryType;
 
     // SETTERS AND GETTERS
 
-    public String getEnableSmtpApiErrorHooks() { return enableSmtpApiErrorHooks; }
+    public Boolean getEnableSmtpApiErrorHooks() { return enableSmtpApiErrorHooks; }
 
-    public void setEnableSmtpApiErrorHooks(String enableSmtpApiErrorHooks) { this.enableSmtpApiErrorHooks = enableSmtpApiErrorHooks; }
+    public void setEnableSmtpApiErrorHooks(Boolean enableSmtpApiErrorHooks) { this.enableSmtpApiErrorHooks = enableSmtpApiErrorHooks; }
 
     public Integer getId() {
         return id;
