@@ -26,7 +26,7 @@ public class Server {
     private String clickHookUrl;
     private String inboundDomain;
     private String inboundHash;
-    private String inboundSpamThreshold;
+    private Integer inboundSpamThreshold;
     private Boolean enableSmtpApiErrorHooks;
     private String deliveryType;
 
@@ -188,11 +188,11 @@ public class Server {
         this.inboundHash = inboundHash;
     }
 
-    public String getInboundSpamThreshold() {
+    public Integer getInboundSpamThreshold() {
         return inboundSpamThreshold;
     }
 
-    public void setInboundSpamThreshold(String inboundSpamThreshold) {
+    public void setInboundSpamThreshold(Integer inboundSpamThreshold) {
         this.inboundSpamThreshold = inboundSpamThreshold;
     }
     
