@@ -26,14 +26,15 @@ public class Server {
     private String clickHookUrl;
     private String inboundDomain;
     private String inboundHash;
-    private String inboundSpamThreshold;
-    private String enableSmtpApiErrorHooks;
+    private Integer inboundSpamThreshold;
+    private Boolean enableSmtpApiErrorHooks;
+    private String deliveryType;
 
     // SETTERS AND GETTERS
 
-    public String getEnableSmtpApiErrorHooks() { return enableSmtpApiErrorHooks; }
+    public Boolean getEnableSmtpApiErrorHooks() { return enableSmtpApiErrorHooks; }
 
-    public void setEnableSmtpApiErrorHooks(String enableSmtpApiErrorHooks) { this.enableSmtpApiErrorHooks = enableSmtpApiErrorHooks; }
+    public void setEnableSmtpApiErrorHooks(Boolean enableSmtpApiErrorHooks) { this.enableSmtpApiErrorHooks = enableSmtpApiErrorHooks; }
 
     public Integer getId() {
         return id;
@@ -187,11 +188,19 @@ public class Server {
         this.inboundHash = inboundHash;
     }
 
-    public String getInboundSpamThreshold() {
+    public Integer getInboundSpamThreshold() {
         return inboundSpamThreshold;
     }
 
-    public void setInboundSpamThreshold(String inboundSpamThreshold) {
+    public void setInboundSpamThreshold(Integer inboundSpamThreshold) {
         this.inboundSpamThreshold = inboundSpamThreshold;
     }
+    
+    public String getDeliveryType() {
+		return deliveryType;
+	}
+
+	public void setDeliveryType(String deliveryType) {
+		this.deliveryType = deliveryType;
+	}
 }
