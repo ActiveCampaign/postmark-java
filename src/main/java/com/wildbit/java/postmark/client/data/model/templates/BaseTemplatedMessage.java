@@ -30,7 +30,7 @@ public class BaseTemplatedMessage {
 
     public BaseTemplatedMessage() {
         this.setAttachments(new ArrayList<>());
-        this.setInlineCss(false);
+        this.setInlineCss(true);
         this.setTemplateModel(new HashMap<>());
     }
 
