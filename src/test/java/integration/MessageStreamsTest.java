@@ -63,7 +63,7 @@ public class MessageStreamsTest extends BaseTest {
 
     @Test
     void archive() throws PostmarkException, IOException {
-        String streamId = "bulk-test";
+        String streamId = "bulk-test-stream";
         MessageStreams messages = client.getMessageStreams(Parameters.init().build("messageStreamType", "all")
                 .build("includeArchivedStreams", "true"));
 
