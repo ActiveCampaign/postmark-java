@@ -36,9 +36,9 @@ public class Postmark {
 
         public static MultivaluedMap<String, Object> headers() {
             MultivaluedMap headerValues = new MultivaluedHashMap<>();
-            headerValues.add("User-Agent", "Postmark Java Library: " + libraryVersion());
-            headerValues.add("Accept", "application/json");
-            headerValues.add("Content-Type", "application/json");
+            headerValues.putSingle("User-Agent", "Postmark Java Library: " + libraryVersion());
+            headerValues.putSingle("Accept", "application/json");
+            headerValues.putSingle("Content-Type", "application/json");
             return headerValues;
         }
 
@@ -96,7 +96,7 @@ public class Postmark {
 
     private static MultivaluedMap<String,Object> getHeadersWithAuth(DEFAULTS authType, String apiToken) {
         MultivaluedMap headers = DefaultHeaders.headers();
-        headers.add(authType.value, apiToken);
+        headers.putSingle(authType.value, apiToken);
         return headers;
     }
 }
