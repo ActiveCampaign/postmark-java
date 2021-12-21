@@ -9,6 +9,7 @@ public class SignatureToCreate {
     private String name;
     private String replyToEmail;
     private String returnPathDOmain;
+    private String confirmationPersonalNote;
 
     // SETTERS AND GETTERS
 
@@ -42,5 +43,11 @@ public class SignatureToCreate {
 
     public void setReturnPathDOmain(String returnPathDOmain) {
         this.returnPathDOmain = returnPathDOmain;
+    }
+
+    public String getConfirmationPersonalNote() { return confirmationPersonalNote; }
+
+    public void setConfirmationPersonalNote(String confirmationPersonalNote) {
+        this.confirmationPersonalNote = confirmationPersonalNote;
     }
 }

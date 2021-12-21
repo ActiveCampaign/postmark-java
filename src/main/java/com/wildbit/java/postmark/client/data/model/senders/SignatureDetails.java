@@ -11,6 +11,7 @@ public class SignatureDetails extends DomainDetails {
     private String emailAddress;
     private String replyToEmailAddress;
     private Boolean confirmed;
+    private String confirmationPersonalNote;
 
     // SETTERS AND GETTERS
 
@@ -44,5 +45,11 @@ public class SignatureDetails extends DomainDetails {
 
     public void setConfirmed(Boolean confirmed) {
         this.confirmed = confirmed;
+    }
+
+    public String getConfirmationPersonalNote() { return confirmationPersonalNote; }
+
+    public void setConfirmationPersonalNote(String confirmationPersonalNote) {
+        this.confirmationPersonalNote = confirmationPersonalNote;
     }
 }
