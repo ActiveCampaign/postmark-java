@@ -1,16 +1,19 @@
 package com.wildbit.java.postmark.client;
 
 import com.wildbit.java.postmark.client.data.model.RequestResponse;
-import com.wildbit.java.postmark.client.data.model.domains.*;
-import com.wildbit.java.postmark.client.data.model.senders.*;
+import com.wildbit.java.postmark.client.data.model.domains.Domain;
+import com.wildbit.java.postmark.client.data.model.domains.DomainDetails;
+import com.wildbit.java.postmark.client.data.model.domains.Domains;
+import com.wildbit.java.postmark.client.data.model.senders.SignatureDetails;
+import com.wildbit.java.postmark.client.data.model.senders.SignatureToCreate;
+import com.wildbit.java.postmark.client.data.model.senders.Signatures;
 import com.wildbit.java.postmark.client.data.model.server.Server;
 import com.wildbit.java.postmark.client.data.model.servers.Servers;
 import com.wildbit.java.postmark.client.data.model.templates.TemplatesPush;
-import com.wildbit.java.postmark.client.data.model.templates.TemplatesPushAction;
 import com.wildbit.java.postmark.client.data.model.templates.TemplatesPushRequest;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
+import jakarta.ws.rs.core.MultivaluedMap;
 
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
 /**

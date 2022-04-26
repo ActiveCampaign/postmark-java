@@ -5,7 +5,7 @@ import com.wildbit.java.postmark.client.BaseApiClient;
 import com.wildbit.java.postmark.client.HttpClient;
 import org.junit.jupiter.api.Test;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**

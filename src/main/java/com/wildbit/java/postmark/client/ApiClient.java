@@ -24,7 +24,7 @@ import com.wildbit.java.postmark.client.data.model.webhooks.Webhook;
 import com.wildbit.java.postmark.client.data.model.webhooks.Webhooks;
 import com.wildbit.java.postmark.client.exception.PostmarkException;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;

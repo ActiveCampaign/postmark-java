@@ -3,8 +3,8 @@ package com.wildbit.java.postmark;
 import com.wildbit.java.postmark.client.AccountApiClient;
 import com.wildbit.java.postmark.client.ApiClient;
 
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedHashMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 import java.io.InputStream;
 import java.util.Properties;
 import java.util.logging.Logger;

@@ -1,6 +1,6 @@
 package com.wildbit.java.postmark.client;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 
 /**
  * Class that handles (on very high level) API requests. All Postmark public endpoints which

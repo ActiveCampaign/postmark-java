@@ -3,7 +3,7 @@ package com.wildbit.java.postmark.client;
 import com.wildbit.java.postmark.client.data.DataHandler;
 import com.wildbit.java.postmark.client.exception.*;
 
-import javax.ws.rs.core.MultivaluedMap;
+import jakarta.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 
 /**

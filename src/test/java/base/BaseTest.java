@@ -6,10 +6,11 @@ import com.wildbit.java.postmark.client.ApiClient;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Properties;
-
-import java.nio.file.*;
 
 /**
  * Created by bash on 11/14/17.
