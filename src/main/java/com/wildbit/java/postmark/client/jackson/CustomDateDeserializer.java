@@ -11,6 +11,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * In some of the responses from Postmark API, date format is not detected correctly by Jackson.
@@ -26,6 +27,8 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
             "yyyy-MM-dd'T'HH:mm:ss.SSS",
             "yyyy-MM-dd"
     };
+
+    private static final Locale DATE_LOCALE = Locale.ENGLISH;
 
 
     public CustomDateDeserializer() {
@@ -43,7 +46,7 @@ public class CustomDateDeserializer extends StdDeserializer<Date> {
 
         for (String DATE_FORMAT : DATE_FORMATS) {
             try {
-                return new SimpleDateFormat(DATE_FORMAT).parse(date);
+                return new SimpleDateFormat(DATE_FORMAT, DATE_LOCALE).parse(date);
             } catch (ParseException e) { }
         }
 
