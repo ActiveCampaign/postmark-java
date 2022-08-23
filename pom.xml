@@ -23,7 +23,7 @@
     </developers>
 
     <properties>
-        <postmark.version>1.8.0</postmark.version>
+        <postmark.version>1.8.1-SNAPSHOT</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <jackson.minimum.version>2.9.7</jackson.minimum.version>
