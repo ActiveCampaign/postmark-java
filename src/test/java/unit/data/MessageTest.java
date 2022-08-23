@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -85,7 +86,7 @@ public class MessageTest extends BaseTest {
     void singleMessageToRecipient() {
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
 
         message.setTo(recipients);
@@ -97,7 +98,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
@@ -126,7 +127,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
@@ -155,7 +156,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
