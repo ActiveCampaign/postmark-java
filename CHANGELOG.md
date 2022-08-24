@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.2
+
+* test release - due update to maven release process
+
 ## 1.8.1
 
 * updated apache Tika version to 2.4.0
