@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.3
+
+* removed slf4j-simple dependency
+
 ## 1.8.2
 
 * test release - due update to maven release process
