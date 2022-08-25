@@ -124,13 +124,6 @@
             <version>2.11.0</version>
             <scope>test</scope>
         </dependency>
-
-        <!-- Abstraction for logging frameworks, resolve slf4j maven warning -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>1.7.32</version>
-        </dependency>
     </dependencies>
 
     <!-- all of the below is needed for releasing -->
