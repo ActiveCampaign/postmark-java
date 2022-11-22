@@ -2,7 +2,7 @@
 
 ## 1.8.4
 
-* updated tika to 2.6.0 and jersey client to 2.37
+* updated tika to 2.6.0, jersey client to 2.37, jackson to 2.14.0
 
 ## 1.8.3
 
