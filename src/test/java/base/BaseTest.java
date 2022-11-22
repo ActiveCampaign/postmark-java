@@ -67,7 +67,7 @@ public class BaseTest {
     }
 
     public String getDefaultFilePath() {
-        return testResourcesPath.toString() + "/test.pdf";
+        return testResourcesPath.toString();
     }
 
     private void initConfingFromFile() {
