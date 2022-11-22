@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.8.4
+
+* updated tika to 2.6.0 and jersey client to 2.37
+
 ## 1.8.3
 
 * removed slf4j-simple dependency
