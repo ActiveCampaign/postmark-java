@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.8.4
+
+* updated tika to 2.6.0, jersey client to 2.37, jackson to 2.14.0
+
+## 1.8.3
+
+* removed slf4j-simple dependency
+
+## 1.8.2
+
+* test release - due update to maven release process
+
+## 1.8.1
+
+* updated apache Tika version to 2.4.0
+* updated jackson to version 2.13.3
+* updated sending endpoints to use List interface rather than ArrayList
+
+## 1.8.0
+
+* Sender signature model update, added confirmation personal note
+
 ## 1.7.4
 
 * fixed server data model

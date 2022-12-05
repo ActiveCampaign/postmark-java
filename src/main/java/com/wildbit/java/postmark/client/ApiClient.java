@@ -26,8 +26,8 @@ import com.wildbit.java.postmark.client.exception.PostmarkException;
 
 import jakarta.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Class that handles on very top level all API requests. All Postmark public endpoints which
@@ -68,9 +68,9 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, MessageResponse.class);
     }
 
-    public ArrayList<MessageResponse> deliverMessage(ArrayList<Message> data) throws PostmarkException, IOException {
+    public List<MessageResponse> deliverMessage(List<Message> data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batch"), data);
-        return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
+        return dataHandler.fromJson(response, new TypeReference<List<MessageResponse>>() {});
     }
 
     /*
@@ -168,19 +168,19 @@ public class ApiClient extends BaseApiClient {
         return dataHandler.fromJson(response, MessageResponse.class);
     }
 
-    public ArrayList<MessageResponse> deliverMessageWithTemplate(ArrayList<TemplatedMessage> data) throws PostmarkException, IOException {
+    public List<MessageResponse> deliverMessageWithTemplate(List<TemplatedMessage> data) throws PostmarkException, IOException {
         /*
           When sending array of emails with templates, additional top level field is used called "Messages".
           This introduces unnecessary difference between batch and batchWithTemplates endpoint in data model.
           To keep it simple, this additional level is added before executing batch send.
          */
-        HashMap<String, ArrayList> dataToSend = new HashMap<>();
+        HashMap<String, List> dataToSend = new HashMap<>();
         dataToSend.put("Messages", data);
 
         for(TemplatedMessage templateMessage:data) { setTemplateModelToObject(templateMessage); }
 
         String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(sendingEndpoint + "batchWithTemplates"), dataToSend);
-        return dataHandler.fromJson(response, new TypeReference<ArrayList<MessageResponse>>() {});
+        return dataHandler.fromJson(response, new TypeReference<List<MessageResponse>>() {});
     }
 
     private void setTemplateModelToObject(TemplatedMessage data) throws IOException {

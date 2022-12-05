@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -85,7 +86,7 @@ public class MessageTest extends BaseTest {
     void singleMessageToRecipient() {
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
 
         message.setTo(recipients);
@@ -97,7 +98,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
@@ -126,7 +127,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
@@ -155,7 +156,7 @@ public class MessageTest extends BaseTest {
 
         Message message = new Message();
 
-        ArrayList<String> recipients = new ArrayList<>();
+        List<String> recipients = new ArrayList<>();
         recipients.add("igor@example.com");
         recipients.add("john@example.com");
         recipients.add("chris@example.com");
@@ -186,13 +187,39 @@ public class MessageTest extends BaseTest {
     }
 
     @Test
-    void addAttachment() throws IOException {
+    void addPdfAttachment() throws IOException {
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
-        message.addAttachment(getDefaultFilePath());
+        message.addAttachment(getDefaultFilePath() + "/test.pdf" );
 
         HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "application/pdf");
-        assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
+        assertEquals(attachment.get("Name"), new File(getDefaultFilePath() + "/test.pdf").getName());
+        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("ContentId"), null);
+    }
+
+    @Test
+    void addImageAttachment() throws IOException {
+        String file = getDefaultFilePath() + "/test.jpg";
+        Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
+        message.addAttachment(file);
+
+        HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
+        assertEquals(attachment.get("ContentType"), "image/jpeg");
+        assertEquals(attachment.get("Name"), new File(file).getName());
+        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("ContentId"), null);
+    }
+
+    @Test
+    void addTextAttachment() throws IOException {
+        String file = getDefaultFilePath() + "/test.txt";
+        Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
+        message.addAttachment(file);
+
+        HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
+        assertEquals(attachment.get("ContentType"), "text/plain");
+        assertEquals(attachment.get("Name"), new File(file).getName());
         assertNotNull(attachment.get("Content"));
         assertEquals(attachment.get("ContentId"), null);
     }
@@ -200,12 +227,13 @@ public class MessageTest extends BaseTest {
     @Test
     void addAttachmentWithContentId() throws IOException {
         String contentId = "test-id";
+        String file = getDefaultFilePath() + "/test.pdf";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
-        message.addAttachment(getDefaultFilePath(), contentId);
+        message.addAttachment(file, contentId);
 
         HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "application/pdf");
-        assertEquals(attachment.get("Name"), new File(getDefaultFilePath()).getName());
+        assertEquals(attachment.get("Name"), new File(file).getName());
         assertNotNull(attachment.get("Content"));
         assertEquals(attachment.get("ContentId"), contentId);
     }
@@ -213,9 +241,11 @@ public class MessageTest extends BaseTest {
     @Test
     void addMultipleAttachments() throws IOException {
         String contentId = "test-id";
+        String file1 = getDefaultFilePath() + "/test.pdf";
+        String file2 = getDefaultFilePath() + "/test.jpg";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
-        message.addAttachment(getDefaultFilePath(), contentId);
-        message.addAttachment(getDefaultFilePath());
+        message.addAttachment(file1, contentId);
+        message.addAttachment(file2);
         assertEquals(message.getAttachments().size(), 2);
         assertEquals(message.getAttachments().get(0).get("ContentId"), contentId);
         assertEquals(message.getAttachments().get(1).get("ContentId"), null);
