@@ -31,18 +31,6 @@ workflows:
           version: "12.0.2"
           requires:
             - java11
-      - unit-tests:
-          name: java16
-          image: "cimg/openjdk"
-          version: "16.0.1"
-          requires:
-            - java12
-      - unit-tests:
-          name: java17
-          image: "cimg/openjdk"
-          version: "17.0.1"
-          requires:
-            - java16
 
 jobs:
   unit-tests:
