@@ -49,6 +49,8 @@ jobs:
     parameters:
       version:
         type: string
+      image:
+        type: string
     docker:
       - image: << parameters.image >>:<< parameters.version >>
     steps:
