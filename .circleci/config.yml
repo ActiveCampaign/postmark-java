@@ -23,17 +23,17 @@ workflows:
             - java10
       - unit-tests:
           name: java12
-          version: "12.0.0"
+          version: "12.0.2"
           requires:
             - java11
       - unit-tests:
           name: java18
-          version: "18.0.0"
+          version: "18.0.2"
           requires:
             - java12
       - unit-tests:
           name: java19
-          version: "19.0.0"
+          version: "19.0.1"
           requires:
             - java18
 
