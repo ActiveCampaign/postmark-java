@@ -5,41 +5,41 @@ workflows:
     jobs:
       - unit-tests:
           name: java8
-          image_name: "circleci/openjdk"
+          image: "circleci/openjdk"
           version: "8"
       - unit-tests:
           name: java9
-          image_name: "circleci/openjdk"
+          image: "circleci/openjdk"
           version: "9"
           requires:
             - java8
       - unit-tests:
           name: java10
-          image_name: "circleci/openjdk"
+          image: "circleci/openjdk"
           version: "10"
           requires:
             - java9
       - unit-tests:
           name: java11
-          image_name: "circleci/openjdk"
+          image: "circleci/openjdk"
           version: "11"
           requires:
             - java10
       - unit-tests:
           name: java12
-          image_name: "cimg/openjdk"
+          image: "cimg/openjdk"
           version: "12.0.2"
           requires:
             - java11
       - unit-tests:
           name: java18
-          image_name: "cimg/openjdk"
+          image: "cimg/openjdk"
           version: "18.0.2"
           requires:
             - java12
       - unit-tests:
           name: java19
-          image_name: "cimg/openjdk"
+          image: "cimg/openjdk"
           version: "19.0.1"
           requires:
             - java18
@@ -50,7 +50,7 @@ jobs:
       version:
         type: string
     docker:
-      - image: << parameters.image_name >>:<< parameters.version >>
+      - image: << parameters.image >>:<< parameters.version >>
     steps:
       - checkout
       - run:
