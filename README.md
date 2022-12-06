@@ -7,8 +7,8 @@
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark)
 
-:star: :star: **IMPORTANT UPDATE** :star: :star: we have migrated recently (as of version 1.9.0) from ```com.wildbit.java``` groupid,
-make sure to update your maven pom.xml file, to use the latest version of the library. Check the new groupid in pom example below.
+:star: :star: **IMPORTANT UPDATE** :star: :star: **As of version 1.9.0, we have migrated from ```com.wildbit.java``` groupid to ```com.postmarkapp```.**
+Make sure to update your maven pom.xml file, to use the latest version of the library. Check the new groupid in pom example below.
 
 Postmark allows you to send your application's emails with high delivery rates, including bounce/spam processing and detailed statistics. 
 In addition, Postmark can parse incoming emails which are forwarded back to your application.
