@@ -1,10 +1,11 @@
 version: 2.1
 
 workflows:
-  java-tests:
+  tests:
     jobs:
       - unit-tests:
           name: java8
+          image_name: "circleci/openjdk"
           version: "8"
       - unit-tests:
           name: java9
@@ -43,7 +44,7 @@ jobs:
       version:
         type: string
     docker:
-      - image: circleci/openjdk:<< parameters.version >>
+      - image: << parameters.image_name >>:<< parameters.version >>
     steps:
       - checkout
       - run:
