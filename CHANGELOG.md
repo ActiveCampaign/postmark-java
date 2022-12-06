@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.0
+
+* library was migrated to a different groupid, make sure to update your pom.xml
+
 ## 1.8.4
 
 * updated tika to 2.6.0, jersey client to 2.37, jackson to 2.14.0

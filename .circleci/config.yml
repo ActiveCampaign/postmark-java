@@ -32,17 +32,17 @@ workflows:
           requires:
             - java11
       - unit-tests:
-          name: java18
+          name: java16
           image: "cimg/openjdk"
-          version: "18.0.2"
+          version: "16.0.1"
           requires:
             - java12
       - unit-tests:
-          name: java19
+          name: java17
           image: "cimg/openjdk"
-          version: "19.0.1"
+          version: "17.0.1"
           requires:
-            - java18
+            - java16
 
 jobs:
   unit-tests:

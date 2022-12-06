@@ -19,6 +19,9 @@ For details about Postmark API in general, please check out [Postmark developer 
 
 ## Installation
 
+**IMPORTANT UPDATE:** we have migrated recently (as of version 1.9.0) from ```com.wildbit.java``` groupid, 
+make sure to update your maven pom.xml file, to use the latest version of the library.
+
 Add the dependency to your project:
 
 ``` xml
