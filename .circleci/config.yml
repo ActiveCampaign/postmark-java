@@ -22,10 +22,20 @@ workflows:
           requires:
             - java10
       - unit-tests:
-          name: java-latest
-          version: "latest"
+          name: java-12
+          version: "12"
           requires:
             - java11
+      - unit-tests:
+          name: java-18
+          version: "18"
+          requires:
+            - java12
+      - unit-tests:
+          name: java-19
+          version: "19"
+          requires:
+            - java18
 
 jobs:
   unit-tests:

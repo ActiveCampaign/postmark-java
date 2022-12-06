@@ -1,7 +1,7 @@
 package unit.client;
 
-import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.ApiClient;
+import com.postmarkapp.postmark.Postmark;
+import com.postmarkapp.postmark.client.ApiClient;
 import javax.ws.rs.core.MultivaluedMap;
 
 import org.junit.jupiter.api.Test;

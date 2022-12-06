@@ -1,15 +1,15 @@
 package integration;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.ApiClient;
-import com.wildbit.java.postmark.client.data.model.message.Message;
-import com.wildbit.java.postmark.client.data.model.message.MessageResponse;
-import com.wildbit.java.postmark.client.data.model.templates.Template;
-import com.wildbit.java.postmark.client.data.model.templates.TemplatedMessage;
-import com.wildbit.java.postmark.client.exception.InvalidAPIKeyException;
-import com.wildbit.java.postmark.client.exception.InvalidMessageException;
-import com.wildbit.java.postmark.client.exception.PostmarkException;
+import com.postmarkapp.postmark.Postmark;
+import com.postmarkapp.postmark.client.ApiClient;
+import com.postmarkapp.postmark.client.data.model.message.Message;
+import com.postmarkapp.postmark.client.data.model.message.MessageResponse;
+import com.postmarkapp.postmark.client.data.model.templates.Template;
+import com.postmarkapp.postmark.client.data.model.templates.TemplatedMessage;
+import com.postmarkapp.postmark.client.exception.InvalidAPIKeyException;
+import com.postmarkapp.postmark.client.exception.InvalidMessageException;
+import com.postmarkapp.postmark.client.exception.PostmarkException;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;

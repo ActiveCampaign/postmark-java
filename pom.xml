@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <!-- base library details -->
-    <groupId>com.wildbit.java</groupId>
+    <groupId>com.postmarkapp</groupId>
     <artifactId>postmark</artifactId>
     <version>${postmark.version}</version>
     <name>postmark</name>
@@ -23,7 +23,7 @@
     </developers>
 
     <properties>
-        <postmark.version>1.8.4</postmark.version>
+        <postmark.version>1.9.0</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <jackson.minimum.version>2.9.7</jackson.minimum.version>
@@ -49,13 +49,14 @@
 
     <dependencies>
 
-        <!-- Http client -->
+        <!-- Jersey Http client -->
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
             <version>${jersey.version}</version>
         </dependency>
 
+        <!-- Jersey client Dependency injection IoC framework -->
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
@@ -154,6 +155,7 @@
             </plugin>
 
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>

@@ -2,8 +2,8 @@ package unit.data;
 
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.data.DataHandler;
-import com.wildbit.java.postmark.client.data.model.message.Message;
+import com.postmarkapp.postmark.client.data.DataHandler;
+import com.postmarkapp.postmark.client.data.model.message.Message;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;

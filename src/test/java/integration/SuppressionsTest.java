@@ -1,11 +1,11 @@
 package integration;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.ApiClient;
-import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionEntries;
-import com.wildbit.java.postmark.client.data.model.suppressions.SuppressionStatuses;
-import com.wildbit.java.postmark.client.data.model.suppressions.Suppressions;
-import com.wildbit.java.postmark.client.exception.PostmarkException;
+import com.postmarkapp.postmark.client.ApiClient;
+import com.postmarkapp.postmark.client.data.model.suppressions.SuppressionEntries;
+import com.postmarkapp.postmark.client.data.model.suppressions.SuppressionStatuses;
+import com.postmarkapp.postmark.client.data.model.suppressions.Suppressions;
+import com.postmarkapp.postmark.client.exception.PostmarkException;
 
 import org.junit.jupiter.api.Test;
 import java.io.IOException;

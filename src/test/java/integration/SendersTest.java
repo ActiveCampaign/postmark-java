@@ -1,12 +1,12 @@
 package integration;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.AccountApiClient;
-import com.wildbit.java.postmark.client.Parameters;
-import com.wildbit.java.postmark.client.data.model.senders.SignatureDetails;
-import com.wildbit.java.postmark.client.data.model.senders.SignatureToCreate;
-import com.wildbit.java.postmark.client.data.model.senders.Signatures;
-import com.wildbit.java.postmark.client.exception.PostmarkException;
+import com.postmarkapp.postmark.client.AccountApiClient;
+import com.postmarkapp.postmark.client.Parameters;
+import com.postmarkapp.postmark.client.data.model.senders.SignatureDetails;
+import com.postmarkapp.postmark.client.data.model.senders.SignatureToCreate;
+import com.postmarkapp.postmark.client.data.model.senders.Signatures;
+import com.postmarkapp.postmark.client.exception.PostmarkException;
 import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

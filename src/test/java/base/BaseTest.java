@@ -1,8 +1,8 @@
 package base;
 
-import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.AccountApiClient;
-import com.wildbit.java.postmark.client.ApiClient;
+import com.postmarkapp.postmark.Postmark;
+import com.postmarkapp.postmark.client.AccountApiClient;
+import com.postmarkapp.postmark.client.ApiClient;
 
 import java.io.IOException;
 import java.io.InputStream;

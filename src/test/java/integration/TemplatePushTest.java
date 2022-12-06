@@ -1,10 +1,10 @@
 package integration;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.AccountApiClient;
-import com.wildbit.java.postmark.client.data.model.templates.*;
-import com.wildbit.java.postmark.client.exception.InvalidMessageException;
-import com.wildbit.java.postmark.client.exception.PostmarkException;
+import com.postmarkapp.postmark.client.AccountApiClient;
+import com.postmarkapp.postmark.client.data.model.templates.*;
+import com.postmarkapp.postmark.client.exception.InvalidMessageException;
+import com.postmarkapp.postmark.client.exception.PostmarkException;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 

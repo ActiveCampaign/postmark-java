@@ -1,9 +1,9 @@
 package unit.data;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.client.data.DataHandler;
-import com.wildbit.java.postmark.client.data.model.bounces.Bounce;
-import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
+import com.postmarkapp.postmark.client.data.DataHandler;
+import com.postmarkapp.postmark.client.data.model.bounces.Bounce;
+import com.postmarkapp.postmark.client.data.model.bounces.Bounces;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

@@ -1,12 +1,12 @@
 package unit;
 
 import base.BaseTest;
-import com.wildbit.java.postmark.Postmark;
-import com.wildbit.java.postmark.client.AccountApiClient;
-import com.wildbit.java.postmark.client.ApiClient;
-import com.wildbit.java.postmark.client.Parameters;
-import com.wildbit.java.postmark.client.data.model.bounces.Bounces;
-import com.wildbit.java.postmark.client.exception.PostmarkException;
+import com.postmarkapp.postmark.Postmark;
+import com.postmarkapp.postmark.client.AccountApiClient;
+import com.postmarkapp.postmark.client.ApiClient;
+import com.postmarkapp.postmark.client.Parameters;
+import com.postmarkapp.postmark.client.data.model.bounces.Bounces;
+import com.postmarkapp.postmark.client.exception.PostmarkException;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;

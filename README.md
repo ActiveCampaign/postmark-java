@@ -5,7 +5,7 @@
 # Postmark Java Library
 [![Build Status](https://circleci.com/gh/ActiveCampaign/postmark-java.svg?style=shield)](https://circleci.com/gh/ActiveCampaign/postmark-java)
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.wildbit.java/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.wildbit.java/postmark)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark)
  
 Postmark allows you to send your application's emails with high delivery rates, including bounce/spam processing and detailed statistics. 
 In addition, Postmark can parse incoming emails which are forwarded back to your application.
@@ -23,7 +23,7 @@ Add the dependency to your project:
 
 ``` xml
 <dependency>
-    <groupId>com.wildbit.java</groupId>
+    <groupId>com.postmarkapp</groupId>
     <artifactId>postmark</artifactId>
     <version>{version}</version>
 </dependency>
