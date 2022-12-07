@@ -34,8 +34,10 @@ Add the dependency to your project:
 </dependency>
 ```
 
-Note: to retrieve latest version number, visit [maven central repository](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
+Note: to retrieve the latest version number, visit [maven central repository](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
 [Maven central repository link](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) might be slightly more accurate, in case when new version was published recently.
+
+Old versions of the library can be found in this [maven central repository](https://repo1.maven.org/maven2/com/wildbit/java/postmark/).
 
 ## Issues & Comments
 
