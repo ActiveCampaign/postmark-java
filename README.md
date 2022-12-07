@@ -7,8 +7,10 @@
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark)
 
-:star: :star: **IMPORTANT UPDATE** :star: :star: **As of version 1.9.0, we have migrated from ```com.wildbit.java``` groupid to ```com.postmarkapp```.**
-Make sure to update your maven pom.xml file, to use the latest version of the library. Check the new groupid in pom example below.
+:star: :star: **IMPORTANT UPDATE** :star: :star: **As of version 1.9.0, we migrated from groupid ```com.wildbit.java``` to ```com.postmarkapp```.**
+Please update your pom.xml file with new groupid and your imports to use the latest versions of the library. 
+
+Check out the new groupid in pom example below, under [installation section](#installation).
 
 Postmark allows you to send your application's emails with high delivery rates, including bounce/spam processing and detailed statistics. 
 In addition, Postmark can parse incoming emails which are forwarded back to your application.
@@ -32,8 +34,8 @@ Add the dependency to your project:
 </dependency>
 ```
 
-Note: to retrieve latest version number, visit [maven central repository](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
-[Maven central repository link](http://repo1.maven.org/maven2/com/wildbit/java/postmark/) might be slightly more acurrate, in case new version was published recently.
+Note: to retrieve latest version number, visit [maven central repository](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
+[Maven central repository link](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) might be slightly more accurate, in case when new version was published recently.
 
 ## Issues & Comments
 
