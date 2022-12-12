@@ -18,8 +18,8 @@ public class HttpClient {
 
     // HTTP request connection timeouts
     public enum DEFAULTS {
-        CONNECT_TIMEOUT_SECONDS(5),
-        READ_TIMEOUT_SECONDS(15);
+        CONNECT_TIMEOUT_SECONDS(60),
+        READ_TIMEOUT_SECONDS(60);
 
         public final int value;
 
