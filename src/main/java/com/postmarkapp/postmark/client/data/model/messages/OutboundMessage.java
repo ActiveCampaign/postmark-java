@@ -25,6 +25,8 @@ public class OutboundMessage {
     private Map<String, String> metadata;
     private String messageStream;
 
+    private Boolean sandboxed;
+
     // GETTERS AND SETTERS
 
     public String getMessageStream() {
@@ -142,5 +144,13 @@ public class OutboundMessage {
     public Map<String, String> getMetadata() { return metadata; }
 
     public void setMetadata(Map<String, String> metadata) { this.metadata = metadata; }
+
+    public Boolean getSandboxed() {
+        return sandboxed;
+    }
+
+    public void setSandboxed(Boolean sandboxed) {
+        this.sandboxed = sandboxed;
+    }
 
 }

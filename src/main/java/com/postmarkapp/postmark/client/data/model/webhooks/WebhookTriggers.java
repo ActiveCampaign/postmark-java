@@ -9,12 +9,15 @@ public class WebhookTriggers {
     private BounceWebhookTrigger bounce;
     private SpamWebhookTrigger spamComplaint;
 
+    private SubscriptionChange subscriptionChange;
+
     public WebhookTriggers() {
         this.open = new OpenWebhookTrigger(false);
         this.click = new WebhookTrigger(false);
         this.delivery = new WebhookTrigger(false);
         this.bounce = new BounceWebhookTrigger(false);
         this.spamComplaint = new SpamWebhookTrigger(false);
+        this.subscriptionChange = new SubscriptionChange(false);
     }
 
     public WebhookTriggers(boolean openEnabled, boolean clickEnabled) {
@@ -38,6 +41,17 @@ public class WebhookTriggers {
         this.spamComplaint = new SpamWebhookTrigger(spamComplaintEnabled);
     }
 
+    public WebhookTriggers(boolean openEnabled, boolean clickEnabled,
+                           boolean bounceEnabled, boolean spamComplaintEnabled, boolean deliveryEnabled,
+                           boolean subscriptionChangeEnabled) {
+        this.open = new OpenWebhookTrigger(openEnabled);
+        this.click = new WebhookTrigger(clickEnabled);
+        this.delivery = new WebhookTrigger(deliveryEnabled);
+        this.bounce = new BounceWebhookTrigger(bounceEnabled);
+        this.spamComplaint = new SpamWebhookTrigger(spamComplaintEnabled);
+        this.subscriptionChange = new SubscriptionChange(subscriptionChangeEnabled);
+    }
+
     public WebhookTriggers(OpenWebhookTrigger open, WebhookTrigger click, WebhookTrigger delivery,
                            BounceWebhookTrigger bounce, SpamWebhookTrigger spamComplaint) {
         this.open = open;
@@ -45,6 +59,17 @@ public class WebhookTriggers {
         this.delivery = delivery;
         this.bounce = bounce;
         this.spamComplaint = spamComplaint;
+    }
+
+    public WebhookTriggers(OpenWebhookTrigger open, WebhookTrigger click, WebhookTrigger delivery,
+                           BounceWebhookTrigger bounce, SpamWebhookTrigger spamComplaint,
+                           SubscriptionChange subscriptionChange) {
+        this.open = open;
+        this.click = click;
+        this.delivery = delivery;
+        this.bounce = bounce;
+        this.spamComplaint = spamComplaint;
+        this.subscriptionChange = subscriptionChange;
     }
 
     public OpenWebhookTrigger getOpen() {
@@ -85,5 +110,13 @@ public class WebhookTriggers {
 
     public void setSpamComplaint(SpamWebhookTrigger spamComplaint) {
         this.spamComplaint = spamComplaint;
+    }
+
+    public SubscriptionChange getSubscriptionChange() {
+        return subscriptionChange;
+    }
+
+    public void setSubscriptionChange(SubscriptionChange subscriptionChange) {
+        this.subscriptionChange = subscriptionChange;
     }
 }
