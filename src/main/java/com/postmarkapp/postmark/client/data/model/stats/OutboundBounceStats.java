@@ -13,6 +13,7 @@ public class OutboundBounceStats {
     private Integer spamComplaint;
     private Integer ispBlock;
     private Integer Transient;
+    private Integer DMARCPolicy;
 
     // SETTERS AND GETTERS
 
@@ -72,5 +73,13 @@ public class OutboundBounceStats {
 
     public void setDays(List<BounceStat> days) {
         this.days = days;
+    }
+
+    public Integer getDMARCPolicy() {
+        return DMARCPolicy;
+    }
+
+    public void setDMARCPolicy(Integer DMARCPolicy) {
+        this.DMARCPolicy = DMARCPolicy;
     }
 }

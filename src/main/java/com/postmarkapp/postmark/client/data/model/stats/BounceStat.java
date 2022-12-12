@@ -12,6 +12,8 @@ public class BounceStat extends BaseStat {
     private Integer ispBlock;
     private Integer Transient;
 
+    private Integer DMARCPolicy;
+
     // SETTERS AND GETTERS
 
     public Integer getTransient() {
@@ -60,5 +62,13 @@ public class BounceStat extends BaseStat {
 
     public void setIspBlock(Integer ispBlock) {
         this.ispBlock = ispBlock;
+    }
+
+    public Integer getDMARCPolicy() {
+        return DMARCPolicy;
+    }
+
+    public void setDMARCPolicy(Integer DMARCPolicy) {
+        this.DMARCPolicy = DMARCPolicy;
     }
 }
