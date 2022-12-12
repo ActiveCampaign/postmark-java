@@ -4,6 +4,7 @@
 
 * updated data models to latest version for stats and webhooks
 * updated jackson to version 2.14.1
+* updated default http timeout value
 
 ## 1.9.0
 
