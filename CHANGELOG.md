@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.1
+
+* updated data models to latest version for stats and webhooks
+* updated jackson to version 2.14.1
+
 ## 1.9.0
 
 * library was migrated to a different groupid, make sure to update your pom.xml
