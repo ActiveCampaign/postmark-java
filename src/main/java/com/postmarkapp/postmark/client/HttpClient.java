@@ -31,6 +31,8 @@ public class HttpClient {
     private final MultivaluedMap<String,Object> headers;
     private final Client client;
 
+    private boolean secureConnection = true;
+
     public HttpClient(MultivaluedMap<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
         this(headers);
         setConnectTimeoutSeconds(connectTimeoutSeconds);
@@ -54,8 +56,9 @@ public class HttpClient {
      * @return response from HTTP request
      */
     public ClientResponse execute(REQUEST_TYPES requestType, String url, String data) {
+        String httpUrl = getSecureUrl(url);
         Response response;
-        WebTarget target = client.target(url);
+        WebTarget target = client.target(httpUrl);
 
         switch (requestType) {
             case POST:
@@ -111,6 +114,15 @@ public class HttpClient {
 
     public void setReadTimeoutSeconds(int readTimeoutSeconds) {
         client.property(ClientProperties.READ_TIMEOUT, readTimeoutSeconds * 1000);
+    }
+
+    public void setSecureConnection(boolean secureConnection) {
+        this.secureConnection = secureConnection;
+    }
+
+    private String getSecureUrl(String url) {
+        String urlPrefix = this.secureConnection ? "https://" : "http://";
+        return urlPrefix + url;
     }
 
     /**

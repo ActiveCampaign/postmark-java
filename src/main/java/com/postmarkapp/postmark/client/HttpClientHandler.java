@@ -15,7 +15,6 @@ public class HttpClientHandler {
     private final HttpClient httpClient;
     protected final DataHandler dataHandler;
     private final HttpClientErrorHandler httpClientErrorHandler;
-    private boolean secureConnection = true;
 
     protected HttpClientHandler(MultivaluedMap<String,Object> headers) {
         this.dataHandler = new DataHandler(false);
@@ -25,7 +24,7 @@ public class HttpClientHandler {
 
     protected HttpClientHandler(MultivaluedMap<String,Object> headers, boolean secureConnection) {
         this(headers);
-        this.secureConnection = secureConnection;
+        this.getHttpClient().setSecureConnection(secureConnection);
     }
     
     /**
@@ -59,7 +58,7 @@ public class HttpClientHandler {
      * @return HTTP response message
      */
     protected String execute(HttpClient.REQUEST_TYPES request_type, String url, Object data) throws PostmarkException, IOException {
-        HttpClient.ClientResponse response = httpClient.execute(request_type, getSecureUrl(url), dataHandler.toJson(data));
+        HttpClient.ClientResponse response = httpClient.execute(request_type, url, dataHandler.toJson(data));
 
         if (response.getCode() == 200) {
             return response.getMessage();
@@ -77,10 +76,6 @@ public class HttpClientHandler {
         this.dataHandler.setStrictMapper();
     }
 
-    public void setSecureConnection(boolean secureConnection) {
-        this.secureConnection = secureConnection;
-    }
-
     /**
      * @return HTTP client which processes HTTP requests
      */
@@ -89,7 +84,7 @@ public class HttpClientHandler {
     }
 
     /**
-     * Delegation method for HTTP client connection setttings
+     * Delegation method for HTTP client connection settings
      *
      * @param connectTimeoutSeconds HTTP client connection timeout
      */
@@ -98,7 +93,7 @@ public class HttpClientHandler {
     }
 
     /**
-     * Delegation method for HTTP client connection setttings
+     * Delegation method for HTTP client connection settings
      *
      * @param readTimeoutSeconds HTTP client read timeout
      */
@@ -107,12 +102,16 @@ public class HttpClientHandler {
     }
 
     /**
+     * Delegation method for HTTP client connection settings
+     *
+     * @param secureConnection - choose http or https
+     */
+    public void setSecureConnection(boolean secureConnection) {
+        getHttpClient().setSecureConnection(secureConnection);
+    }
+
+    /**
      * @return DataHandler which processes HTTP requests sent, and HTTP request responses
      */
     public DataHandler getDataHandler() { return dataHandler; }
-    
-    private String getSecureUrl(String url) {
-        String urlPrefix = this.secureConnection ? "https://" : "http://";
-        return urlPrefix + url;
-    }
 }
