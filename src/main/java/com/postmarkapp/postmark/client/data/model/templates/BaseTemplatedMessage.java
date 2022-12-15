@@ -1,12 +1,9 @@
 package com.postmarkapp.postmark.client.data.model.templates;
 
+import com.postmarkapp.postmark.client.data.FileDetails;
 import com.postmarkapp.postmark.client.data.model.message.Header;
-import org.apache.tika.Tika;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.*;
 
 /**
@@ -222,7 +219,8 @@ public class BaseTemplatedMessage {
      * @param path file path
      */
     public void addAttachment(String path) throws IOException {
-        addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path));
+        addAttachment(FileDetails.getFileName(path), FileDetails.getFileContent(path),
+                FileDetails.getFileContentType(path));
     }
 
     /**
@@ -232,7 +230,8 @@ public class BaseTemplatedMessage {
      * @param contentId file content id, like "cid:image.jpg", very usefull for inline images
      */
     public void addAttachment(String path, String contentId) throws IOException {
-        addAttachment(new File(path).getName(), readFileContent(path), readFileContentType(path), contentId);
+        addAttachment(FileDetails.getFileName(path), FileDetails.getFileContent(path),
+                FileDetails.getFileContentType(path), contentId);
     }
 
     /**
@@ -310,14 +309,6 @@ public class BaseTemplatedMessage {
 
     public void addAttachments(List<Map<String, String>> attachments) {
         attachments.forEach(this::addAttachment);
-    }
-
-    private byte[] readFileContent(String path) throws IOException {
-        return Files.readAllBytes(Paths.get(path));
-    }
-
-    private String readFileContentType(String path) throws IOException {
-        return new Tika().detect(new File(path));
     }
 
     /**

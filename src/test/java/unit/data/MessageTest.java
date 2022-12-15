@@ -8,7 +8,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
@@ -188,13 +191,15 @@ public class MessageTest extends BaseTest {
 
     @Test
     void addPdfAttachment() throws IOException {
+        String path = getDefaultFilePath() + "/test.pdf";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
-        message.addAttachment(getDefaultFilePath() + "/test.pdf" );
+        message.addAttachment(path);
+        String base64message = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(path)));
 
         HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "application/pdf");
-        assertEquals(attachment.get("Name"), new File(getDefaultFilePath() + "/test.pdf").getName());
-        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("Name"), new File(path).getName());
+        assertEquals(attachment.get("Content"), base64message);
         assertEquals(attachment.get("ContentId"), null);
     }
 
@@ -203,11 +208,12 @@ public class MessageTest extends BaseTest {
         String file = getDefaultFilePath() + "/test.jpg";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
         message.addAttachment(file);
+        String base64message = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file)));
 
         HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "image/jpeg");
         assertEquals(attachment.get("Name"), new File(file).getName());
-        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("Content"), base64message);
         assertEquals(attachment.get("ContentId"), null);
     }
 
@@ -230,11 +236,12 @@ public class MessageTest extends BaseTest {
         String file = getDefaultFilePath() + "/test.pdf";
         Message message = new Message("from@example.com","to@example.com","Hello world", "Hello world");
         message.addAttachment(file, contentId);
+        String base64message = Base64.getEncoder().encodeToString(Files.readAllBytes(Paths.get(file)));
 
         HashMap<String,String> attachment = (HashMap<String, String>) message.getAttachments().get(0);
         assertEquals(attachment.get("ContentType"), "application/pdf");
         assertEquals(attachment.get("Name"), new File(file).getName());
-        assertNotNull(attachment.get("Content"));
+        assertEquals(attachment.get("Content"), base64message);
         assertEquals(attachment.get("ContentId"), contentId);
     }
 
