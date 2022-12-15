@@ -1,6 +1,6 @@
 package com.postmarkapp.postmark.client.data.model.templates;
 
-import com.postmarkapp.postmark.client.data.FileDetails;
+import com.postmarkapp.postmark.client.data.model.FileDetails;
 import com.postmarkapp.postmark.client.data.model.message.Header;
 
 import java.io.IOException;

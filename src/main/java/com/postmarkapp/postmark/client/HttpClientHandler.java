@@ -1,6 +1,6 @@
 package com.postmarkapp.postmark.client;
 
-import com.postmarkapp.postmark.client.data.DataHandler;
+import com.postmarkapp.postmark.client.data.parser.DataHandler;
 import com.postmarkapp.postmark.client.exception.*;
 
 import javax.ws.rs.core.MultivaluedMap;

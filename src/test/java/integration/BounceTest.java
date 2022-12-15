@@ -1,14 +1,12 @@
 package integration;
 
 import base.BaseTest;
-import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
 import com.postmarkapp.postmark.client.ApiClient;
 import com.postmarkapp.postmark.client.Parameters;
 import com.postmarkapp.postmark.client.data.model.bounces.Bounce;
 import com.postmarkapp.postmark.client.data.model.bounces.BounceDump;
 import com.postmarkapp.postmark.client.data.model.bounces.Bounces;
 import com.postmarkapp.postmark.client.data.model.bounces.DeliveryStats;
-import com.postmarkapp.postmark.client.data.model.message.BaseMessageResponse;
 import com.postmarkapp.postmark.client.exception.InvalidMessageException;
 import com.postmarkapp.postmark.client.exception.PostmarkException;
 

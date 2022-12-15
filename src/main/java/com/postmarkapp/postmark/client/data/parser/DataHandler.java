@@ -1,4 +1,4 @@
-package com.postmarkapp.postmark.client.data;
+package com.postmarkapp.postmark.client.data.parser;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.*;
 import java.io.IOException;
 
 /**
- * This class represents data handler between API client and HTTP client.
- * It makes sure that proper mechanism is used to convert data for HTTP requests and for HTTP responses.
+ * Data serializer/deserializer between API client and HTTP client.
+ * It makes sure that proper mechanism is used to convert data to and from data format for HTTP requests and for HTTP responses.
  */
 public class DataHandler {
 

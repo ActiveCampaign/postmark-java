@@ -1,6 +1,6 @@
 package com.postmarkapp.postmark.client.data.model.messages;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.postmarkapp.postmark.client.jackson.CustomDateDeserializer;
+import com.postmarkapp.postmark.client.data.parser.jackson.CustomDateDeserializer;
 
 import java.util.List;
 import java.util.Date;

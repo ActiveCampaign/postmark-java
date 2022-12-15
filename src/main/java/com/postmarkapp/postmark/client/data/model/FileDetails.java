@@ -1,4 +1,4 @@
-package com.postmarkapp.postmark.client.data;
+package com.postmarkapp.postmark.client.data.model;
 
 import org.apache.tika.Tika;
 import java.io.File;

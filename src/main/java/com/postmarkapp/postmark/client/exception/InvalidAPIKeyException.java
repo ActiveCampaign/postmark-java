@@ -1,6 +1,5 @@
 package com.postmarkapp.postmark.client.exception;
 
-import com.postmarkapp.postmark.Postmark;
 import com.postmarkapp.postmark.client.data.model.PostmarkError;
 
 /**

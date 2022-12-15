@@ -1,7 +1,7 @@
 package unit.data;
 
 import base.BaseTest;
-import com.postmarkapp.postmark.client.data.DataHandler;
+import com.postmarkapp.postmark.client.data.parser.DataHandler;
 import com.postmarkapp.postmark.client.data.model.bounces.Bounce;
 import com.postmarkapp.postmark.client.data.model.bounces.Bounces;
 import org.junit.jupiter.api.Test;

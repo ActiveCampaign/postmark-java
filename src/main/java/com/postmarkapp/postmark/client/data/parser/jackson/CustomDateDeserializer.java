@@ -1,4 +1,4 @@
-package com.postmarkapp.postmark.client.jackson;
+package com.postmarkapp.postmark.client.data.parser.jackson;
 
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.JsonParser;

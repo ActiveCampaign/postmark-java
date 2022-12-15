@@ -2,7 +2,7 @@ package unit.client.data;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.exc.UnrecognizedPropertyException;
-import com.postmarkapp.postmark.client.data.DataHandler;
+import com.postmarkapp.postmark.client.data.parser.DataHandler;
 import com.postmarkapp.postmark.client.data.model.message.BaseMessageResponse;
 import org.junit.jupiter.api.Test;
 
