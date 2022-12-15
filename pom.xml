@@ -56,7 +56,9 @@
             <version>${jersey.version}</version>
         </dependency>
 
-        <!-- Jersey client Dependency injection IoC framework -->
+        <!-- Jersey client dependency - as of version 2.26 HK2 hard dependency is removed.
+        Therefore Jersey HK2 custom InjectionManagerFactory implementation is required.
+         Details: https://stackoverflow.com/questions/44088493/jersey-stopped-working-with-injectionmanagerfactory-not-found -->
         <dependency>
             <groupId>org.glassfish.jersey.inject</groupId>
             <artifactId>jersey-hk2</artifactId>
@@ -129,7 +131,6 @@
     </dependencies>
 
     <!-- all of the below is needed for releasing -->
-
     <build>
         <plugins>
 
