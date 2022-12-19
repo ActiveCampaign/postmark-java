@@ -1,7 +1,9 @@
 package com.postmarkapp.postmark.client;
 
+import org.glassfish.jersey.client.ClientConfig;
 import org.glassfish.jersey.client.ClientProperties;
 import org.glassfish.jersey.client.HttpUrlConnectorProvider;
+import org.glassfish.jersey.grizzly.connector.GrizzlyConnectorProvider;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -75,7 +77,8 @@ public class HttpClient {
             case PATCH:
                 // Jersey client doesn't have PATCH method, therefore workaround has to be used by using reflection
                 // https://stackoverflow.com/questions/55778145/how-to-use-patch-method-with-jersey-invocation-builder
-                target.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+                // target.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
+                // This workaround doesn't need to be set if custom connector like gryzzly is used
                 response = target.request().headers(headers).method("PATCH", Entity.json(data), Response.class);
                 break;
 
@@ -139,7 +142,13 @@ public class HttpClient {
      * @return initialized HTTP client
      */
     private Client buildClient() {
-        return ClientBuilder.newBuilder().build();
+        return ClientBuilder.newBuilder().withConfig(clientConfig()).build();
+    }
+
+    private ClientConfig clientConfig() {
+        ClientConfig clientConfig = new ClientConfig();
+        clientConfig.connectorProvider(new GrizzlyConnectorProvider());
+        return clientConfig;
     }
 
     /**

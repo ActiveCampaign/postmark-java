@@ -65,6 +65,13 @@
             <version>${jersey.version}</version>
         </dependency>
 
+        <!-- Jersey client dependency to support PATCH http requests for Java 16+ -->
+        <dependency>
+            <groupId>org.glassfish.jersey.connectors</groupId>
+            <artifactId>jersey-grizzly-connector</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+
         <!-- Jersey client requires this dependency -->
         <dependency>
             <groupId>javax.activation</groupId>
