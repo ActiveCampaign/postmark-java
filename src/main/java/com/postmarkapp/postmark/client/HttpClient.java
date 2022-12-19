@@ -41,7 +41,7 @@ public class HttpClient {
 
     public HttpClient(MultivaluedMap<String,Object> headers) {
         this.headers = headers;
-        this.client = ClientBuilder.newClient();
+        this.client = buildClient();
         setReadTimeoutSeconds(DEFAULTS.READ_TIMEOUT_SECONDS.value);
         setConnectTimeoutSeconds(DEFAULTS.CONNECT_TIMEOUT_SECONDS.value);
     }
@@ -131,6 +131,15 @@ public class HttpClient {
      */
     public Client getClient() {
         return client;
+    }
+
+    /**
+     * Build HTTP client used for requests
+     *
+     * @return initialized HTTP client
+     */
+    private Client buildClient() {
+        return ClientBuilder.newBuilder().build();
     }
 
     /**
