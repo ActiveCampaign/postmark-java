@@ -31,7 +31,12 @@ workflows:
           version: "12.0.2"
           requires:
             - java11
-
+      - unit-tests:
+          name: java13
+          image: "cimg/openjdk"
+          version: "13.0.0"
+          requires:
+            - java12
 jobs:
   unit-tests:
     parameters:
