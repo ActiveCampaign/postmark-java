@@ -56,9 +56,8 @@ public class HttpClient {
      * @return response from HTTP request
      */
     public ClientResponse execute(REQUEST_TYPES requestType, String url, String data) {
-        String httpUrl = getSecureUrl(url);
         Response response;
-        WebTarget target = client.target(httpUrl);
+        WebTarget target = client.target(getHttpUrl(url));
 
         switch (requestType) {
             case POST:
@@ -90,7 +89,7 @@ public class HttpClient {
 
         }
 
-        return prettifyResponse(response);
+        return transformResponse(response);
     }
 
     /**
@@ -120,7 +119,7 @@ public class HttpClient {
         this.secureConnection = secureConnection;
     }
 
-    private String getSecureUrl(String url) {
+    private String getHttpUrl(String url) {
         String urlPrefix = this.secureConnection ? "https://" : "http://";
         return urlPrefix + url;
     }
@@ -140,7 +139,7 @@ public class HttpClient {
      * @param response HTTP request response result
      * @return simplified HTTP request response
      */
-    private ClientResponse prettifyResponse(Response response) {
+    private ClientResponse transformResponse(Response response) {
         return new ClientResponse(response.getStatus(), response.readEntity(String.class));
     }
 
@@ -175,5 +174,4 @@ public class HttpClient {
         PATCH,
         DELETE
     }
-
 }
