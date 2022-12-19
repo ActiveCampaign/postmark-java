@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.11
+
+* code cleanup (better decoupling of components, folder restructure and other small cleanups)
+
 ## 1.9.1
 
 * updated data models to latest version for stats and webhooks
