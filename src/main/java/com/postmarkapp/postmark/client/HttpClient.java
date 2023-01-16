@@ -59,7 +59,7 @@ public class HttpClient {
      */
     public ClientResponse execute(REQUEST_TYPES requestType, String url, String data) {
         Response response;
-        WebTarget target = client.target(getHttpUrl(url));
+        final WebTarget target = client.target(getHttpUrl(url));
 
         switch (requestType) {
             case POST:
@@ -75,10 +75,6 @@ public class HttpClient {
                 break;
 
             case PATCH:
-                // Jersey client doesn't have PATCH method, therefore workaround has to be used by using reflection
-                // https://stackoverflow.com/questions/55778145/how-to-use-patch-method-with-jersey-invocation-builder
-                // target.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
-                // This workaround doesn't need to be set if custom connector like gryzzly is used
                 response = target.request().headers(headers).method("PATCH", Entity.json(data), Response.class);
                 break;
 
@@ -142,12 +138,29 @@ public class HttpClient {
      * @return initialized HTTP client
      */
     private Client buildClient() {
-        return ClientBuilder.newBuilder().withConfig(clientConfig()).build();
+        ClientBuilder clientBuilder = ClientBuilder.newBuilder();
+        return clientBuilder.withConfig(clientConfig()).build();
     }
 
+    /** Jersey client uses HttpUrlConnection by default which doesn't have PATCH method:
+     * https://docs.oracle.com/javase/8/docs/api/java/net/HttpURLConnection.html#setRequestMethod-java.lang.String-
+     * https://github.com/eclipse-ee4j/jersey/issues/4825
+     *
+     * Workaround for being able to do PATCH requests is by using reflection, which would work up to Java 16.
+     * https://stackoverflow.com/questions/55778145/how-to-use-patch-method-with-jersey-invocation-builder
+     *
+     * This workaround doesn't need to be set if custom connector like grizzly is used
+     * supported connector list can be seen here:
+     * https://www.cwiki.us/display/JERSEYEN/Client+Transport+Connectors
+     * https://eclipse-ee4j.github.io/jersey.github.io/documentation/latest/client.html#d0e4979
+     *
+     * @return client configuration which determines connection provider used by Jersey HTTP client.
+     */
     private ClientConfig clientConfig() {
         ClientConfig clientConfig = new ClientConfig();
-        clientConfig.connectorProvider(new GrizzlyConnectorProvider());
+        // use default provider, you can also use providers that support jdk 16+ like:
+        //clientConfig.connectorProvider(new GrizzlyConnectorProvider());
+        clientConfig.connectorProvider(new HttpUrlConnectorProvider().useSetMethodWorkaround());
         return clientConfig;
     }
 
