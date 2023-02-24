@@ -34,6 +34,17 @@ Add the dependency to your project:
 </dependency>
 ```
 
+If you need a version compatible with Jakarta EE, you can get it with the jakarta classifier:
+
+``` xml
+<dependency>
+    <groupId>com.postmarkapp</groupId>
+    <artifactId>postmark</artifactId>
+    <version>{version}</version>
+    <classifier>jakarta</classifier>
+</dependency>
+```
+
 Note: to retrieve the latest version number, visit [maven central repository](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) , or check the badge at top of the page which is showing the latest version synced to Maven repository.
 [Maven central repository link](https://repo1.maven.org/maven2/com/postmarkapp/postmark/) might be slightly more accurate, in case when new version was published recently.
 
