@@ -9,8 +9,8 @@ import com.postmarkapp.postmark.client.data.model.templates.TemplatesPush;
 import com.postmarkapp.postmark.client.data.model.templates.TemplatesPushRequest;
 import com.postmarkapp.postmark.client.exception.PostmarkException;
 
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Class that handles on very top level all API requests. All Postmark public endpoints which
@@ -26,11 +26,11 @@ public class AccountApiClient extends BaseApiClient {
     private final String domainsEndpoint = "/domains/";
     private final String sendersEndpoint = "/senders/";
 
-    public AccountApiClient(String baseUrl, MultivaluedMap<String,Object> headers) {
+    public AccountApiClient(String baseUrl, Map<String,Object> headers) {
         super(baseUrl,headers);
     }
 
-    public AccountApiClient(String baseUrl, MultivaluedMap<String,Object> headers, boolean secureConnection) {
+    public AccountApiClient(String baseUrl, Map<String,Object> headers, boolean secureConnection) {
         super(baseUrl, headers, secureConnection);
     }
 

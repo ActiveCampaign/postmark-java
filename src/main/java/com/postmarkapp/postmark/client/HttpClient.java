@@ -7,9 +7,9 @@ import org.glassfish.jersey.client.HttpUrlConnectorProvider;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.Entity;
-import javax.ws.rs.client.WebTarget;
-import javax.ws.rs.core.MultivaluedMap;
+import javax.ws.rs.client.Invocation.Builder;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 /**
  * Base HTTP client class solely responsible for making
@@ -29,18 +29,18 @@ public class HttpClient {
         }
     }
 
-    private final MultivaluedMap<String,Object> headers;
+    private final Map<String,Object> headers;
     private final Client client;
 
     private boolean secureConnection = true;
 
-    public HttpClient(MultivaluedMap<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
+    public HttpClient(Map<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
         this(headers);
         setConnectTimeoutSeconds(connectTimeoutSeconds);
         setReadTimeoutSeconds(readTimeoutSeconds);
     }
 
-    public HttpClient(MultivaluedMap<String,Object> headers) {
+    public HttpClient(Map<String,Object> headers) {
         this.headers = headers;
         this.client = buildClient();
         setReadTimeoutSeconds(DEFAULTS.READ_TIMEOUT_SECONDS.value);
@@ -58,31 +58,27 @@ public class HttpClient {
      */
     public ClientResponse execute(REQUEST_TYPES requestType, String url, String data) {
         Response response;
-        final WebTarget target = client.target(getHttpUrl(url));
+        final Builder requestBuilder = clientRequestBuilder((url));
 
         switch (requestType) {
             case POST:
-                response = target.request().headers(headers).post(Entity.json(data), Response.class);
-                break;
-
-            case GET:
-                response = target.request().headers(headers).get(Response.class);
+                response = requestBuilder.post(Entity.json(data), Response.class);
                 break;
 
             case PUT:
-                response = target.request().headers(headers).put(Entity.json(data), Response.class);
+                response = requestBuilder.put(Entity.json(data), Response.class);
                 break;
 
             case PATCH:
-                response = target.request().headers(headers).method("PATCH", Entity.json(data), Response.class);
+                response = requestBuilder.method("PATCH", Entity.json(data), Response.class);
                 break;
 
             case DELETE:
-                response = target.request().headers(headers).delete(Response.class);
+                response = requestBuilder.delete(Response.class);
                 break;
 
             default:
-                response = target.request().headers(headers).get(Response.class);
+                response = requestBuilder.get(Response.class);
                 break;
 
         }
@@ -148,6 +144,16 @@ public class HttpClient {
         // this allows calls to PATCH by using reflection
         client.property(HttpUrlConnectorProvider.SET_METHOD_WORKAROUND, true);
         return client;
+    }
+
+    private Builder clientRequestBuilder(String url) {
+        Builder requestBuilder = client.target(getHttpUrl(url)).request();
+
+        for (Map.Entry<String, Object> header : headers.entrySet()) {
+            requestBuilder.header(header.getKey(), header.getValue());
+        }
+
+        return requestBuilder;
     }
 
     /**

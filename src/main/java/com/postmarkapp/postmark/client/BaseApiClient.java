@@ -1,6 +1,6 @@
 package com.postmarkapp.postmark.client;
 
-import javax.ws.rs.core.MultivaluedMap;
+import java.util.Map;
 
 /**
  * Class that handles (on very high level) API requests. All Postmark public endpoints which
@@ -14,12 +14,12 @@ public class BaseApiClient extends HttpClientHandler {
         return baseUrl + endpoint;
     }
 
-    public BaseApiClient(String baseUrl, MultivaluedMap<String,Object> headers) {
+    public BaseApiClient(String baseUrl, Map<String,Object> headers) {
         super(headers);
         this.baseUrl = baseUrl;
     }
 
-    public BaseApiClient(String baseUrl, MultivaluedMap<String,Object> headers, boolean secureConnection) {
+    public BaseApiClient(String baseUrl, Map<String,Object> headers, boolean secureConnection) {
         this(baseUrl, headers);
         setSecureConnection(secureConnection);
     }

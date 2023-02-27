@@ -24,10 +24,10 @@ import com.postmarkapp.postmark.client.data.model.webhooks.Webhook;
 import com.postmarkapp.postmark.client.data.model.webhooks.Webhooks;
 import com.postmarkapp.postmark.client.exception.PostmarkException;
 
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Class that handles on very top level all API requests. All Postmark public endpoints which
@@ -51,11 +51,11 @@ public class ApiClient extends BaseApiClient {
     private final String suppressionsEndpoint           = "/suppressions/";
     private final String messageStreamsEndpoint           = "/message-streams/";
 
-    public ApiClient(String baseUrl, MultivaluedMap<String, Object> headers) {
+    public ApiClient(String baseUrl, Map<String, Object> headers) {
         super(baseUrl,headers);
     }
 
-    public ApiClient(String baseUrl, MultivaluedMap<String, Object>  headers, boolean secureConnection) {
+    public ApiClient(String baseUrl, Map<String, Object>  headers, boolean secureConnection) {
         super(baseUrl, headers, secureConnection);
     }
 

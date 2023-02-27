@@ -3,8 +3,8 @@ package com.postmarkapp.postmark.client;
 import com.postmarkapp.postmark.client.data.parser.DataHandler;
 import com.postmarkapp.postmark.client.exception.*;
 
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * Client class acts as handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
@@ -16,13 +16,13 @@ public class HttpClientHandler {
     protected final DataHandler dataHandler;
     private final HttpClientErrorHandler httpClientErrorHandler;
 
-    protected HttpClientHandler(MultivaluedMap<String,Object> headers) {
+    protected HttpClientHandler(Map<String,Object> headers) {
         this.dataHandler = new DataHandler(false);
         this.httpClientErrorHandler = new HttpClientErrorHandler(this.dataHandler);
         httpClient = new HttpClient(headers);
     }
 
-    protected HttpClientHandler(MultivaluedMap<String,Object> headers, boolean secureConnection) {
+    protected HttpClientHandler(Map<String,Object> headers, boolean secureConnection) {
         this(headers);
         this.getHttpClient().setSecureConnection(secureConnection);
     }

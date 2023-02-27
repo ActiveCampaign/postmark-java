@@ -3,9 +3,9 @@ package com.postmarkapp.postmark;
 import com.postmarkapp.postmark.client.AccountApiClient;
 import com.postmarkapp.postmark.client.ApiClient;
 
-import javax.ws.rs.core.MultivaluedHashMap;
-import javax.ws.rs.core.MultivaluedMap;
 import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
 
@@ -34,11 +34,11 @@ public class Postmark {
      */
     public static class DefaultHeaders {
 
-        public static MultivaluedMap<String, Object> headers() {
-            MultivaluedMap headerValues = new MultivaluedHashMap<>();
-            headerValues.putSingle("User-Agent", "Postmark Java Library: " + libraryVersion());
-            headerValues.putSingle("Accept", "application/json");
-            headerValues.putSingle("Content-Type", "application/json");
+        public static Map<String, Object> headers() {
+            Map headerValues = new HashMap();
+            headerValues.put("User-Agent", "Postmark Java Library: " + libraryVersion());
+            headerValues.put("Accept", "application/json");
+            headerValues.put("Content-Type", "application/json");
             return headerValues;
         }
 
@@ -94,9 +94,9 @@ public class Postmark {
 
     private final static Logger LOGGER = Logger.getLogger(Postmark.class.getName());
 
-    private static MultivaluedMap<String,Object> getHeadersWithAuth(DEFAULTS authType, String apiToken) {
-        MultivaluedMap headers = DefaultHeaders.headers();
-        headers.putSingle(authType.value, apiToken);
+    private static Map<String,Object> getHeadersWithAuth(DEFAULTS authType, String apiToken) {
+        Map headers = DefaultHeaders.headers();
+        headers.put(authType.value, apiToken);
         return headers;
     }
 }
