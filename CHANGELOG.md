@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.9.12
+
+* code cleanup for http client
+* updated tika to 2.7.0, jersey client to 2.3.9
+
 ## 1.9.11
 
 * code cleanup (better decoupling of components, folder restructure and other small cleanups)
