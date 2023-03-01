@@ -49,27 +49,10 @@
 
     <dependencies>
 
-        <!-- Jersey Http client -->
         <dependency>
-            <groupId>org.glassfish.jersey.core</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-
-        <!-- Jersey client dependency - as of version 2.26 HK2 hard dependency is removed.
-        Therefore Jersey HK2 custom InjectionManagerFactory implementation is required.
-         Details: https://stackoverflow.com/questions/44088493/jersey-stopped-working-with-injectionmanagerfactory-not-found -->
-        <dependency>
-            <groupId>org.glassfish.jersey.inject</groupId>
-            <artifactId>jersey-hk2</artifactId>
-            <version>${jersey.version}</version>
-        </dependency>
-
-        <!-- Jersey client requires this dependency -->
-        <dependency>
-            <groupId>javax.activation</groupId>
-            <artifactId>activation</artifactId>
-            <version>1.1.1</version>
+            <groupId>org.apache.httpcomponents.client5</groupId>
+            <artifactId>httpclient5-fluent</artifactId>
+            <version>5.2.1</version>
         </dependency>
 
         <!-- Serialization to JSON -->
