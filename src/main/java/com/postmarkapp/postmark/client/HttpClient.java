@@ -3,7 +3,6 @@ package com.postmarkapp.postmark.client;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
@@ -32,21 +31,23 @@ public class HttpClient {
 
     private final Map<String,Object> headers;
     private CloseableHttpClient client;
+    // client configuration options like timeouts, forwarding ..
+    private RequestConfig.Builder clientConfigBuilder;
 
     private boolean secureConnection = true;
-    private int connectTimeoutSeconds = DEFAULTS.CONNECT_TIMEOUT_SECONDS.value;
-    private int readTimeoutSeconds = DEFAULTS.READ_TIMEOUT_SECONDS.value;
 
     public HttpClient(Map<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
         this.headers = headers;
-        this.connectTimeoutSeconds = connectTimeoutSeconds;
-        this.readTimeoutSeconds = readTimeoutSeconds;
-        buildClientWithCustomConfig();
+        this.clientConfigBuilder = RequestConfig
+                .custom()
+                .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
+                .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
+
+        this.client = buildClient();
     }
 
     public HttpClient(Map<String,Object> headers) {
-        this.headers = headers;
-        buildClientWithCustomConfig();
+        this(headers, DEFAULTS.CONNECT_TIMEOUT_SECONDS.value, DEFAULTS.READ_TIMEOUT_SECONDS.value);
     }
 
     /**
@@ -108,13 +109,13 @@ public class HttpClient {
     // Setters and Getters
 
     public void setConnectTimeoutSeconds(int connectTimeoutSeconds) {
-        this.connectTimeoutSeconds = connectTimeoutSeconds;
-        buildClientWithCustomConfig();
+        clientConfigBuilder.setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds));
+        this.client = buildClient();
     }
 
     public void setReadTimeoutSeconds(int readTimeoutSeconds) {
-        this.readTimeoutSeconds = readTimeoutSeconds;
-        buildClientWithCustomConfig();
+        clientConfigBuilder.setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
+        this.client = buildClient();
     }
 
     public void setSecureConnection(boolean secureConnection) {
@@ -141,22 +142,7 @@ public class HttpClient {
      * @return initialized HTTP client
      */
     private CloseableHttpClient buildClient() {
-        return HttpClients.createDefault();
-    }
-
-    /**
-     * Build HTTP client used for requests with custom config settings
-     *
-     * @return initialized HTTP client
-     */
-    private void buildClientWithCustomConfig() {
-        RequestConfig requestConfig = RequestConfig
-                .custom()
-                .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
-                .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds))
-                .build();
-
-        this.client = HttpClientBuilder.create().setDefaultRequestConfig(requestConfig).build();
+        return HttpClientBuilder.create().setDefaultRequestConfig(clientConfigBuilder.build()).build();
     }
 
     /**
