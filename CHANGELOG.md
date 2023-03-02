@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.1
+
+* updated error handling to provide HTTP status codes
+
 ## 1.10.0
 
 * switched underlying HTTP client from Jersey to Apache HTTP client
