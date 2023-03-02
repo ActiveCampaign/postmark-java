@@ -25,22 +25,22 @@ public class HttpClientErrorHandler {
      *
      * @throws java.io.IOException in case invalid HTTP response is returned.
      */
-    public PostmarkException throwErrorBasedOnStatusCode(Integer statusCode, String message) throws IOException {
+    public PostmarkHttpException throwErrorBasedOnStatusCode(Integer statusCode, String message) throws IOException {
         switch (statusCode) {
             case 401:
-                return new InvalidAPIKeyException(postmarkErrorFromResponse(message));
+                return new InvalidAPIKeyException(postmarkErrorFromResponse(message), statusCode);
 
             case 408:
-                return new TimeoutException(message);
+                return new TimeoutException(message, statusCode);
 
             case 422:
-                return new InvalidMessageException(postmarkErrorFromResponse(message));
+                return new InvalidMessageException(postmarkErrorFromResponse(message), statusCode);
 
             case 500:
-                return new InternalServerException(message);
+                return new InternalServerException(message, statusCode);
 
             default:
-                return new UnknownException(message);
+                return new UnknownException(message, statusCode);
 
         }
     }
