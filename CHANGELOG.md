@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.9.2
+
+* switched underlying HTTP client from Jersey to Apache HTTP client
+
 ## 1.9.12
 
 * code cleanup for http client
