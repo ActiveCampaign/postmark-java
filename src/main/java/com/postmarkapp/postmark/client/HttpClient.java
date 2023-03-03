@@ -4,11 +4,14 @@ import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
 import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.util.Timeout;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
 /**
@@ -77,15 +80,15 @@ public class HttpClient {
 
         switch (requestType) {
             case POST:
-                request = ClassicRequestBuilder.post(getHttpUrl(url)).setEntity(data).build();
+                request = ClassicRequestBuilder.post(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
                 break;
 
             case PUT:
-                request = ClassicRequestBuilder.put(getHttpUrl(url)).setEntity(data).build();
+                request = ClassicRequestBuilder.put(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
                 break;
 
             case PATCH:
-                request = ClassicRequestBuilder.patch(getHttpUrl(url)).setEntity(data).build();
+                request = ClassicRequestBuilder.patch(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
                 break;
 
             case DELETE:
