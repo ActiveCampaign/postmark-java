@@ -10,8 +10,7 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.util.Timeout;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
+import java.util.Arrays;
 import java.util.Map;
 
 /**
@@ -76,29 +75,7 @@ public class HttpClient {
      * @return response from HTTP request
      */
     public ClientResponse execute(REQUEST_TYPES requestType, String url, String data) throws IOException {
-        ClassicHttpRequest request;
-
-        switch (requestType) {
-            case POST:
-                request = ClassicRequestBuilder.post(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
-                break;
-
-            case PUT:
-                request = ClassicRequestBuilder.put(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
-                break;
-
-            case PATCH:
-                request = ClassicRequestBuilder.patch(getHttpUrl(url)).setEntity(data, ContentType.APPLICATION_JSON).build();
-                break;
-
-            case DELETE:
-                request = ClassicRequestBuilder.delete(getHttpUrl(url)).build();
-                break;
-
-            default:
-                request = ClassicRequestBuilder.get(getHttpUrl(url)).build();
-                break;
-        }
+        ClassicHttpRequest request = createRequest(requestType, url, data);
 
         for (Map.Entry<String, Object> header : headers.entrySet()) {
             request.setHeader(header.getKey(), header.getValue().toString());
@@ -107,6 +84,29 @@ public class HttpClient {
         return client.execute(
                 request,
                 response -> new ClientResponse(response.getCode(), EntityUtils.toString(response.getEntity())));
+    }
+
+    /**
+     *
+     * Create HTTP request based on request type and other data
+     *
+     * @param requestType type of HTTP request to initiate
+     * @param url request url
+     * @param data data sent for POST/PUT requests
+     * @return built HTTP request to execute
+     */
+    private ClassicHttpRequest createRequest(REQUEST_TYPES requestType, String url, String data) {
+        ClassicRequestBuilder requestBuilder = ClassicRequestBuilder
+                .create(requestType.name())
+                .setUri(getHttpUrl(url));
+
+        if (data != null) {
+            return requestBuilder
+                    .setEntity(data, ContentType.APPLICATION_JSON)
+                    .build();
+        } else {
+            return requestBuilder.build();
+        }
     }
 
     // Setters and Getters

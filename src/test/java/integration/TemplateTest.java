@@ -54,7 +54,6 @@ public class TemplateTest extends BaseTest {
 
     @Test
     void createTemplate() throws PostmarkException, IOException {
-
         String templateName = "name";
 
         TemplateContent templateContent = new TemplateContent();
@@ -72,26 +71,30 @@ public class TemplateTest extends BaseTest {
     }
 
     @Test
-    void createTemplate_should_work_with_utf_8() throws PostmarkException, IOException {
+    void createTemplateWithUTFContent() throws PostmarkException, IOException {
 
-        String utf8String = "test html with unicode symbols: € Ä Æ ©";
-        String templateName = "name";
+        String htmlBodyText = "test html with unicode symbols: € Ä Æ ©";
+        String textBodyText = "test text with unicode symbols: € Ä Æ ©";
+        String templateName = "name € Ä Æ ©";
+        String subject = "subject € Ä Æ ©";
 
         TemplateContent templateContent = new TemplateContent();
-        templateContent.setHtmlBody(utf8String);
-        templateContent.setTextBody("test text");
+        templateContent.setHtmlBody(htmlBodyText);
+        templateContent.setTextBody(textBodyText);
         templateContent.setName(templateName);
-        templateContent.setSubject("subject");
+        templateContent.setSubject(subject);
 
         BaseTemplate response = client.createTemplate(templateContent);
         assertEquals(response.getName(),templateName);
 
         Template template = client.getTemplate(response.getTemplateId());
-        assertEquals(utf8String, template.getHtmlBody());
+        assertEquals(htmlBodyText, template.getHtmlBody());
+        assertEquals(textBodyText, template.getTextBody());
+        assertEquals(subject, template.getSubject());
+        assertEquals(templateName, template.getName());
 
         Integer id = response.getTemplateId();
         client.deleteTemplate(id);
-
     }
 
     @Test
