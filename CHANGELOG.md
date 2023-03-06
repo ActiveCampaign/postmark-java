@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.10.2
+
+* updated HTTP client data requests issue with unicode characters
+
 ## 1.10.1
 
 * updated error handling to provide HTTP status codes

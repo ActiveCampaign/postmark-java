@@ -10,7 +10,6 @@ import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.util.Timeout;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Map;
 
 /**
