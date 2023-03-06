@@ -72,6 +72,29 @@ public class TemplateTest extends BaseTest {
     }
 
     @Test
+    void createTemplate_should_work_with_utf_8() throws PostmarkException, IOException {
+
+        String utf8String = "test html with unicode symbols: € Ä Æ ©";
+        String templateName = "name";
+
+        TemplateContent templateContent = new TemplateContent();
+        templateContent.setHtmlBody(utf8String);
+        templateContent.setTextBody("test text");
+        templateContent.setName(templateName);
+        templateContent.setSubject("subject");
+
+        BaseTemplate response = client.createTemplate(templateContent);
+        assertEquals(response.getName(),templateName);
+
+        Template template = client.getTemplate(response.getTemplateId());
+        assertEquals(utf8String, template.getHtmlBody());
+
+        Integer id = response.getTemplateId();
+        client.deleteTemplate(id);
+
+    }
+
+    @Test
     void deleteTemplate() throws PostmarkException, IOException {
         String templateName = "deleteName";
 
