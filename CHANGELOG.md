@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.10.21
+
+* updated default HTTP client connection settings
+* adjusted HTTP client library package used
+
 ## 1.10.2
 
 * updated HTTP client data requests issue with unicode characters
