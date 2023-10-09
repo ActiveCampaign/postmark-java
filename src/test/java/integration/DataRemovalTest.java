@@ -13,7 +13,7 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * Created by bash on 11/14/17.
+ * Created by bash on 11/09/22.
  */
 public class DataRemovalTest extends BaseTest {
     AccountApiClient client = getDefaultAccountApiClient();
