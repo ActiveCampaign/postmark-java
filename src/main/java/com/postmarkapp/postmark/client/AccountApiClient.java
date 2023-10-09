@@ -1,6 +1,8 @@
 package com.postmarkapp.postmark.client;
 
 import com.postmarkapp.postmark.client.data.model.RequestResponse;
+import com.postmarkapp.postmark.client.data.model.data_removal.DataRemoval;
+import com.postmarkapp.postmark.client.data.model.data_removal.DataRemovalStatus;
 import com.postmarkapp.postmark.client.data.model.domains.*;
 import com.postmarkapp.postmark.client.data.model.senders.*;
 import com.postmarkapp.postmark.client.data.model.server.Server;
@@ -22,6 +24,7 @@ import java.util.Map;
  */
 public class AccountApiClient extends BaseApiClient {
 
+    private final String dataRemovalEndpoint = "/data-removals/";
     private final String serversEndpoint = "/servers/";
     private final String domainsEndpoint = "/domains/";
     private final String sendersEndpoint = "/senders/";
@@ -157,5 +160,15 @@ public class AccountApiClient extends BaseApiClient {
     public TemplatesPush pushTemplates(TemplatesPushRequest data) throws PostmarkException, IOException {
         String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl("/templates/push"), data);
         return dataHandler.fromJson(response, TemplatesPush.class);
+    }
+
+    public DataRemovalStatus requestDataRemoval(DataRemoval data) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(dataRemovalEndpoint), data);
+        return dataHandler.fromJson(response, DataRemovalStatus.class);
+    }
+
+    public DataRemovalStatus getDataRemovalStatus(Integer id) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.GET, getEndpointUrl(dataRemovalEndpoint + id));
+        return dataHandler.fromJson(response, DataRemovalStatus.class);
     }
 }
