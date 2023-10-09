@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.11.0
+
+* Add data removal endpoints
+
 ## 1.10.21
 
 * updated default HTTP client connection settings
