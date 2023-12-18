@@ -63,16 +63,16 @@ public class MessageStreamsTest extends BaseTest {
 
     @Test
     void archive() throws PostmarkException, IOException {
-        String streamId = "bulk-test-stream-1201";
+        String streamId = "test-bulk-test-stream-1201";
         MessageStreams messages = client.getMessageStreams(Parameters.init().build("messageStreamType", "all")
                 .build("includeArchivedStreams", "true"));
 
         MessageStream foundStream = findMessageStream(streamId);
 
         if (foundStream == null) {
-            client.createMessageStream(new MessageStream(streamId, streamId,"Broadcasts"));
+            MessageStream messageStream = new MessageStream(streamId, streamId,"Broadcasts");
+            client.createMessageStream(messageStream);
         }
-
         else if (foundStream.getArchivedAt() != null) {
             client.unarchiveMessageStream(streamId);
         }
