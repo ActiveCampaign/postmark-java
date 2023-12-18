@@ -3,10 +3,10 @@ package com.postmarkapp.postmark.client;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.classic.HttpClients;
 import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.util.Timeout;
@@ -92,7 +92,14 @@ public class HttpClient {
 
         return client.execute(
                 request,
-                response -> new ClientResponse(response.getCode(), EntityUtils.toString(response.getEntity())));
+                response -> {
+                    final HttpEntity entity = response.getEntity();
+                    int code = response.getCode();
+                    String body = EntityUtils.toString(response.getEntity());
+                    EntityUtils.consume(entity);
+
+                    return new ClientResponse(code, body);
+                });
     }
 
     /**
