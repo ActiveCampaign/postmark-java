@@ -2,8 +2,9 @@ package com.postmarkapp.postmark.client;
 
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
-import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
+import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.client5.http.impl.io.BasicHttpClientConnectionManager;
+import org.apache.hc.client5.http.io.HttpClientConnectionManager;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
@@ -36,7 +37,7 @@ public class HttpClient {
     // client configuration options like timeouts, forwarding ..
     private RequestConfig.Builder clientConfigBuilder;
 
-    private final PoolingHttpClientConnectionManager connectionManager;
+    private final HttpClientConnectionManager connectionManager;
 
     private boolean secureConnection = true;
 
@@ -47,9 +48,7 @@ public class HttpClient {
                 .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
                 .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
 
-        this.connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(100);
-        connectionManager.setDefaultMaxPerRoute(25);
+        this.connectionManager = new BasicHttpClientConnectionManager();
 
         this.client = buildClient();
     }
@@ -151,8 +150,8 @@ public class HttpClient {
      * @return initialized HTTP client
      */
     private CloseableHttpClient buildClient() {
-        return HttpClientBuilder
-                .create()
+        return HttpClients
+                .custom()
                 .setDefaultRequestConfig(clientConfigBuilder.build())
                 .setConnectionManager(connectionManager)
                 .build();
