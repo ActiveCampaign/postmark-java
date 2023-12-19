@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.11.1
+
+* small updated to http client connection settings
+
 ## 1.11.0
 
 * Add data removal endpoints
