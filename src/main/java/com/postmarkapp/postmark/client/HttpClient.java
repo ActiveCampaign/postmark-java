@@ -39,8 +39,6 @@ public class HttpClient {
     // client configuration options like timeouts, forwarding ..
     private RequestConfig.Builder clientConfigBuilder;
 
-    private final PoolingHttpClientConnectionManager connectionManager;
-
     private boolean secureConnection = true;
 
     public HttpClient(Map<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
@@ -49,10 +47,6 @@ public class HttpClient {
                 .custom()
                 .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
                 .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
-
-        this.connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(100);
-        connectionManager.setDefaultMaxPerRoute(25);
 
         this.client = buildClient();
     }
@@ -164,7 +158,7 @@ public class HttpClient {
         return HttpClientBuilder
                 .create()
                 .setDefaultRequestConfig(clientConfigBuilder.build())
-                .setConnectionManager(connectionManager)
+                .setConnectionManager(new PoolingHttpClientConnectionManager())
                 .build();
     }
 
