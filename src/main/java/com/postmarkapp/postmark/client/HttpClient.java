@@ -3,7 +3,6 @@ package com.postmarkapp.postmark.client;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ContentType;
 import org.apache.hc.core5.http.HttpEntity;
@@ -13,8 +12,6 @@ import org.apache.hc.core5.util.Timeout;
 
 import java.io.IOException;
 import java.util.Map;
-
-
 
 /**
  * Base HTTP client class solely responsible for making
@@ -46,6 +43,8 @@ public class HttpClient {
         this.clientConfigBuilder = RequestConfig
                 .custom()
                 .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
+                .setConnectionRequestTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
+                .setConnectionKeepAlive(Timeout.ofSeconds(connectTimeoutSeconds))
                 .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
 
         this.client = buildClient();
@@ -158,7 +157,6 @@ public class HttpClient {
         return HttpClientBuilder
                 .create()
                 .setDefaultRequestConfig(clientConfigBuilder.build())
-                .setConnectionManager(new PoolingHttpClientConnectionManager())
                 .build();
     }
 
