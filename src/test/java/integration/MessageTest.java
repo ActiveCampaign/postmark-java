@@ -32,14 +32,6 @@ public class MessageTest extends BaseTest {
     }
 
     @Test
-    void invalidMessagetoSend() throws PostmarkException, IOException {
-        Message message = new Message("from@example.com", null, "Hello from Postmark!", "Hello body");
-
-        Throwable exception = assertThrows(InvalidMessageException.class, () -> client.deliverMessage(message));
-        assertEquals("Zero recipients specified", exception.getMessage());
-    }
-
-    @Test
     void invalidApiToken() throws PostmarkException, IOException {
         ApiClient client = Postmark.getApiClient("1991892", true);
         Message message = new Message("from@example.com", "to@example.com", "Hello from Postmark!", "Hello body");

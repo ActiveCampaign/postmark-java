@@ -3,9 +3,9 @@ package com.postmarkapp.postmark.client;
 import org.apache.hc.client5.http.config.RequestConfig;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClientBuilder;
-import org.apache.hc.client5.http.impl.io.PoolingHttpClientConnectionManager;
 import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.ContentType;
+import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import org.apache.hc.core5.http.io.support.ClassicRequestBuilder;
 import org.apache.hc.core5.util.Timeout;
@@ -36,8 +36,6 @@ public class HttpClient {
     // client configuration options like timeouts, forwarding ..
     private RequestConfig.Builder clientConfigBuilder;
 
-    private final PoolingHttpClientConnectionManager connectionManager;
-
     private boolean secureConnection = true;
 
     public HttpClient(Map<String,Object> headers, int connectTimeoutSeconds, int readTimeoutSeconds) {
@@ -45,11 +43,9 @@ public class HttpClient {
         this.clientConfigBuilder = RequestConfig
                 .custom()
                 .setConnectTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
+                .setConnectionRequestTimeout(Timeout.ofSeconds(connectTimeoutSeconds))
+                .setConnectionKeepAlive(Timeout.ofSeconds(connectTimeoutSeconds))
                 .setResponseTimeout(Timeout.ofSeconds(readTimeoutSeconds));
-
-        this.connectionManager = new PoolingHttpClientConnectionManager();
-        connectionManager.setMaxTotal(100);
-        connectionManager.setDefaultMaxPerRoute(25);
 
         this.client = buildClient();
     }
@@ -89,7 +85,14 @@ public class HttpClient {
 
         return client.execute(
                 request,
-                response -> new ClientResponse(response.getCode(), EntityUtils.toString(response.getEntity())));
+                response -> {
+                    final HttpEntity entity = response.getEntity();
+                    int code = response.getCode();
+                    String body = EntityUtils.toString(response.getEntity());
+                    EntityUtils.consume(entity);
+
+                    return new ClientResponse(code, body);
+                });
     }
 
     /**
@@ -154,7 +157,6 @@ public class HttpClient {
         return HttpClientBuilder
                 .create()
                 .setDefaultRequestConfig(clientConfigBuilder.build())
-                .setConnectionManager(connectionManager)
                 .build();
     }
 
