@@ -10,6 +10,8 @@ public class Domain {
     private Boolean dkimVerified;
     private Boolean weakDKIM;
     private Boolean returnPathDomainVerified;
+
+    private Boolean customTrackingVerified;
     private Integer id;
 
     // GETTERS AND SETTERS
@@ -36,6 +38,14 @@ public class Domain {
 
     public void setDkimVerified(Boolean dkimVerified) {
         this.dkimVerified = dkimVerified;
+    }
+
+    public Boolean getCustomTrackingVerified() {
+        return customTrackingVerified;
+    }
+
+    public void setCustomTrackingVerified(Boolean customTrackingVerified) {
+        this.customTrackingVerified = customTrackingVerified;
     }
 
     public Boolean getWeakDKIM() {
