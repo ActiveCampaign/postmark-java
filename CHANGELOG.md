@@ -1,11 +1,17 @@
 # Changelog
 
+## 1.12.2
+* small change to fix removed code
+
 ## 1.12.1
 * reverted jackson version 
+* **Note: This version is deprecated and should not be used.**
 
 ## 1.12.0
 
 * Upgraded `tika-core` dependency to 2.9.4.
+* **Note: This version is deprecated and should not be used.**
+
 
 ## 1.11.1
 
