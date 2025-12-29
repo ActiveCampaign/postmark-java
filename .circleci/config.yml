@@ -94,4 +94,4 @@ jobs:
           command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
       - run:
           name: Run tests
-          command: mvn test
+          command: mvn test -DforkCount=1 -DreuseForks=false 

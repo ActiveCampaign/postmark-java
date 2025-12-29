@@ -23,7 +23,7 @@
     </developers>
 
     <properties>
-        <postmark.version>1.11.1</postmark.version>
+        <postmark.version>1.12.2</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>1.8</java.version>
         <jackson.minimum.version>2.9.7</jackson.minimum.version>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
-            <version>2.7.0</version>
+            <version>2.9.4</version>
         </dependency>
 
 
@@ -122,8 +122,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                 </configuration>
             </plugin>
 
@@ -134,6 +134,8 @@
                 <!-- workaround line to make test work on java10 https://maven.apache.org/surefire/maven-surefire-plugin/examples/class-loading.html -->
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
+                    <forkCount>1</forkCount>
+                    <reuseForks>false</reuseForks>
                 </configuration>
             </plugin>
 
@@ -142,37 +144,6 @@
                 <artifactId>maven-failsafe-plugin</artifactId>
                 <version>2.22.2</version>
             </plugin>
-
-            <!-- Maven dependency enforcer plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-enforcer-plugin</artifactId>
-                <version>3.0.0-M2</version>
-
-                <executions>
-                    <execution>
-                        <id>enforce-banned-dependencies</id>
-                        <goals>
-                            <goal>enforce</goal>
-                        </goals>
-                        <configuration>
-                            <rules>
-                                <bannedDependencies>
-                                    <searchTransitive>true</searchTransitive>
-                                    <excludes>
-                                        <exclude>com.fasterxml.jackson.core:jackson-annotations:(,${jackson.minimum.version}]</exclude>
-                                        <exclude>com.fasterxml.jackson.core:jackson-core:jar:(,${jackson.minimum.version}]</exclude>
-                                        <exclude>com.fasterxml.jackson.core:jackson-databind:jar:(,${jackson.minimum.version}]</exclude>
-                                    </excludes>
-                                    <message>A banned dependency was found! Need to use jackson newer than ${jackson.minimum.version}.</message>
-                                </bannedDependencies>
-                            </rules>
-                            <fail>true</fail>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
         </plugins>
 
         <!-- Resources path -->
@@ -207,10 +178,9 @@
                     <version>1.6.7</version>
                     <extensions>true</extensions>
                     <configuration>
-                        <serverId>ossrh</serverId>
-                        <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+                        <serverId>central</serverId>
+                        <nexusUrl>https://ossrh-staging-api.central.sonatype.com/</nexusUrl>
                         <autoReleaseAfterClose>true</autoReleaseAfterClose>
-                        <skipStaging>true</skipStaging>
                     </configuration>
                 </plugin>
 
@@ -258,20 +228,51 @@
                         </execution>
                     </executions>
                 </plugin>
+            <!-- Maven dependency enforcer plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+
+                <executions>
+                    <execution>
+                        <id>enforce-banned-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <exclude>com.fasterxml.jackson.core:jackson-annotations:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-core:jar:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-databind:jar:(,${jackson.minimum.version}]</exclude>
+                                    </excludes>
+                                    <message>A banned dependency was found! Need to use jackson newer than ${jackson.minimum.version}.</message>
+                                </bannedDependencies>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             </plugins>
             </build>
 
             <!-- Maven deploy repository setting -->
             <distributionManagement>
                 <snapshotRepository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+                    <id>central</id>
+                    <url>https://central.sonatype.com/repository/maven-snapshots/</url>
                 </snapshotRepository>
                 <repository>
-                    <id>ossrh</id>
-                    <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                    <id>central</id>
+                    <url>https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
+
 
         </profile>
     </profiles>
