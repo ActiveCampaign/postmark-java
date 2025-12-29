@@ -226,6 +226,36 @@
                         </execution>
                     </executions>
                 </plugin>
+            <!-- Maven dependency enforcer plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+
+                <executions>
+                    <execution>
+                        <id>enforce-banned-dependencies</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <bannedDependencies>
+                                    <searchTransitive>true</searchTransitive>
+                                    <excludes>
+                                        <exclude>com.fasterxml.jackson.core:jackson-annotations:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-core:jar:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-databind:jar:(,${jackson.minimum.version}]</exclude>
+                                    </excludes>
+                                    <message>A banned dependency was found! Need to use jackson newer than ${jackson.minimum.version}.</message>
+                                </bannedDependencies>
+                            </rules>
+                            <fail>true</fail>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
             </plugins>
             </build>
 
