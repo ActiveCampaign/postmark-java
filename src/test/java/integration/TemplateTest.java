@@ -16,7 +16,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class TemplateTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     @Test
     void validateHtmlBody() throws PostmarkException, IOException {

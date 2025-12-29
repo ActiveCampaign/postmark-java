@@ -15,7 +15,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class MessageStreamsTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     private MessageStream findMessageStream(String streamId) throws PostmarkException, IOException {
         MessageStream foundStream = null;

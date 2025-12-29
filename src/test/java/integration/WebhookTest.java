@@ -20,7 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class WebhookTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     @Test
     void createWebhook() throws PostmarkException, IOException {

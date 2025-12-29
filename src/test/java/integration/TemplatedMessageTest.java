@@ -20,7 +20,12 @@ import java.util.Map;
 
 public class TemplatedMessageTest extends BaseTest {
 
-    ApiClient client = Postmark.getApiClient("POSTMARK_API_TEST", true);
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = Postmark.getApiClient("POSTMARK_API_TEST", true);
+    }
 
     @Test
     void metadata() throws PostmarkException, IOException {

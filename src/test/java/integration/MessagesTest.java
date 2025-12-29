@@ -17,7 +17,12 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class MessagesTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     @Test
     void list() throws PostmarkException, IOException {

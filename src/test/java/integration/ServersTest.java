@@ -5,6 +5,7 @@ import com.postmarkapp.postmark.client.AccountApiClient;
 import com.postmarkapp.postmark.client.Parameters;
 import com.postmarkapp.postmark.client.data.model.servers.Servers;
 import com.postmarkapp.postmark.client.exception.PostmarkException;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -16,7 +17,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class ServersTest extends BaseTest {
 
-    AccountApiClient client = getDefaultAccountApiClient();
+    AccountApiClient client;
+
+    @BeforeEach
+    void setUp() {
+        client = getDefaultAccountApiClient();
+    }
 
     @Test
     void list() throws PostmarkException, IOException {

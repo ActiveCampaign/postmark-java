@@ -18,7 +18,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class DomainTest extends BaseTest {
 
-    AccountApiClient client = getDefaultAccountApiClient();
+    AccountApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultAccountApiClient();
+    }
 
     @Test
     void list() throws PostmarkException, IOException {

@@ -12,8 +12,13 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SuppressionsTest extends BaseTest {
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
     String defaultMessageStream = "outbound";
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     @Test
     void getSuppressions() throws PostmarkException, IOException {
