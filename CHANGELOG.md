@@ -1,9 +1,11 @@
 # Changelog
 
-## 2.0.0-SNAPSHOT
+## 1.12.1
+* reverted jackson version 
 
-* **BREAKING CHANGE:** The project now requires Java 11 or later.
-* Upgraded `tika-core` dependency to 3.2.3.
+## 1.12.0
+
+* Upgraded `tika-core` dependency to 2.9.4.
 
 ## 1.11.1
 
