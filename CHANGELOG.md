@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.0.0-SNAPSHOT
+
+* **BREAKING CHANGE:** The project now requires Java 11 or later.
+* Upgraded `tika-core` dependency to 3.2.3.
+
 ## 1.11.1
 
 * small updated to http client connection settings
