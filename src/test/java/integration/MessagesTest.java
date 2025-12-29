@@ -67,7 +67,27 @@ public class MessagesTest extends BaseTest {
         OutboundMessages messages = client.getMessages(Parameters.init().build("count", 1).build("offset", 0));
         String messageId = messages.getMessages().get(0).getMessageId();
         Parameters parameters = new Parameters().build("includeMessageContent", "Full");
-        OutboundMessageDetails message = client.getMessageDetails(messageId, parameters);
+        
+        // Retry logic for transient network errors (ZLIB stream issues)
+        OutboundMessageDetails message = null;
+        int maxRetries = 3;
+        for (int attempt = 1; attempt <= maxRetries; attempt++) {
+            try {
+                message = client.getMessageDetails(messageId, parameters);
+                break; // Success, exit retry loop
+            } catch (EOFException e) {
+                if (attempt == maxRetries) {
+                    throw e; // Re-throw on final attempt
+                }
+                // Wait before retry (exponential backoff)
+                try {
+                    Thread.sleep(100 * attempt);
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                    throw new IOException("Interrupted during retry", ie);
+                }
+            }
+        }
 
         assertNotNull(message.getReceivedAt());
     }
