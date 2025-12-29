@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.13.0
+
+* A new feature (metadata on InboundMessage)
+* Compatibility improvements
+* Security updates
+
 ## 1.12.2
 * small change to fix removed code
 
