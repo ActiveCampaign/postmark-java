@@ -12,6 +12,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -31,8 +32,15 @@ public class SendersTest extends BaseTest {
 
     SignatureToCreate testSignatureObject() {
         SignatureToCreate signature = new SignatureToCreate();
-        signature.setFromEmail("igor@wildbit.cexample.com");
-        signature.setName("Igor Test");
+        // Generate unique email to avoid conflicts when tests run in parallel
+        String uniqueId = UUID.randomUUID().toString().substring(0, 8);
+        String jobName = System.getenv("CIRCLE_JOB");
+        if (jobName != null && !jobName.isEmpty()) {
+            // Use job name (e.g., "java8", "java11") to make it unique per Java version
+            uniqueId = jobName + "-" + uniqueId;
+        }
+        signature.setFromEmail("igor-" + uniqueId + "@wildbit.cexample.com");
+        signature.setName("Igor Test " + uniqueId);
         return signature;
     }
 
