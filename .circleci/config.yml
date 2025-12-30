@@ -9,14 +9,14 @@ workflows:
           version: "8.0"
       - unit-tests:
           name: java9
-          image: "cimg/openjdk"
-          version: "9.0"
+          image: "circleci/openjdk"
+          version: "9"
           requires:
             - java8
       - unit-tests:
           name: java10
-          image: "cimg/openjdk"
-          version: "10.0"
+          image: "circleci/openjdk"
+          version: "10"
           requires:
             - java9
       - unit-tests:
@@ -58,7 +58,7 @@ workflows:
       - unit-tests:
           name: java17
           image: "cimg/openjdk"
-          version: "17.0.0"
+          version: "17.0"
           requires:
             - java16
       - unit-tests:
