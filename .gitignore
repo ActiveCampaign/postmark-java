@@ -1,10 +1,49 @@
+# Logs
 **/*.log
-**/*.DS_Store
-**/*.idea
+
+# macOS metadata
+**/.DS_Store
+**/.Spotlight-V100
+**/.Trashes
+
+# IDE metadata
+**/.idea
 **/*.iml
-target
-out
+.vscode/
+
+# Build artifacts
+target/
+out/
+
+# Temporary test files
 src/test/java/temp
+
+# Sensitive files
 src/test/resources/*properties*
+.env
+
+# Gradle files
 .gradle
+
+# Java version file
 .java-version
+
+# Maven Wrapper
+.mvn/
+mvnw
+mvnw.cmd
+
+# Generated files
+generated-sources/
+generated-test-sources/
+
+# Test reports
+target/surefire-reports/
+target/test-classes/
+
+# Compiled files
+*.class
+*.jar
+
+# Other OS-specific files
+Thumbs.db
