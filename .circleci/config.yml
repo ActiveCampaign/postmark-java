@@ -3,9 +3,6 @@ version: 2.1
 workflows:
   tests:
     jobs:
-      - security-scan:
-          context:
-            - snyk
       - unit-tests:
           name: java8
           image: "circleci/openjdk"
@@ -76,6 +73,9 @@ workflows:
           version: "19.0.0"
           requires:
             - java18
+      - security-scan:
+          context:
+            - snyk
 
 jobs:
   security-scan:
