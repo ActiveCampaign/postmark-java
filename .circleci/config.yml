@@ -73,8 +73,34 @@ workflows:
           version: "19.0.0"
           requires:
             - java18
+      - security-scan:
+          context:
+            - snyk
 
 jobs:
+  security-scan:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
+      - run:
+          name: Install Snyk CLI
+          command: |
+            curl -Lo ./snyk "https://static.snyk.io/cli/latest/snyk-linux"
+            chmod +x ./snyk
+            sudo mv ./snyk /usr/local/bin/
+      - run:
+          name: Run Snyk Scan
+          command: |
+            snyk auth $SNYK_TOKEN
+            snyk monitor \
+              --all-projects \
+              --exclude=test \
+              --org=$SNYK_ORG_ID
+
   unit-tests:
     parameters:
       version:
