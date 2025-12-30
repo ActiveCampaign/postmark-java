@@ -3,6 +3,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.postmarkapp.postmark.client.data.parser.jackson.CustomDateDeserializer;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Date;
 
 /**
@@ -31,6 +32,7 @@ public class InboundMessage {
     private String status;
     private List<Attachment> attachments;
     private String messageStream;
+    private Map<String, String> metadata;
 
     // GETTERS AND SETTERS
 
@@ -184,5 +186,13 @@ public class InboundMessage {
 
     public void setAttachments(List<Attachment> attachments) {
         this.attachments = attachments;
+    }
+
+    public Map<String, String> getMetadata() {
+        return metadata;
+    }
+
+    public void setMetadata(Map<String, String> metadata) {
+        this.metadata = metadata;
     }
 }

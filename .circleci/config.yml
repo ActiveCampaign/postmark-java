@@ -5,76 +5,100 @@ workflows:
     jobs:
       - unit-tests:
           name: java8
-          image: "circleci/openjdk"
-          version: "8"
+          image: "cimg/openjdk"
+          version: "8.0"
       - unit-tests:
           name: java9
           image: "circleci/openjdk"
           version: "9"
-          requires:
-            - java8
       - unit-tests:
           name: java10
           image: "circleci/openjdk"
           version: "10"
-          requires:
-            - java9
       - unit-tests:
           name: java11
-          image: "circleci/openjdk"
-          version: "11"
-          requires:
-            - java10
+          image: "cimg/openjdk"
+          version: "11.0"
       - unit-tests:
           name: java12
           image: "cimg/openjdk"
           version: "12.0.2"
-          requires:
-            - java11
       - unit-tests:
           name: java13
           image: "cimg/openjdk"
           version: "13.0.0"
-          requires:
-            - java12
       - unit-tests:
           name: java14
           image: "cimg/openjdk"
           version: "14.0.0"
-          requires:
-            - java13
       - unit-tests:
           name: java15
           image: "cimg/openjdk"
           version: "15.0.0"
-          requires:
-            - java14
       - unit-tests:
           name: java16
           image: "cimg/openjdk"
           version: "16.0.0"
-          requires:
-            - java15
       - unit-tests:
           name: java17
           image: "cimg/openjdk"
-          version: "17.0.0"
-          requires:
-            - java16
+          version: "17.0"
       - unit-tests:
           name: java18
           image: "cimg/openjdk"
           version: "18.0.1"
-          requires:
-            - java17
       - unit-tests:
           name: java19
           image: "cimg/openjdk"
           version: "19.0.0"
-          requires:
-            - java18
+      - unit-tests:
+          name: java21
+          image: "cimg/openjdk"
+          version: "21.0"
+      - unit-tests:
+          name: java22
+          image: "cimg/openjdk"
+          version: "22.0"
+      - unit-tests:
+          name: java23
+          image: "cimg/openjdk"
+          version: "23.0"
+      - unit-tests:
+          name: java24
+          image: "cimg/openjdk"
+          version: "24.0"
+      - unit-tests:
+          name: java25
+          image: "cimg/openjdk"
+          version: "25.0"
+      - security-scan:
+          context:
+            - snyk
 
 jobs:
+  security-scan:
+    docker:
+      - image: cimg/openjdk:11.0
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
+      - run:
+          name: Install Snyk CLI
+          command: |
+            curl -Lo ./snyk "https://static.snyk.io/cli/latest/snyk-linux"
+            chmod +x ./snyk
+            sudo mv ./snyk /usr/local/bin/
+      - run:
+          name: Run Snyk Scan
+          command: |
+            snyk auth $SNYK_TOKEN
+            snyk monitor \
+              --all-projects \
+              --exclude=test \
+              --org=$SNYK_ORG_ID
+
   unit-tests:
     parameters:
       version:

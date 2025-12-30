@@ -16,7 +16,13 @@ import static org.junit.jupiter.api.Assertions.*;
  * Created by bash on 11/09/22.
  */
 public class DataRemovalTest extends BaseTest {
-    AccountApiClient client = getDefaultAccountApiClient();
+    AccountApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultAccountApiClient();
+    }
+
     @Test
     void requestDataRemoval() throws PostmarkException, IOException {
         DataRemoval dataRemoval = new DataRemoval("requestedBy@example.com",

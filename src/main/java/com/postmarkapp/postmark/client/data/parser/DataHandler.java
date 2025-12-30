@@ -17,7 +17,8 @@ public class DataHandler {
     public DataHandler() {
         this.mapper = new ObjectMapper();
         this.mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        this.mapper.setPropertyNamingStrategy(PropertyNamingStrategy.UPPER_CAMEL_CASE);
+        // Use PropertyNamingStrategies for Jackson 2.12+ compatibility (replaces deprecated PropertyNamingStrategy)
+        this.mapper.setPropertyNamingStrategy(PropertyNamingStrategies.UpperCamelCaseStrategy.INSTANCE);
         setLiberalMapper();
     }
 

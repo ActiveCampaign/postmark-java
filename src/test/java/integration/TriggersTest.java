@@ -20,7 +20,12 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
  */
 public class TriggersTest extends BaseTest {
 
-    ApiClient client = getDefaultApiClient();
+    ApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultApiClient();
+    }
 
     @Test
     void listInboundRuleTriggers() throws PostmarkException, IOException {

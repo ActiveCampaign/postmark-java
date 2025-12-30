@@ -11,7 +11,12 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TemplatePushTest extends BaseTest {
-    AccountApiClient client = getDefaultAccountApiClient();
+    AccountApiClient client;
+
+    @org.junit.jupiter.api.BeforeEach
+    void setUp() {
+        client = getDefaultAccountApiClient();
+    }
 
     @Test
     void invalidSourceDestinationTest() throws PostmarkException, IOException {

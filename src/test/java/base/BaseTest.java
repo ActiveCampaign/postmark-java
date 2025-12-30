@@ -3,6 +3,7 @@ package base;
 import com.postmarkapp.postmark.Postmark;
 import com.postmarkapp.postmark.client.AccountApiClient;
 import com.postmarkapp.postmark.client.ApiClient;
+import org.junit.jupiter.api.TestInstance;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -14,6 +15,7 @@ import java.nio.file.*;
 /**
  * Created by bash on 11/14/17.
  */
+@TestInstance(TestInstance.Lifecycle.PER_METHOD)
 public class BaseTest {
 
     // Constants names for API tokens
@@ -75,9 +77,19 @@ public class BaseTest {
         properties = new Properties();
 
         try {
-            properties.load(in);
+            if (in != null) {
+                properties.load(in);
+            }
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    // Ignore close errors
+                }
+            }
         }
     }
 }
