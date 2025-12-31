@@ -367,6 +367,10 @@ public class BaseMessage {
 
     private String convertRecipient(String name, String address) {
         StringBuilder recipientsString = new StringBuilder();
+        if (name != null) {
+            // Escape characters that otherwise cause parsing errors in the API
+            name = name.replace("\"", "\\\"");
+        }
         return recipientsString.append("\"").append(name).append("\"")
                 .append("<").append(address).append(">").toString();
     }

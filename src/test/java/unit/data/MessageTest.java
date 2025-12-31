@@ -184,6 +184,28 @@ public class MessageTest extends BaseTest {
     }
 
     @Test
+    void recipientsWithQuotesAreEscapedProperly() {
+        Message message = new Message();
+        String nameWithQuote = "John \"Smith\"";
+        String email = "john@example.com";
+
+        Map<String, String> recipients = new HashMap<>();
+        recipients.put(nameWithQuote, email);
+
+        message.setTo(recipients);
+        assertEquals("\"John \\\"Smith\\\"\"<john@example.com>", message.getTo());
+
+        message.setCc(recipients);
+        assertEquals("\"John \\\"Smith\\\"\"<john@example.com>", message.getCc());
+
+        message.setBcc(recipients);
+        assertEquals("\"John \\\"Smith\\\"\"<john@example.com>", message.getBcc());
+
+        message.setFrom(nameWithQuote, email);
+        assertEquals("\"John \\\"Smith\\\"\"<john@example.com>", message.getFrom());
+    }
+
+    @Test
     void attachmentException() throws IOException {
         Message message = new Message();
         assertThrows(java.nio.file.NoSuchFileException.class, () -> message.addAttachment("test"));
