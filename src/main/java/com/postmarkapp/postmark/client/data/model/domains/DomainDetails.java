@@ -18,6 +18,10 @@ public class DomainDetails extends Domain {
     private String returnPathDomain;
     private String returnPathDomainCNAMEValue;
 
+    private String customTrackingDomain;
+
+    private String customTrackingDomainCNAMEValue;
+
     // GETTERS AND SETTERS
 
     public String getSpfHost() {
@@ -114,6 +118,22 @@ public class DomainDetails extends Domain {
 
     public void setReturnPathDomainCNAMEValue(String returnPathDomainCNAMEValue) {
         this.returnPathDomainCNAMEValue = returnPathDomainCNAMEValue;
+    }
+
+    public String getCustomTrackingDomain() {
+        return customTrackingDomain;
+    }
+
+    public void setCustomTrackingDomain(String customTrackingDomain) {
+        this.customTrackingDomain = customTrackingDomain;
+    }
+
+    public String getCustomTrackingDomainCNAMEValue() {
+        return customTrackingDomainCNAMEValue;
+    }
+
+    public void setCustomTrackingDomainCNAMEValue(String customTrackingDomainCNAMEValue) {
+        this.customTrackingDomainCNAMEValue = customTrackingDomainCNAMEValue;
     }
 
 }

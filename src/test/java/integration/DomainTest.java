@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Created by bash on 11/14/17.
@@ -61,6 +60,15 @@ public class DomainTest extends BaseTest {
         Integer domainId = domains.getDomains().get(0).getId();
         DomainDetails domainDetails = client.verifyDomainReturnPath(domainId);
         assertNotNull(domainDetails.getDkimTextValue());
+    }
+
+    @Test
+    void verifyDomainCustomTracking() throws PostmarkException, IOException {
+        Domains domains = client.getDomains(Parameters.init().build("count",6).build("offset",0));
+        Integer domainId = domains.getDomains().get(0).getId();
+        DomainDetails domainDetails = client.verifyDomainCustomTracking(domainId);
+        assertNotNull(domainDetails.getCustomTrackingDomainCNAMEValue());
+        assertFalse(domainDetails.getCustomTrackingVerified());
     }
 
 }

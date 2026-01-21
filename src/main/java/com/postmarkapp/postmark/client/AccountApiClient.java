@@ -104,6 +104,11 @@ public class AccountApiClient extends BaseApiClient {
         return dataHandler.fromJson(response,DomainDetails.class);
     }
 
+    public DomainDetails verifyDomainCustomTracking(Integer id) throws PostmarkException, IOException {
+        String response = execute(HttpClient.REQUEST_TYPES.PUT, getEndpointUrl(domainsEndpoint + id + "/verifyCustomTracking"));
+        return dataHandler.fromJson(response,DomainDetails.class);
+    }
+
     public String verifyDomainSPF(Integer id) throws PostmarkException, IOException {
         return execute(HttpClient.REQUEST_TYPES.POST, getEndpointUrl(domainsEndpoint + id + "/verifySPF"));
     }
