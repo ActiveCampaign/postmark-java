@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.0
+* Update SDK to Java21
+* This fixes a compression issue with Java 21 applications when converting the response body of the requests.
+
 ## 1.13.0
 
 * A new feature (metadata on InboundMessage)

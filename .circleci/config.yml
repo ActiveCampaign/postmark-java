@@ -4,54 +4,6 @@ workflows:
   tests:
     jobs:
       - unit-tests:
-          name: java8
-          image: "cimg/openjdk"
-          version: "8.0"
-      - unit-tests:
-          name: java9
-          image: "circleci/openjdk"
-          version: "9"
-      - unit-tests:
-          name: java10
-          image: "circleci/openjdk"
-          version: "10"
-      - unit-tests:
-          name: java11
-          image: "cimg/openjdk"
-          version: "11.0"
-      - unit-tests:
-          name: java12
-          image: "cimg/openjdk"
-          version: "12.0.2"
-      - unit-tests:
-          name: java13
-          image: "cimg/openjdk"
-          version: "13.0.0"
-      - unit-tests:
-          name: java14
-          image: "cimg/openjdk"
-          version: "14.0.0"
-      - unit-tests:
-          name: java15
-          image: "cimg/openjdk"
-          version: "15.0.0"
-      - unit-tests:
-          name: java16
-          image: "cimg/openjdk"
-          version: "16.0.0"
-      - unit-tests:
-          name: java17
-          image: "cimg/openjdk"
-          version: "17.0"
-      - unit-tests:
-          name: java18
-          image: "cimg/openjdk"
-          version: "18.0.1"
-      - unit-tests:
-          name: java19
-          image: "cimg/openjdk"
-          version: "19.0.0"
-      - unit-tests:
           name: java21
           image: "cimg/openjdk"
           version: "21.0"
@@ -78,7 +30,7 @@ workflows:
 jobs:
   security-scan:
     docker:
-      - image: cimg/openjdk:11.0
+      - image: cimg/openjdk:21.0
     steps:
       - checkout
       - run:
@@ -118,4 +70,4 @@ jobs:
           command: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -Dgpg.skip=true -B -V
       - run:
           name: Run tests
-          command: mvn test -DforkCount=1 -DreuseForks=false 
+          command: mvn test -DforkCount=1 -DreuseForks=false
