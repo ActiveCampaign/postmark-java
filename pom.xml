@@ -244,15 +244,11 @@
                                 <bannedDependencies>
                                     <searchTransitive>true</searchTransitive>
                                     <excludes>
-                                        <exclude>
-                                          com.fasterxml.jackson.core:jackson-annotations:(,${jackson.minimum.version}]</exclude>
-                                        <exclude>
-                                          com.fasterxml.jackson.core:jackson-core:jar:(,${jackson.minimum.version}]</exclude>
-                                        <exclude>
-                                          com.fasterxml.jackson.core:jackson-databind:jar:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-annotations:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-core:jar:(,${jackson.minimum.version}]</exclude>
+                                        <exclude>com.fasterxml.jackson.core:jackson-databind:jar:(,${jackson.minimum.version}]</exclude>
                                     </excludes>
-                                    <message>A banned dependency was found! Need to use jackson newer than 
-                                      ${jackson.minimum.version}.</message>
+                                    <message>A banned dependency was found! Need to use jackson newer than ${jackson.minimum.version}.</message>
                                 </bannedDependencies>
                             </rules>
                             <fail>true</fail>
