@@ -7,6 +7,8 @@
 [![License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://www.opensource.org/licenses/MIT)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.postmarkapp/postmark)
 
+:star: :star: **IMPORTANT UPDATE:** :star: :star: As of version 2.0.0, this library requires Java 21. Please ensure your runtime is Java 21 or newer.
+
 :star: :star: **IMPORTANT UPDATE** :star: :star: **As of version 1.9.0, we migrated from groupid ```com.wildbit.java``` to ```com.postmarkapp```.**
 Please update your pom.xml file with new groupid and your imports to use the latest versions of the library. 
 
