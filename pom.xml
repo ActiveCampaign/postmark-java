@@ -25,7 +25,7 @@
     <properties>
         <postmark.version>1.13.0</postmark.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
+        <java.version>21</java.version>
         <jackson.minimum.version>2.9.7</jackson.minimum.version>
         <jackson.version>2.15.0</jackson.version>
         <junit.jupiter.version>5.8.2</junit.jupiter.version>
@@ -77,7 +77,7 @@
         <dependency>
             <groupId>org.apache.tika</groupId>
             <artifactId>tika-core</artifactId>
-            <version>2.9.4</version>
+            <version>3.2.3</version>
         </dependency>
 
 
@@ -107,7 +107,7 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>2.11.0</version>
+            <version>4.110</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -120,7 +120,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>3.13.0</version>
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
@@ -130,8 +130,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.2</version>
-                <!-- workaround line to make test work on java10 https://maven.apache.org/surefire/maven-surefire-plugin/examples/class-loading.html -->
+                <version>3.2.5</version>
                 <configuration>
                     <useSystemClassLoader>false</useSystemClassLoader>
                     <forkCount>1</forkCount>
@@ -142,7 +141,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>2.22.2</version>
+                <version>3.2.5</version>
             </plugin>
         </plugins>
 
@@ -202,7 +201,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.9.1</version>
+                    <version>3.6.3</version>
                     <executions>
                         <execution>
                             <id>attach-javadocs</id>
