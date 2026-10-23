@@ -15,7 +15,7 @@ import java.util.Map;
 
 /**
  * Base HTTP client class solely responsible for making
- * client requests and returning simple HTTP response.
+ * client requests and returning a simple HTTP response.
  */
 public class HttpClient {
 
@@ -55,7 +55,7 @@ public class HttpClient {
     }
 
     /**
-     * Overload method for executing requests, which doesn't contain data
+     * Overloaded method for executing requests, which doesn't contain data
      *
      * @param request_type type of HTTP request
      * @param url request URL
