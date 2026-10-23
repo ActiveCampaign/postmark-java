@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * Client class acts as handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
+ * Client class acts as a handler between HTTP requests handler class (HttpClient) and class which provides access to all endpoints to call.
  * This class provides correct data for both sides and acts as controller. Also it verifies whether data sent and received is correct.
  */
 public class HttpClientHandler {
